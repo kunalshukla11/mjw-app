@@ -1,5 +1,6 @@
 import { Title, Text, Anchor } from '@mantine/core';
 import classes from './Welcome.module.css';
+import { MyComponent } from './MyComponent';
 
 export function Welcome() {
   return (
@@ -10,6 +11,7 @@ export function Welcome() {
           Mantine
         </Text>
       </Title>
+      <MyComponent />
       <Text c="dimmed" ta="center" size="lg" maw={580} mx="auto" mt="xl">
         This starter Next.js project includes a minimal setup for server side rendering, if you want
         to learn more on Mantine + Next.js integration follow{' '}
