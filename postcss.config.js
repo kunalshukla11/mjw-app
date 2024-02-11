@@ -1,5 +1,6 @@
 module.exports = {
   plugins: {
+    darkMode: ['class', '[data-mode="dark"]'],
     tailwindcss: {},
     autoprefixer: {},
     'postcss-preset-mantine': {},
