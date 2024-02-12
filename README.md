@@ -32,3 +32,21 @@ This template comes with the following features:
 ### Other scripts
 
 - `prettier:write` – formats all files with Prettier
+
+### Other scripts
+
+Docker steps
+docker build -t mjw-app .
+docker run -itd \
+ --name mjw_app_container \
+ --network mjw_network \
+ -p 3000:3000 \
+ mjw_app
+
+TODO-Add contact using reactIcon and avaatar > use popupForLoging> Use PopupforContact> Try to generalize contact and profile >
+
+## Environment variables order(overridden as it goes from top to bottom)
+
+- `.env`(mostly for local development)
+- `.env.docker.mjwapp` (mostly for docker on oci where this file will be created via terraform)
+-  env from Docker Compose

@@ -13,5 +13,9 @@ module.exports = {
   rules: {
     'react/react-in-jsx-scope': 'off',
     'import/extensions': 'off',
+    'jsx-quotes': 'off',
+    'jsx-a11y/label-has-associated-control': 'off',
+    'react/self-closing-comp': 'off',
+    'no-console': 'off',
   },
 };
