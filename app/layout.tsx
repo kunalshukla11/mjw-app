@@ -2,6 +2,7 @@ import '../styles/globals.css';
 import React from 'react';
 import { MantineProvider, ColorSchemeScript } from '@mantine/core';
 import { theme } from '../theme';
+import MainLayout from '@/components/layout/MainLayout';
 
 export const metadata = {
   title: 'My Journey Wings, Cheap Flights Hotels',
