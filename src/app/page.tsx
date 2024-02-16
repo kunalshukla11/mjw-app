@@ -1,7 +1,7 @@
 import { Group } from '@mantine/core';
-import { Welcome } from '@/components/Welcome/Welcome';
-import MainLayout from '@/components/layout/MainLayout';
-import { ColorSchemeToggle } from '@/components/ColorSchemeToggle/ColorSchemeToggle';
+import { Welcome } from '@/src/components/Welcome/Welcome';
+import MainLayout from '@/src/components/layout/MainLayout';
+import { ColorSchemeToggle } from '@/src/components/ColorSchemeToggle/ColorSchemeToggle';
 
 export default function HomePage() {
   return (
