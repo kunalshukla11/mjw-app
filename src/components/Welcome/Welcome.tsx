@@ -9,7 +9,6 @@ export function Welcome({ route }: { route: any }) {
         <Text inherit variant='gradient' component='span' gradient={{ from: 'pink', to: 'yellow' }}>
           MJW {route}
         </Text>
-        <h1 className='text-4xl'>Hey</h1>
       </Title>
     </>
   );
