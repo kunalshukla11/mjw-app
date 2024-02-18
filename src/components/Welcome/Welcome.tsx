@@ -1,14 +1,15 @@
-import { Title, Text, Anchor } from '@mantine/core';
+import { Title, Text } from '@mantine/core';
 import classes from './Welcome.module.css';
 
 export function Welcome({ route }: { route: any }) {
   return (
     <>
-      <Title className={classes.title} ta="center" mt={100}>
+      <Title className={classes.title} ta='center' mt={100}>
         Welcome to{' '}
-        <Text inherit variant="gradient" component="span" gradient={{ from: 'pink', to: 'yellow' }}>
+        <Text inherit variant='gradient' component='span' gradient={{ from: 'pink', to: 'yellow' }}>
           MJW {route}
         </Text>
+        <h1 className='text-4xl'>Hey</h1>
       </Title>
     </>
   );

@@ -1,5 +1,4 @@
 import { Group } from '@mantine/core';
-import { MdFlight } from 'react-icons/md';
 import { Welcome } from '@/src/components/Welcome/Welcome';
 import MainLayout from '@/src/components/layout/MainLayout';
 import { ColorSchemeToggle } from '@/src/components/ColorSchemeToggle/ColorSchemeToggle';
@@ -8,8 +7,6 @@ export default function HomePage() {
   return (
     <MainLayout>
       <span className='font-bold text-4xl'>Home</span>
-      <MdFlight className='text-indigo-900 text-2xl flex'>Hey</MdFlight>
-
       <Welcome route='FLIGHTS' />
       <ColorSchemeToggle />
       <Group align='center' justify='center'>
