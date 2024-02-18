@@ -1,0 +1,10 @@
+/* Add @layer to Tailwind Base to prevent Preflight conflicts */
+@layer {
+  @tailwind base;
+}
+
+/* Mantine core */
+@import '@mantine/core/styles.css';
+
+@tailwind components;
+@tailwind utilities;
