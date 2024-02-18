@@ -6,7 +6,7 @@ import { NavItem } from '@/src/types';
 export default function SideBarNavItem({ navItem }: { navItem: NavItem }) {
   return (
     <Link href={navItem.path}>
-      <Button variant='transparent' color='black' leftSection={navItem.icon}>
+      <Button className='text-lg' variant='transparent' color='black' leftSection={navItem.icon}>
         {navItem.title}
       </Button>
     </Link>
