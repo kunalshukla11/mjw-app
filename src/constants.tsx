@@ -7,4 +7,6 @@ export const NAV_ITEMS: NavItem[] = [
   { title: 'Flights', path: '/flights', icon: <MdFlight /> },
   { title: 'Hotels', path: '/hotels', icon: <RiHotelBedLine /> },
   { title: 'Packages', path: '/packages', icon: <FaUmbrellaBeach /> },
+  { title: 'Packages1', path: '/packages', icon: <FaUmbrellaBeach /> },
+  { title: 'Packages2', path: '/packages', icon: <FaUmbrellaBeach /> },
 ];

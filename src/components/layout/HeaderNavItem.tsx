@@ -9,9 +9,8 @@ export default function HeaderNavItem({ navItem }: { navItem: NavItem }) {
     (pathName === '/' && navItem.title === 'Flights') || pathName === navItem.path;
   return (
     <NavLink
-      style={{ flex: 1 }}
       className={`flex rounded-md px-3 py-2  hover:bg-indigo-50 hover:text-indigo-900 ${
-        shouldHighlight ? 'font-bold bg-indigo-200' : ''
+        shouldHighlight ? 'bg-indigo-200 font-bold' : ''
       }`}
       component={Link}
       href={navItem.path}
