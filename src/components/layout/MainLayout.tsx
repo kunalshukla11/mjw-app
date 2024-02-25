@@ -1,57 +1,31 @@
 'use client';
 
-import { Button } from '@mantine/core';
+import { Drawer } from '@mantine/core';
+import { useDisclosure } from '@mantine/hooks';
 import PageWrapper from './PageWrapper';
 import Header from './header/Header';
+import { NAV_ITEMS } from '@/src/constants';
 
-// export default function MainLayout({ children }: { children: any }) {
-//   const [opened, { toggle }] = useDisclosure();
-//   return (
-//     <AppShell
-//       header={{ height: 70 }}
-//       navbar={{
-//         width: 300,
-//         breakpoint: 'sm',
-//         collapsed: { desktop: true, mobile: !opened },
-//       }}
-//       padding='md'
-//     >
-//       <AppShell.Header>
-//         <Group h='100%' px='md'>
-//           <Burger opened={opened} onClick={toggle} hiddenFrom='sm' size='sm' />
-//           <Group justify='center' style={{ flex: 1 }}>
-//             <Group ml='xl' gap={0} visibleFrom='sm'>
-//               {NAV_ITEMS.map((item, idx) => (
-//                 <HeaderNavItem key={idx} navItem={item} />
-//               ))}
-//             </Group>
-//           </Group>
-//         </Group>
-//       </AppShell.Header>
-
-//       <AppShell.Navbar py='md' px={4} className='h-full'>
-//         {NAV_ITEMS.map((item, idx) => (
-//           <SideBarNavItem key={idx} navItem={item} />
-//         ))}
-//       </AppShell.Navbar>
-
-//       <AppShell.Main>{children}</AppShell.Main>
-//     </AppShell>
-//   );
-// }
+import SideBarNavItem from './SideBarNavItem';
 
 export default function MainLayout({ children }: { children: any }) {
+  const [opened, { open, close }] = useDisclosure(false);
   return (
     <div className='flex'>
       {/* navbar will come here */}
+      <Drawer opened={opened} onClose={close} title='My Journey Wings'>
+        <div className='flex flex-col'>
+          {NAV_ITEMS.map((item, idx) => (
+            <SideBarNavItem key={idx} navItem={item} closeDrawer={close} />
+          ))}
+        </div>
+      </Drawer>
       <main className='flex-1'>
-        {/* header will come here */}
-        <Header />
+        <Header openDrawer={open} />
         <PageWrapper>{children}</PageWrapper>
 
-        <div id='footer' className='h-16 w-full border-t-2'>
+        <div id='footer' className=' h-16 w-full border-t-2'>
           Footer
-          <Button classNames={{ root: 'bg-red-100' }}>Button</Button>
         </div>
       </main>
     </div>
