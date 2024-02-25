@@ -1,13 +1,8 @@
 'use client';
 
-import React from 'react';
-import { AppShell, Burger, AspectRatio, Image, Group, rem, Button } from '@mantine/core';
-import { useDisclosure } from '@mantine/hooks';
-import HeaderNavItem from './HeaderNavItem';
-import { NAV_ITEMS } from '@/src/constants';
-import SideBarNavItem from './SideBarNavItem';
+import { Button } from '@mantine/core';
 import PageWrapper from './PageWrapper';
-import Header from './Header';
+import Header from './header/Header';
 
 // export default function MainLayout({ children }: { children: any }) {
 //   const [opened, { toggle }] = useDisclosure();

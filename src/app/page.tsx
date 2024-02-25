@@ -2,7 +2,6 @@ import { Button, Group, ScrollArea } from '@mantine/core';
 import { Welcome } from '@/src/components/Welcome/Welcome';
 import MainLayout from '@/src/components/layout/MainLayout';
 import { ColorSchemeToggle } from '@/src/components/ColorSchemeToggle/ColorSchemeToggle';
-import UnderHeaderNav from '../components/layout/UnderHeaderNav';
 
 export default function HomePage() {
   return (
