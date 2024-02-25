@@ -1,12 +1,24 @@
 import Link from 'next/link';
-import { Button, NavLink, UnstyledButton } from '@mantine/core';
-import { usePathname } from 'next/navigation';
+import { Button } from '@mantine/core';
+
 import { NavItem } from '@/src/types';
 
-export default function SideBarNavItem({ navItem }: { navItem: NavItem }) {
+export default function SideBarNavItem({
+  navItem,
+  closeDrawer,
+}: {
+  navItem: NavItem;
+  closeDrawer: () => void;
+}) {
   return (
     <Link href={navItem.path}>
-      <Button className='text-lg' variant='transparent' color='black' leftSection={navItem.icon}>
+      <Button
+        className='text-lg'
+        variant='transparent'
+        color='black'
+        leftSection={navItem.icon}
+        onClick={closeDrawer}
+      >
         {navItem.title}
       </Button>
     </Link>

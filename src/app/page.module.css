@@ -1,0 +1,8 @@
+.myContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.myBox {
+  border-bottom: 2px black solid;
+}

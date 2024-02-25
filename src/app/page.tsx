@@ -1,4 +1,4 @@
-import { Group } from '@mantine/core';
+import { Button, Group, ScrollArea } from '@mantine/core';
 import { Welcome } from '@/src/components/Welcome/Welcome';
 import MainLayout from '@/src/components/layout/MainLayout';
 import { ColorSchemeToggle } from '@/src/components/ColorSchemeToggle/ColorSchemeToggle';
@@ -6,15 +6,14 @@ import { ColorSchemeToggle } from '@/src/components/ColorSchemeToggle/ColorSchem
 export default function HomePage() {
   return (
     <MainLayout>
-      <span className='font-bold text-4xl'>Home</span>
-
+      <span className='text-4xl font-bold'>Home</span>
       <Welcome route='FLIGHTS' />
       <ColorSchemeToggle />
       <Group align='center' justify='center'>
-        <div className='border-dashed border border-indigo-400 w-1/3 h-64 rounded-lg' />
-        <div className='border-dashed border border-indigo-400 w-1/3 h-64 rounded-lg' />
+        <div className='h-64 w-1/3 rounded-lg border border-dashed border-indigo-400' />
+        <div className='h-64 w-1/3 rounded-lg border border-dashed border-indigo-400' />
       </Group>
-      <div className='border-dashed border border-indigo-400 w-full h-64 rounded-lg' />
+      <div className='h-64 w-full rounded-lg border border-dashed border-indigo-400' />
     </MainLayout>
   );
 }

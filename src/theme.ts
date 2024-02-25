@@ -18,5 +18,12 @@ export const theme = createTheme({
       '#312e81',
     ],
   },
+  breakpoints: {
+    xs: '40em',
+    sm: '48em',
+    md: '64em',
+    lg: '80em',
+    xl: '96em',
+  },
   /* Pgot your mantine theme override here */
 });
