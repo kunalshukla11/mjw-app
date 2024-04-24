@@ -3,6 +3,8 @@ import { NAV_ITEMS } from '@/src/constants';
 import HeaderNavItem from './HeaderNavItem';
 import MjwLogo from './MjwLogo';
 import SubHeader from './subHeader/SubHeader';
+import User from '../user/User';
+import Contact from '../contact/Contact';
 
 export default function Header({ openDrawer }: { openDrawer: () => void }) {
   return (
@@ -21,7 +23,10 @@ export default function Header({ openDrawer }: { openDrawer: () => void }) {
           ))}
         </div>
         {/* Placeholder for right section to make nav div center */}
-        <div className='w-20' />
+        <div className='flex flex-row-reverse gap-2'>
+          <User />
+          <Contact />
+        </div>
       </div>
 
       {/* SubHeaderPart only for mobile */}
