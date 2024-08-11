@@ -7,11 +7,12 @@ import Header from './header/Header';
 import { NAV_ITEMS } from '@/src/constants';
 
 import SideBarNavItem from './SideBarNavItem';
+import { Footer } from './footer/Footer';
 
 export default function MainLayout({ children }: { children: any }) {
   const [opened, { open, close }] = useDisclosure(false);
   return (
-    <div className='flex'>
+    <div className='md:px-15 flex px-10'>
       {/* navbar will come here */}
       <Drawer opened={opened} onClose={close} title='My Journey Wings'>
         <div className='flex flex-col'>
@@ -24,9 +25,7 @@ export default function MainLayout({ children }: { children: any }) {
         <Header openDrawer={open} />
         <PageWrapper>{children}</PageWrapper>
 
-        <div id='footer' className=' h-16 w-full border-t-2'>
-          Footer
-        </div>
+        <Footer />
       </main>
     </div>
   );
