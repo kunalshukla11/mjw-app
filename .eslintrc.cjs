@@ -14,5 +14,6 @@ module.exports = {
     'react/react-in-jsx-scope': 'off',
     'import/extensions': 'off',
     'jsx-quotes': 'off',
+    'jsx-a11y/label-has-associated-control': 'off',
   },
 };
