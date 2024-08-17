@@ -15,5 +15,6 @@ module.exports = {
     'import/extensions': 'off',
     'jsx-quotes': 'off',
     'jsx-a11y/label-has-associated-control': 'off',
+    'react/self-closing-comp': 'off',
   },
 };
