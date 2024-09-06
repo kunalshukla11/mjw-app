@@ -16,5 +16,6 @@ module.exports = {
     'jsx-quotes': 'off',
     'jsx-a11y/label-has-associated-control': 'off',
     'react/self-closing-comp': 'off',
+    'no-console': 'off',
   },
 };
