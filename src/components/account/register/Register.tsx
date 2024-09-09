@@ -2,10 +2,12 @@ import { Button, PasswordInput, TextInput, Title } from '@mantine/core';
 import React from 'react';
 import { useForm } from '@mantine/form';
 import { useMutation } from '@tanstack/react-query';
+import { notifications } from '@mantine/notifications';
 
 import Link from 'next/link';
 import { RegisterFormData } from '@/src/types';
 import * as accountService from '@/src/lib/services/account/accountService';
+import { showToast } from '@/src/lib/services/common/toastService';
 
 function Register() {
   //TODO: Add good popup with password strength as given in mantine docs
@@ -40,10 +42,14 @@ function Register() {
   const mutation = useMutation({
     mutationFn: (registerFormData: RegisterFormData) => accountService.register(registerFormData),
     onSuccess: () => {
-      console.log('Registration Successful');
+      showToast({ message: 'Registration Successful', type: 'SUCCESS' });
     },
     onError: (error: Error) => {
       console.error('Registration not successful -> ', error.message);
+      showToast({
+        message: 'Unable to create account. Please contact support for assistance',
+        type: 'ERROR',
+      });
     },
   });
 

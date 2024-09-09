@@ -4,6 +4,7 @@ import { MantineProvider } from '@mantine/core';
 
 import { theme } from '../theme';
 import QueryProvider from '../lib/utils/_queryProvider';
+import { Notifications } from '@mantine/notifications';
 
 export const metadata = {
   title: 'My Journey Wings, Cheap Flights Hotels',
@@ -22,7 +23,10 @@ function RootLayout({ children }: { children: React.ReactNode }) {
       </head>
       <body>
         <QueryProvider>
-          <MantineProvider theme={theme}>{children}</MantineProvider>
+          <MantineProvider theme={theme}>
+            <Notifications />
+            {children}
+          </MantineProvider>
         </QueryProvider>
       </body>
     </html>
