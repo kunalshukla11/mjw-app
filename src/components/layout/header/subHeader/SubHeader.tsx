@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { NAV_ITEMS } from '@/src/constants';
+import { NAV_ITEMS } from '@/src/lib/constants/constants';
 import SubHeaderNavItem from './SubHeaderNavItem';
 
 export default function SubHeader() {

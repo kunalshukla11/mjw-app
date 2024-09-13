@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { Button } from '@mantine/core';
 
-import { NavItem } from '@/src/types';
+import { NavItem } from '@/src/lib/types/types';
 
 export default function SideBarNavItem({
   navItem,

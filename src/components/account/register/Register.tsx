@@ -1,15 +1,17 @@
-import { Button, PasswordInput, TextInput, Title } from '@mantine/core';
+import { Button, NavLink, PasswordInput, TextInput, Title } from '@mantine/core';
 import React from 'react';
 import { useForm } from '@mantine/form';
 import { useMutation } from '@tanstack/react-query';
 import { notifications } from '@mantine/notifications';
+import { useRouter } from 'next/navigation';
 
 import Link from 'next/link';
-import { RegisterFormData } from '@/src/types';
-import * as accountService from '@/src/lib/services/account/accountService';
+import { RegisterFormData } from '@/src/lib/types/types';
+import * as accountService from '@/src/lib/services/account/authService';
 import { showToast } from '@/src/lib/services/common/toastService';
 
 function Register() {
+  const router = useRouter();
   //TODO: Add good popup with password strength as given in mantine docs
   const form = useForm<RegisterFormData>({
     mode: 'uncontrolled',
@@ -43,6 +45,7 @@ function Register() {
     mutationFn: (registerFormData: RegisterFormData) => accountService.register(registerFormData),
     onSuccess: () => {
       showToast({ message: 'Registration Successful', type: 'SUCCESS' });
+      router.push('/');
     },
     onError: (error: Error) => {
       console.error('Registration not successful -> ', error.message);

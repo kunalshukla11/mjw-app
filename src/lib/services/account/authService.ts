@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { RegisterFormData } from '@/src/types';
+import { RegisterFormData } from '@/src/lib/types/types';
 
 const MJW_HOST = process.env.NEXT_PUBLIC_MJW_BASE_URL;
 export const register = async (registerFormData: RegisterFormData) => {

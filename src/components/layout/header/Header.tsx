@@ -1,5 +1,5 @@
 import { Burger } from '@mantine/core';
-import { NAV_ITEMS } from '@/src/constants';
+import { NAV_ITEMS } from '@/src/lib/constants/constants';
 import HeaderNavItem from './HeaderNavItem';
 import MjwLogo from './MjwLogo';
 import SubHeader from './subHeader/SubHeader';

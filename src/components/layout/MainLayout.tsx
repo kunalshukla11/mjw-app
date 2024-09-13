@@ -4,7 +4,7 @@ import { Drawer } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import PageWrapper from './PageWrapper';
 import Header from './header/Header';
-import { NAV_ITEMS } from '@/src/constants';
+import { NAV_ITEMS } from '@/src/lib/constants/constants';
 
 import SideBarNavItem from './SideBarNavItem';
 import { Footer } from './footer/Footer';

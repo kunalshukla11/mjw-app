@@ -3,7 +3,7 @@
 import { TextInput, PasswordInput, Button } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import React from 'react';
-import { LoginFormData } from '@/src/types';
+import { LoginFormData } from '@/src/lib/types/types';
 
 function Login() {
   const form = useForm<LoginFormData>({
