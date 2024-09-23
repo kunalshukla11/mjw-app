@@ -2,9 +2,10 @@ import '../styles/globals.css';
 import React from 'react';
 import { MantineProvider } from '@mantine/core';
 
+import { Notifications } from '@mantine/notifications';
 import { theme } from '../theme';
 import QueryProvider from '../lib/utils/_queryProvider';
-import { Notifications } from '@mantine/notifications';
+import { AppContextProvider } from '../contexts/AppContext';
 
 export const metadata = {
   title: 'My Journey Wings, Cheap Flights Hotels',
@@ -23,10 +24,12 @@ function RootLayout({ children }: { children: React.ReactNode }) {
       </head>
       <body>
         <QueryProvider>
-          <MantineProvider theme={theme}>
-            <Notifications />
-            {children}
-          </MantineProvider>
+          <AppContextProvider>
+            <MantineProvider theme={theme}>
+              <Notifications />
+              {children}
+            </MantineProvider>
+          </AppContextProvider>
         </QueryProvider>
       </body>
     </html>

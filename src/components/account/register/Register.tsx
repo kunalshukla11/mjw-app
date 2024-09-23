@@ -1,7 +1,7 @@
 import { Button, NavLink, PasswordInput, TextInput, Title } from '@mantine/core';
 import React from 'react';
 import { useForm } from '@mantine/form';
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { notifications } from '@mantine/notifications';
 import { useRouter } from 'next/navigation';
 
@@ -9,8 +9,10 @@ import Link from 'next/link';
 import { RegisterFormData } from '@/src/lib/types/types';
 import * as accountService from '@/src/lib/services/account/authService';
 import { showToast } from '@/src/lib/services/common/toastService';
+import { useAppContext } from '@/src/contexts/AppContext';
 
 function Register() {
+  const queryClient = useQueryClient();
   const router = useRouter();
   //TODO: Add good popup with password strength as given in mantine docs
   const form = useForm<RegisterFormData>({
@@ -43,14 +45,15 @@ function Register() {
 
   const mutation = useMutation({
     mutationFn: (registerFormData: RegisterFormData) => accountService.register(registerFormData),
-    onSuccess: () => {
+    onSuccess: async () => {
       showToast({ message: 'Registration Successful', type: 'SUCCESS' });
+      await queryClient.invalidateQueries({ queryKey: ['validateToken'] });
       router.push('/');
     },
     onError: (error: Error) => {
       console.error('Registration not successful -> ', error.message);
       showToast({
-        message: 'Unable to create account. Please contact support for assistance',
+        message: error.message,
         type: 'ERROR',
       });
     },
