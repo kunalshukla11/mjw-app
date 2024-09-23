@@ -7,7 +7,7 @@ export default function HomePage() {
   return (
     <MainLayout>
       <span className='text-4xl font-bold'>Home</span>
-      <Welcome route='FLIGHTS' />
+      <Welcome route='PACKAGES' />
       <ColorSchemeToggle />
       <Group align='center' justify='center'>
         <div className='h-64 w-1/3 rounded-lg border border-dashed border-indigo-400' />

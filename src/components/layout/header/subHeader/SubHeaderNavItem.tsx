@@ -2,8 +2,8 @@ import { Button } from '@mantine/core';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React from 'react';
-import { shouldHighlight } from '@/src/lib/utils';
-import { NavItem } from '@/src/types';
+import { shouldHighlight } from '@/src/lib/utils/utils';
+import { NavItem } from '@/src/lib/types/types';
 
 export default function SubHeaderNavItem({ item }: { item: NavItem }) {
   const highlightItem = shouldHighlight(usePathname(), item);

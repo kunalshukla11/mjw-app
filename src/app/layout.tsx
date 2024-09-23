@@ -1,18 +1,21 @@
 import '../styles/globals.css';
 import React from 'react';
-import { MantineProvider, ColorSchemeScript } from '@mantine/core';
+import { MantineProvider } from '@mantine/core';
+
+import { Notifications } from '@mantine/notifications';
 import { theme } from '../theme';
+import QueryProvider from '../lib/utils/_queryProvider';
+import { AppContextProvider } from '../contexts/AppContext';
 
 export const metadata = {
   title: 'My Journey Wings, Cheap Flights Hotels',
   description: 'Website for Travel Booking',
 };
 
-export default function RootLayout({ children }: { children: any }) {
+function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang='en'>
       <head>
-        <ColorSchemeScript />
         <link rel='shortcut icon' href='/favicon.ico' />
         <meta
           name='viewport'
@@ -20,8 +23,17 @@ export default function RootLayout({ children }: { children: any }) {
         />
       </head>
       <body>
-        <MantineProvider theme={theme}>{children}</MantineProvider>
+        <QueryProvider>
+          <AppContextProvider>
+            <MantineProvider theme={theme}>
+              <Notifications />
+              {children}
+            </MantineProvider>
+          </AppContextProvider>
+        </QueryProvider>
       </body>
     </html>
   );
 }
+
+export default RootLayout;

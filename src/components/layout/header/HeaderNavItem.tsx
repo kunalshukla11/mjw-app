@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import { NavLink } from '@mantine/core';
 import { usePathname } from 'next/navigation';
-import { NavItem } from '@/src/types';
-import { shouldHighlight } from '@/src/lib/utils';
+import { NavItem } from '@/src/lib/types/types';
+import { shouldHighlight } from '@/src/lib/utils/utils';
 
 export default function HeaderNavItem({ navItem }: { navItem: NavItem }) {
   const pathName = usePathname();

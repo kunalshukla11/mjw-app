@@ -1,12 +1,15 @@
 import { Burger } from '@mantine/core';
-import { NAV_ITEMS } from '@/src/constants';
+import { NAV_ITEMS } from '@/src/lib/constants/constants';
 import HeaderNavItem from './HeaderNavItem';
 import MjwLogo from './MjwLogo';
 import SubHeader from './subHeader/SubHeader';
 import User from '../user/User';
 import Contact from '../contact/Contact';
 
+import { useAppContext } from '@/src/contexts/AppContext';
+
 export default function Header({ openDrawer }: { openDrawer: () => void }) {
+  const { isAuthenticated } = useAppContext();
   return (
     <>
       {/* Main header Part */}
@@ -24,8 +27,18 @@ export default function Header({ openDrawer }: { openDrawer: () => void }) {
         </div>
         {/* Placeholder for right section to make nav div center */}
         <div className='flex flex-row-reverse gap-2'>
-          <User />
-          <Contact />
+          {isAuthenticated ? (
+            <>
+              <User />
+              <Contact />
+              <Contact />
+            </>
+          ) : (
+            <>
+              <User />
+              <Contact />
+            </>
+          )}
         </div>
       </div>
 
