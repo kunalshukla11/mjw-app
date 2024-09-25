@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { UserState, RegisterFormData } from '@/src/lib/types/types';
+import { ApplicationContext, RegisterFormData, ProfileResponse } from '@/src/lib/types/types';
 
 const MJW_HOST = process.env.NEXT_PUBLIC_MJW_BASE_URL;
 export const register = async (registerFormData: RegisterFormData) => {
@@ -18,7 +18,7 @@ export const register = async (registerFormData: RegisterFormData) => {
   }
 };
 
-export const validateToken = async (): Promise<UserState['currentUser']> => {
+export const validateToken = async (): Promise<ProfileResponse> => {
   try {
     const response = await axios.get(`${MJW_HOST}/api/account/me`, {
       withCredentials: true,
