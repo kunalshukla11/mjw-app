@@ -28,3 +28,8 @@ export type ProfileResponse = {
   email: string;
   firstName: string;
 };
+export type RegisterLoginResponse = {
+  userId: number;
+  message: string;
+  successFailure: 'SUCCESS' | 'FAILURE';
+};
