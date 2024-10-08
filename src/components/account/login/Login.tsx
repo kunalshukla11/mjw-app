@@ -3,7 +3,7 @@
 import { TextInput, PasswordInput, Button } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import React from 'react';
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
 import { LoginFormData } from '@/src/lib/types/types';
 import * as accountService from '@/src/lib/services/account/authService';
@@ -11,6 +11,7 @@ import { showToast } from '@/src/lib/services/common/toastService';
 
 function Login() {
   const router = useRouter();
+  const queryClient = useQueryClient();
   const form = useForm<LoginFormData>({
     mode: 'uncontrolled',
     initialValues: {
@@ -23,10 +24,12 @@ function Login() {
     mutationFn: (loginFormData: LoginFormData) => accountService.login(loginFormData),
     onSuccess: async () => {
       showToast({ message: 'Login Successful', type: 'SUCCESS' });
+      await queryClient.invalidateQueries({ queryKey: ['validateToken'] });
       router.push('/');
     },
     onError: (error: Error) => {
       console.error('Login not successful -> ', error.message);
+      showToast({ message: error.message, type: 'ERROR' });
     },
   });
 

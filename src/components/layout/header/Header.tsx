@@ -1,15 +1,35 @@
-import { Burger } from '@mantine/core';
+import { Burger, Button } from '@mantine/core';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { NAV_ITEMS } from '@/src/lib/constants/constants';
 import HeaderNavItem from './HeaderNavItem';
 import MjwLogo from './MjwLogo';
 import SubHeader from './subHeader/SubHeader';
 import User from '../user/User';
 import Contact from '../contact/Contact';
+import { logout } from '@/src/lib/services/account/authService';
 
 import { useAppContext } from '@/src/contexts/AppContext';
+import { showToast } from '@/src/lib/services/common/toastService';
 
 export default function Header({ openDrawer }: { openDrawer: () => void }) {
   const { isAuthenticated } = useAppContext();
+  const queryClient = useQueryClient();
+  const mutation = useMutation({
+    mutationFn: () => logout(),
+    onSuccess: async () => {
+      await queryClient.invalidateQueries({ queryKey: ['validateToken'] });
+      showToast({ message: 'Logout Succesfull', type: 'SUCCESS' });
+    },
+    onError: (error: Error) => {
+      console.log('Logout failed ->', error.message);
+      showToast({ message: 'Logout Failed', type: 'ERROR' });
+    },
+  });
+
+  const handleSignOut = () => {
+    console.log('signout clicked');
+    mutation.mutate();
+  };
   return (
     <>
       {/* Main header Part */}
@@ -31,7 +51,9 @@ export default function Header({ openDrawer }: { openDrawer: () => void }) {
             <>
               <User />
               <Contact />
-              <Contact />
+              <Button className='bg-red-200' onClick={handleSignOut}>
+                Logout
+              </Button>
             </>
           ) : (
             <>
