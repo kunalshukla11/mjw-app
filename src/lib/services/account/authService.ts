@@ -1,9 +1,8 @@
 import axios from 'axios';
 import {
-  ApplicationContext,
-  RegisterFormData,
-  ProfileResponse,
   LoginFormData,
+  ProfileResponse,
+  RegisterFormData,
   RegisterLoginResponse,
 } from '@/src/lib/types/types';
 
@@ -28,7 +27,7 @@ export const register = async (
 
 export const login = async (loginFormData: LoginFormData): Promise<RegisterLoginResponse> => {
   try {
-    const response = await axios.post(`${MJW_HOST}/api/auth/logout`, loginFormData, {
+    const response = await axios.post(`${MJW_HOST}/api/auth/login`, loginFormData, {
       withCredentials: true,
     });
     return response.data;
@@ -40,6 +39,27 @@ export const login = async (loginFormData: LoginFormData): Promise<RegisterLogin
     }
   }
 };
+
+export const logout = async () => {
+  try {
+    const reponse = await axios.post(
+      `${MJW_HOST}/api/auth/logout`,
+      {},
+      {
+        withCredentials: true,
+      }
+    );
+
+    return reponse.data;
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      throw new Error(error.message);
+    } else {
+      throw error;
+    }
+  }
+};
+
 export const validateToken = async (): Promise<ProfileResponse> => {
   try {
     const response = await axios.get(`${MJW_HOST}/api/account/me`, {
