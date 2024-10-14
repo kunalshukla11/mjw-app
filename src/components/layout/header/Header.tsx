@@ -4,12 +4,12 @@ import { NAV_ITEMS } from '@/src/lib/constants/constants';
 import HeaderNavItem from './HeaderNavItem';
 import MjwLogo from './MjwLogo';
 import SubHeader from './subHeader/SubHeader';
-import User from '../user/User';
 import Contact from '../contact/Contact';
 import { logout } from '@/src/lib/services/account/authService';
 
 import { useAppContext } from '@/src/contexts/AppContext';
 import { showToast } from '@/src/lib/services/common/toastService';
+import MyProfile from './profile/MyProfile';
 
 export default function Header({ openDrawer }: { openDrawer: () => void }) {
   const { isAuthenticated } = useAppContext();
@@ -47,20 +47,8 @@ export default function Header({ openDrawer }: { openDrawer: () => void }) {
         </div>
         {/* Placeholder for right section to make nav div center */}
         <div className='flex flex-row-reverse gap-2'>
-          {isAuthenticated ? (
-            <>
-              <User />
-              <Contact />
-              <Button className='bg-red-200' onClick={handleSignOut}>
-                Logout
-              </Button>
-            </>
-          ) : (
-            <>
-              <User />
-              <Contact />
-            </>
-          )}
+          <MyProfile />
+          <Contact />
         </div>
       </div>
 
