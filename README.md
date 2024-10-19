@@ -42,3 +42,5 @@ docker run -itd \
  --network mjw_network \
  -p 3000:3000 \
  mjw_app
+
+TODO-Add contact using reactIcon and avaatar > use popupForLoging> Use PopupforContact> Try to generalize contact and profile >
