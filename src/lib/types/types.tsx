@@ -22,11 +22,13 @@ export type ApplicationContext = {
   currentUser: {
     email: string;
     firstName: string;
+    initial: string;
   };
 };
 export type ProfileResponse = {
   email: string;
   firstName: string;
+  initial: string;
 };
 export type RegisterLoginResponse = {
   userId: number;

@@ -20,7 +20,11 @@ export const AppContextProvider = ({ children }: { children: React.ReactNode }) 
     <AppContext.Provider
       value={{
         isAuthenticated: !isError,
-        currentUser: { email: currentUser?.email, firstName: currentUser?.firstName },
+        currentUser: {
+          email: currentUser?.email,
+          firstName: currentUser?.firstName,
+          initial: currentUser?.initial,
+        },
       }}
     >
       {children}

@@ -10,7 +10,18 @@ function ProfileAvatar({
   user: ProfileResponse;
   isAuthenticated: boolean;
 }) {
-  return <Avatar variant='transparent'></Avatar>;
+  if (isAuthenticated) {
+    const initial = user?.initial;
+    return (
+      <Avatar src={initial} name={initial} color='initials' size='sm'>
+        {initial}
+      </Avatar>
+    );
+  }
+
+  return <Avatar variant='transparent' color='indigo'></Avatar>;
+
+  // const intial = isAuthenticated ? user?.initial: undefined;
 }
 
 export default function MyProfile() {
@@ -23,7 +34,7 @@ export default function MyProfile() {
       variant='subtle'
     >
       <ProfileAvatar user={currentUser} isAuthenticated={isAuthenticated} />
-      <span className='hidden md:inline'>MyProfile</span>
+      <span className='hidden pl-1  md:inline'>MyProfile</span>
     </Button>
   );
 }
