@@ -13,13 +13,19 @@ function ProfileAvatar({
   if (isAuthenticated) {
     const initial = user?.initial;
     return (
-      <Avatar src={initial} name={initial} color='initials' size='sm'>
+      <Avatar
+        src={initial}
+        name={initial}
+        size='md'
+        className='text-2xl font-bold'
+        color='initials'
+      >
         {initial}
       </Avatar>
     );
   }
 
-  return <Avatar variant='transparent' color='indigo'></Avatar>;
+  return <Avatar variant='transparent' color='indigo' size='md'></Avatar>;
 
   // const intial = isAuthenticated ? user?.initial: undefined;
 }
@@ -30,7 +36,7 @@ export default function MyProfile() {
   return (
     <Button
       classNames={{ section: 'mr-[4px]' }}
-      className='flex px-2 md:border md:border-indigo-700'
+      className=' flex h-auto px-2 md:border md:border-indigo-700'
       variant='subtle'
     >
       <ProfileAvatar user={currentUser} isAuthenticated={isAuthenticated} />
