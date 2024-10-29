@@ -9,7 +9,7 @@ export default function Contact() {
       variant='subtle'
     >
       <BiSupport size={25} />
-      <span className='hidden pl-1  md:inline'>Contact</span>
+      <span className='hidden pl-1  md:inline'>Contacts</span>
     </Button>
   );
 }
