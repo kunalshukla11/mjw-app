@@ -1,35 +1,16 @@
-import { Burger, Button } from '@mantine/core';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { Burger } from '@mantine/core';
 import { NAV_ITEMS } from '@/src/lib/constants/constants';
+import Contact from '../contact/Contact';
 import HeaderNavItem from './HeaderNavItem';
 import MjwLogo from './MjwLogo';
 import SubHeader from './subHeader/SubHeader';
-import Contact from '../contact/Contact';
-import { logout } from '@/src/lib/services/account/authService';
 
 import { useAppContext } from '@/src/contexts/AppContext';
-import { showToast } from '@/src/lib/services/common/toastService';
-import MyProfile from './profile/MyProfile';
+import ProfileMenu from './profile/ProfileMenu';
 
 export default function Header({ openDrawer }: { openDrawer: () => void }) {
   const { isAuthenticated } = useAppContext();
-  const queryClient = useQueryClient();
-  const mutation = useMutation({
-    mutationFn: () => logout(),
-    onSuccess: async () => {
-      await queryClient.invalidateQueries({ queryKey: ['validateToken'] });
-      showToast({ message: 'Logout Succesfull', type: 'SUCCESS' });
-    },
-    onError: (error: Error) => {
-      console.log('Logout failed ->', error.message);
-      showToast({ message: 'Logout Failed', type: 'ERROR' });
-    },
-  });
 
-  const handleSignOut = () => {
-    console.log('signout clicked');
-    mutation.mutate();
-  };
   return (
     <>
       {/* Main header Part */}
@@ -47,7 +28,7 @@ export default function Header({ openDrawer }: { openDrawer: () => void }) {
         </div>
         {/* Placeholder for right section to make nav div center */}
         <div className='flex flex-row-reverse gap-2'>
-          <MyProfile />
+          <ProfileMenu />
           <Contact />
         </div>
       </div>
