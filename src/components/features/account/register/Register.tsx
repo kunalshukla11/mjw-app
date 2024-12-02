@@ -1,15 +1,12 @@
-import { Button, NavLink, PasswordInput, TextInput, Title } from '@mantine/core';
-import React from 'react';
+import { Button, PasswordInput, TextInput, Title } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { notifications } from '@mantine/notifications';
 import { useRouter } from 'next/navigation';
 
 import Link from 'next/link';
-import { RegisterFormData } from '@/src/lib/types/types';
 import * as accountService from '@/src/lib/services/account/authService';
 import { showToast } from '@/src/lib/services/common/toastService';
-import { useAppContext } from '@/src/contexts/AppContext';
+import { RegisterFormData } from '@/src/lib/types/types';
 
 function Register() {
   const queryClient = useQueryClient();
@@ -24,6 +21,7 @@ function Register() {
       password: '',
       confirmPassword: '',
     },
+
     validate: {
       email: (value: string) => (/^\S+@\S+$/.test(value) ? null : 'Invalid email'),
       firstName: (value: string) => (value ? null : 'First name is required'),
@@ -48,6 +46,7 @@ function Register() {
     onSuccess: async () => {
       showToast({ message: 'Registration Successful', type: 'SUCCESS' });
       await queryClient.invalidateQueries({ queryKey: ['validateToken'] });
+
       router.push('/');
     },
     onError: (error: Error) => {

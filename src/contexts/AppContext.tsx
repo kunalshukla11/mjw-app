@@ -3,9 +3,9 @@
 import { createContext, useContext } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import * as authService from '@/src/lib/services/account/authService';
-import { UserState } from '@/src/lib/types/types';
+import { ProfileResponse, ApplicationContext } from '@/src/lib/types/types';
 
-const AppContext = createContext<UserState | undefined>(undefined);
+const AppContext = createContext<ApplicationContext | undefined>(undefined);
 
 export const AppContextProvider = ({ children }: { children: React.ReactNode }) => {
   const { isError, data } = useQuery({
@@ -14,13 +14,17 @@ export const AppContextProvider = ({ children }: { children: React.ReactNode }) 
     retry: false,
   });
 
-  const currentUser = data as UserState['currentUser'];
+  const currentUser = data as ProfileResponse;
 
   return (
     <AppContext.Provider
       value={{
         isAuthenticated: !isError,
-        currentUser: { email: currentUser?.email, firstName: currentUser?.firstName },
+        currentUser: {
+          email: currentUser?.email,
+          firstName: currentUser?.firstName,
+          initial: currentUser?.initial,
+        },
       }}
     >
       {children}
@@ -30,5 +34,5 @@ export const AppContextProvider = ({ children }: { children: React.ReactNode }) 
 
 export const useAppContext = () => {
   const context = useContext(AppContext);
-  return context as UserState;
+  return context as ApplicationContext;
 };

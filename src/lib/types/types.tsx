@@ -17,10 +17,21 @@ export type LoginFormData = {
   password: string;
 };
 
-export type UserState = {
+export type ApplicationContext = {
   isAuthenticated: boolean;
   currentUser: {
     email: string;
     firstName: string;
+    initial: string;
   };
+};
+export type ProfileResponse = {
+  email: string;
+  firstName: string;
+  initial: string;
+};
+export type RegisterLoginResponse = {
+  userId: number;
+  message: string;
+  successFailure: 'SUCCESS' | 'FAILURE';
 };

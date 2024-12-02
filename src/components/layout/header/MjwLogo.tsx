@@ -9,7 +9,7 @@ export default function MjwLogo() {
     <>
       {/* Mobile image to be shown only on mobile */}
       <Image
-        classNames={{ root: 'md:hidden h-6' }}
+        classNames={{ root: 'md:hidden h-8' }}
         component={NextImage}
         src={MobileLogoImage}
         alt='MJW Logo'

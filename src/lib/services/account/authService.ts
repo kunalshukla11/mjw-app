@@ -1,8 +1,15 @@
 import axios from 'axios';
-import { UserState, RegisterFormData } from '@/src/lib/types/types';
+import {
+  LoginFormData,
+  ProfileResponse,
+  RegisterFormData,
+  RegisterLoginResponse,
+} from '@/src/lib/types/types';
 
 const MJW_HOST = process.env.NEXT_PUBLIC_MJW_BASE_URL;
-export const register = async (registerFormData: RegisterFormData) => {
+export const register = async (
+  registerFormData: RegisterFormData
+): Promise<RegisterLoginResponse> => {
   try {
     const { confirmPassword, ...requestData } = registerFormData;
     const response = await axios.post(`${MJW_HOST}/api/auth/register`, requestData, {
@@ -18,7 +25,42 @@ export const register = async (registerFormData: RegisterFormData) => {
   }
 };
 
-export const validateToken = async (): Promise<UserState['currentUser']> => {
+export const login = async (loginFormData: LoginFormData): Promise<RegisterLoginResponse> => {
+  try {
+    const response = await axios.post(`${MJW_HOST}/api/auth/login`, loginFormData, {
+      withCredentials: true,
+    });
+    return response.data;
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      throw new Error(error.message);
+    } else {
+      throw error;
+    }
+  }
+};
+
+export const logout = async () => {
+  try {
+    const reponse = await axios.post(
+      `${MJW_HOST}/api/auth/logout`,
+      {},
+      {
+        withCredentials: true,
+      }
+    );
+
+    return reponse.data;
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      throw new Error(error.message);
+    } else {
+      throw error;
+    }
+  }
+};
+
+export const validateToken = async (): Promise<ProfileResponse> => {
   try {
     const response = await axios.get(`${MJW_HOST}/api/account/me`, {
       withCredentials: true,
