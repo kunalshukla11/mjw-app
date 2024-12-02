@@ -5,6 +5,7 @@ import { useForm } from '@mantine/form';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
 import React from 'react';
+import Link from 'next/link';
 import { LoginFormData } from '@/src/lib/types/types';
 import { showToast } from '@/src/lib/services/common/toastService';
 import * as accountService from '@/src/lib/services/account/authService';
@@ -50,6 +51,13 @@ function Login() {
         {...form.getInputProps('password')}
       />
       <Button type='submit'>Login</Button>
+
+      <div className='flex items-center'>
+        <span className='text-xs italic'>Do not have an account?</span>
+        <Link className='ml-2 text-sm underline' href='/account/register'>
+          Register
+        </Link>
+      </div>
     </form>
   );
 }
