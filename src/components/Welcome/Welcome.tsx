@@ -5,7 +5,7 @@ export function Welcome({ route }: { route: any }) {
   return (
     <>
       <Title className={classes.title} ta='center' mt={100}>
-        Welcome you to{' '}
+        Welcome me to{' '}
         <Text inherit variant='gradient' component='span' gradient={{ from: 'pink', to: 'yellow' }}>
           MJW {route}
         </Text>

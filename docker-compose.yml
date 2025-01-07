@@ -1,0 +1,9 @@
+services:
+  mjw_app:
+    image: mjw_app:1.0.0
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mjw_app_container
+    ports:
+      - '3000:3000'
