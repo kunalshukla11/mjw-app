@@ -25,8 +25,11 @@ COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
 # Load environment variables from .env.build
-ARG ENV_FILE=.env.development
-ENV $(cat $ENV_FILE | xargs)
+# ARG ENV_FILE=.env.production
+# ENV $(cat $ENV_FILE | xargs)
+
+ARG NEXT_PUBLIC_MJW_BASE_URL
+ENV NEXT_PUBLIC_MJW_BASE_URL=$NEXT_PUBLIC_MJW_BASE_URL
 
 
 # Next.js collects completely anonymous telemetry data about general usage.
