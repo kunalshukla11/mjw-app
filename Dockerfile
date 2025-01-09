@@ -28,8 +28,8 @@ COPY . .
 # ARG ENV_FILE=.env.production
 # ENV $(cat $ENV_FILE | xargs)
 
-ARG NEXT_PUBLIC_MJW_BASE_URL
-ENV NEXT_PUBLIC_MJW_BASE_URL=$NEXT_PUBLIC_MJW_BASE_URL
+# ARG NEXT_PUBLIC_MJW_BASE_URL
+# ENV NEXT_PUBLIC_MJW_BASE_URL=$NEXT_PUBLIC_MJW_BASE_URL
 
 
 # Next.js collects completely anonymous telemetry data about general usage.
