@@ -24,6 +24,10 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
+# Accept the .env file as a build argument
+ARG ENV_FILE
+COPY ${ENV_FILE} ./.env.production
+
 # Next.js collects completely anonymous telemetry data about general usage.
 # Learn more here: https://nextjs.org/telemetry
 # Uncomment the following line in case you want to disable telemetry during the build.
@@ -60,7 +64,6 @@ COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 COPY --from=builder --chown=nextjs:nodejs /app/scripts/entrypoint.sh ./entrypoint.sh
 COPY --from=builder --chown=nextjs:nodejs /app/.env.production ./.env.production
 
-RUN chown nextjs:nodejs .env.production && chmod u+w .env.production
 
 USER nextjs
 
