@@ -4,10 +4,17 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        ENV_FILE: ${ENV_FILE:-.env}
     container_name: mjw_app_container
     environment:
       - NODE_ENV=production
-      - NEXT_PUBLIC_HELLO=helloFromCompose
-      - NEXT_PUBLIC_MJW_BASE_URL=urlFromCompose
+      - NEXT_PUBLIC_HELLO=helloOverriden
+    env_file:
+      # Specify the environment files as a list of strings
+      - path: .env
+        required: true # Default environment file
+      - path: .env.docker.mjwapp
+        required: false
     ports:
       - '3000:3000'

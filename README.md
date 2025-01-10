@@ -44,3 +44,9 @@ docker run -itd \
  mjw_app
 
 TODO-Add contact using reactIcon and avaatar > use popupForLoging> Use PopupforContact> Try to generalize contact and profile >
+
+## Environment variables order(overridden as it goes from top to bottom)
+
+- `.env`(mostly for local development)
+- `.env.docker.mjwapp` (mostly for docker on oci where this file will be created via terraform)
+-  env from Docker Compose
