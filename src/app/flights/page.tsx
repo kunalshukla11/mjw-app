@@ -9,11 +9,7 @@ export default function HomePage() {
       <span className='text-4xl font-bold'>Home</span>
       <Welcome route='FLIGHTS' />
       <p>{`${process.env.NEXT_PUBLIC_MJW_BASE_URL}-baseUrl`}</p>
-      <p>{`${process.env.HELLO}-hello`}</p>
-
-      <p>{`${process.env.MAINENV}-mainenv`}</p>
-      <p>{`${process.env.DEVENV}-devenv`}</p>
-      <p>{`${process.env.COMPOSE}-compose`}</p>
+      <p>{`${process.env.NEXT_PUBLIC_HELLO}-hello`}</p>
 
       <ColorSchemeToggle />
       <Group align='center' justify='center'>

@@ -4,13 +4,10 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-      args:
-        - NEXT_PUBLIC_MJW_BASE_URL=http://mjwappvm.dev:3000
-        - HELLO=helloFromComposeArgs
     container_name: mjw_app_container
     environment:
       - NODE_ENV=production
-      - HELLO=helloFromCompose
-      - NEXT_PUBLIC_MJW_BASE_URL=http://mjwappvm.dev:3000
+      - NEXT_PUBLIC_HELLO=helloFromCompose
+      - NEXT_PUBLIC_MJW_BASE_URL=urlFromCompose
     ports:
       - '3000:3000'

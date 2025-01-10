@@ -1,26 +1,30 @@
-#!/bin/bash
+#!/bin/sh
+
+
+exec > /tmp/entrypoint.log 2>&1
 envFilename='./.env.production'
-nextFolder='./standalone/.next/'
+nextFolder='.next/'
 
-while read -r line; do
-  # no comment or not empty
-  if [ "${line:0:1}" == "#" ] || [ "${line}" == "" ]; then
-    continue
-  fi
+# Update .env.production with environment variables
+while IFS= read -r line; do
+  case "$line" in
+    \#* | "") continue ;; # Skip comments and empty lines
+  esac
 
-  # split
-  configName="$(cut -d'=' -f1 <<<"$line")"
-  configValue="$(cut -d'=' -f2 <<<"$line")"
-  # get system env
-  envValue=$(env | grep "^$configName=" | grep -oe '[^=]*$')
+  configName=$(echo "$line" | cut -d'=' -f1)
+  echo "configName = $configName"
+  configValue=$(echo "$line" | cut -d'=' -f2)
 
-  # if config found && configName starts with NEXT_PUBLIC
-  if [[ -n "$configValue" ]] && [[ -n "$envValue" ]] && [[ "$configValue" == NEXT_PUBLIC_* ]]; then
-    # replace all
-    echo "Replace: ${configValue} with ${envValue}"
+  envValue=$(env | grep "^$configName=" | sed -n "s/^$configName=//p")
+  echo "envValue = $envValue"
+
+  if [ -n "$configValue" ] && [ -n "$envValue" ] && echo "$configName" | grep -q "^NEXT_PUBLIC_"; then
+    echo "Replace: ${configName} with ${envValue}"
     find $nextFolder \( -type d -name .git -prune \) -o -type f -print0 | xargs -0 sed -i "s#$configValue#$envValue#g"
+    else
+      echo "Directory $nextFolder does not exist."
   fi
-done <$envFilename
+done <"$envFilename"
 
-echo "Starting Nextjs"
+echo "Starting Next.js"
 exec "$@"
