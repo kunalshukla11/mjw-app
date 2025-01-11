@@ -13,7 +13,7 @@ services:
     env_file:
       # Specify the environment files as a list of strings
       - path: .env
-        required: true # Default environment file
+        required: false
       - path: .env.docker.mjwapp
         required: false
     ports:
