@@ -13,4 +13,12 @@ export default withBundleAnalyzer({
   experimental: {
     optimizePackageImports: ['@mantine/core', '@mantine/hooks'],
   },
+  async rewrites() {
+    return [
+      {
+        source: '/api/:path*',
+        destination: `http://${process.env.NEXT_PUBLIC_MJW_SERVICE_HOST}:${process.env.NEXT_PUBLIC_MJW_SERVICE_PORT}/api/:path*`,
+      },
+    ];
+  },
 });

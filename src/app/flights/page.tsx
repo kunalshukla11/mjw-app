@@ -8,7 +8,9 @@ export default function HomePage() {
     <MainLayout>
       <span className='text-4xl font-bold'>Home</span>
       <Welcome route='FLIGHTS' />
-      <p>{`${process.env.NEXT_PUBLIC_MJW_BASE_URL}-baseUrl`}</p>
+      <p>{`${process.env.NEXT_PUBLIC_MJW_SERVICE_HOST}-baseUrl`}</p>
+
+      <p>{`${process.env.NEXT_PUBLIC_MJW_SERVICE_PORT}-basePort`}</p>
       <p>{`${process.env.NEXT_PUBLIC_HELLO}-hello`}</p>
 
       <ColorSchemeToggle />

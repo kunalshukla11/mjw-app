@@ -6,13 +6,12 @@ import {
   RegisterLoginResponse,
 } from '@/src/lib/types/types';
 
-const MJW_HOST = process.env.NEXT_PUBLIC_MJW_BASE_URL;
 export const register = async (
   registerFormData: RegisterFormData
 ): Promise<RegisterLoginResponse> => {
   try {
     const { confirmPassword, ...requestData } = registerFormData;
-    const response = await axios.post(`${MJW_HOST}/api/auth/register`, requestData, {
+    const response = await axios.post('/api/auth/register', requestData, {
       withCredentials: true,
     });
     return response.data;
@@ -27,7 +26,7 @@ export const register = async (
 
 export const login = async (loginFormData: LoginFormData): Promise<RegisterLoginResponse> => {
   try {
-    const response = await axios.post(`${MJW_HOST}/api/auth/login`, loginFormData, {
+    const response = await axios.post('/api/auth/login', loginFormData, {
       withCredentials: true,
     });
     return response.data;
@@ -43,7 +42,7 @@ export const login = async (loginFormData: LoginFormData): Promise<RegisterLogin
 export const logout = async () => {
   try {
     const reponse = await axios.post(
-      `${MJW_HOST}/api/auth/logout`,
+      '/api/auth/logout',
       {},
       {
         withCredentials: true,
@@ -62,7 +61,7 @@ export const logout = async () => {
 
 export const validateToken = async (): Promise<ProfileResponse> => {
   try {
-    const response = await axios.get(`${MJW_HOST}/api/account/me`, {
+    const response = await axios.get('/api/account/me', {
       withCredentials: true,
     });
     return response.data;
