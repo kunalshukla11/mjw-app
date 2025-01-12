@@ -15,15 +15,17 @@ function ProfileAvatar({
 }) {
   if (isAuthenticated) {
     const initial = user?.initial;
+    // Only use `src` if `initial` is a valid URL
+    const isValidUrl = initial && initial.startsWith('http');
     return (
       <Avatar
-        src={initial}
+        src={isValidUrl ? initial : undefined} // Only pass src if valid
         name={initial}
         size='md'
         className='text-2xl font-bold'
         color='initials'
       >
-        {initial}
+        {!isValidUrl && initial}
       </Avatar>
     );
   }
