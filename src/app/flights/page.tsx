@@ -11,7 +11,7 @@ export default function HomePage() {
       <p>{`${process.env.NEXT_PUBLIC_MJW_SERVICE_HOST}-baseUrl`}</p>
 
       <p>{`${process.env.NEXT_PUBLIC_MJW_SERVICE_PORT}-basePort`}</p>
-      <p>{`${process.env.NEXT_PUBLIC_HELLO}-hello`}</p>
+      <p>{`${process.env.NEXT_PUBLIC_HELLO}-hello-sir`}</p>
 
       <ColorSchemeToggle />
       <Group align='center' justify='center'>
