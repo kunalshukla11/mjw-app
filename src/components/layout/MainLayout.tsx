@@ -12,7 +12,7 @@ import { Footer } from './footer/Footer';
 export default function MainLayout({ children }: { children: any }) {
   const [opened, { open, close }] = useDisclosure(false);
   return (
-    <div className='md:px-15 flex px-10'>
+    <div className='flex'>
       {/* navbar will come here */}
       <Drawer opened={opened} onClose={close} title='My Journey Wings'>
         <div className='flex flex-col'>
