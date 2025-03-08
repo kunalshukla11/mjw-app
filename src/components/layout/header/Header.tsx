@@ -27,7 +27,7 @@ export default function Header({ openDrawer }: { openDrawer: () => void }) {
           ))}
         </div>
         {/* Placeholder for right section to make nav div center */}
-        <div className='flex flex-row-reverse gap-2'>
+        <div className='flex flex-row-reverse gap-2 pr-2'>
           <ProfileMenu />
           <Contact />
         </div>
