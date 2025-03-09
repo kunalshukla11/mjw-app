@@ -71,11 +71,11 @@ export default function ProfileMenu() {
       <Menu.Target>
         <Button
           classNames={{ section: 'mr-[4px]' }}
-          className=' flex h-auto px-2 md:border md:border-indigo-700'
+          className='flex h-auto px-2 md:border md:border-indigo-700'
           variant='subtle'
         >
           <ProfileAvatar user={currentUser} isAuthenticated={isAuthenticated} />
-          <span className='hidden pl-1  md:inline'>MyProfile</span>
+          <span className='hidden pl-1 md:inline'>MyProfile</span>
         </Button>
       </Menu.Target>
       <Menu.Dropdown className='rounded-lg bg-white p-4 shadow-lg'>
@@ -86,7 +86,7 @@ export default function ProfileMenu() {
             <Button
               component={Link}
               href='/account/login'
-              className='mb-2   rounded-lg bg-orange-600 py-2 text-white hover:bg-orange-800'
+              className='text-r mb-2 rounded-lg bg-orange-600 py-2 text-white hover:bg-orange-800'
             >
               Log in
             </Button>

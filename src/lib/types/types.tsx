@@ -1,7 +1,7 @@
 export type NavItem = {
   title: string;
   path: string;
-  icon?: JSX.Element;
+  icon?: React.JSX.Element;
 };
 
 export type RegisterFormData = {

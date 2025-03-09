@@ -6,14 +6,15 @@ import { ColorSchemeToggle } from '@/src/components/ColorSchemeToggle/ColorSchem
 export default function HomePage() {
   return (
     <MainLayout>
-      <span className='font-bold text-4xl text-red-200'>Home</span>
+      <span className='text-4xl font-bold text-red-200'>Home</span>
+      <h1>Hello Bro</h1>
       <Welcome route='PACKAGES' />
       <ColorSchemeToggle />
       <Group align='center' justify='center'>
-        <div className='border-dashed border border-indigo-400 w-1/3 h-64 rounded-lg' />
-        <div className='border-dashed border border-indigo-400 w-1/3 h-64 rounded-lg' />
+        <div className='h-64 w-1/3 rounded-lg border border-dashed border-indigo-400' />
+        <div className='h-64 w-1/3 rounded-lg border border-dashed border-indigo-400' />
       </Group>
-      <div className='border-dashed border border-indigo-400 w-full h-64 rounded-lg' />
+      <div className='h-64 w-full rounded-lg border border-dashed border-indigo-400' />
     </MainLayout>
   );
 }
