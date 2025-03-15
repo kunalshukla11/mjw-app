@@ -6,6 +6,7 @@ import { Notifications } from '@mantine/notifications';
 import { theme } from '../theme';
 import QueryProvider from '../lib/utils/_queryProvider';
 import { AppContextProvider } from '../contexts/AppContext';
+import * as authService from '../lib/services/account/authService';
 
 export const metadata = {
   title: 'My Journey Wings, Cheap Flights Hotels',

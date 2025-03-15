@@ -23,7 +23,8 @@ export type ApplicationContext = {
     email: string;
     firstName: string;
     initial: string;
-  };
+  } | null;
+  setAuthenticated: (authenticated: boolean) => void;
 };
 export type ProfileResponse = {
   email: string;

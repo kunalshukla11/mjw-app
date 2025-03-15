@@ -10,7 +10,7 @@ function ProfileAvatar({
   user,
   isAuthenticated,
 }: {
-  user: ProfileResponse;
+  user: ProfileResponse | null;
   isAuthenticated: boolean;
 }) {
   if (isAuthenticated) {
@@ -32,40 +32,17 @@ function ProfileAvatar({
   return <Avatar variant='transparent' color='indigo' size='md'></Avatar>;
 }
 
-// function logOutMutation() {
-//   console.log('in Mutation Funciton');
-//   const queryClient = useQueryClient();
-//   const mutation = useMutation({
-//     mutationFn: () => accountService.logout(),
-//     onSuccess: async () => {
-//       showToast({ message: 'Logout Successful', type: 'SUCCESS' });
-//       console.log('Logout Successful');
-//       await queryClient.invalidateQueries({ queryKey: ['validateToken'] });
-//     },
-//     onError: (error: Error) => {
-//       console.error('Logout not successful -> ', error.message);
-//       showToast({ message: error.message, type: 'ERROR' });
-//     },
-//   });
-//   return mutation;
-// }
-
 export default function ProfileMenu() {
-  const { currentUser, isAuthenticated } = useAppContext();
+  const { currentUser, isAuthenticated, setAuthenticated } = useAppContext();
 
-  const queryClient = useQueryClient();
-  const mutation = useMutation({
-    mutationFn: () => accountService.logout(),
-    onSuccess: async () => {
+  const handleLogout = async () => {
+    const success = await accountService.logout();
+    if (success) {
       showToast({ message: 'Logout Successful', type: 'SUCCESS' });
-      console.log('Logout Successful');
-      await queryClient.invalidateQueries({ queryKey: ['validateToken'] });
-    },
-    onError: (error: Error) => {
-      console.error('Logout not successful -> ', error.message);
-      showToast({ message: error.message, type: 'ERROR' });
-    },
-  });
+      setAuthenticated(false);
+      console.log('Logout successful');
+    }
+  };
   return (
     <Menu shadow='md' width={200}>
       <Menu.Target>
@@ -118,7 +95,7 @@ export default function ProfileMenu() {
         </div>
         <div className={`${isAuthenticated ? '' : 'hidden'}`}>
           <Menu.Divider className='my-3 border-gray-200' />
-          <Button className='w-full space-y-2' onClick={() => mutation.mutate()}>
+          <Button className='w-full space-y-2' onClick={handleLogout}>
             Log out
           </Button>
         </div>

@@ -1,10 +1,13 @@
-import axios from 'axios';
+'use server';
+
 import {
   LoginFormData,
   ProfileResponse,
   RegisterFormData,
   RegisterLoginResponse,
 } from '@/src/lib/types/types';
+import axios from 'axios';
+import { cookies } from 'next/headers';
 
 export const register = async (
   registerFormData: RegisterFormData
@@ -41,15 +44,15 @@ export const login = async (loginFormData: LoginFormData): Promise<RegisterLogin
 
 export const logout = async () => {
   try {
-    const reponse = await axios.post(
-      '/api/auth/logout',
+    await axios.post(
+      '/server-api/auth/logout',
       {},
       {
         withCredentials: true,
       }
     );
-
-    return reponse.data;
+    (await cookies()).delete('auth_token');
+    return { success: true };
   } catch (error) {
     if (axios.isAxiosError(error)) {
       throw new Error(error.message);
@@ -59,9 +62,13 @@ export const logout = async () => {
   }
 };
 
-export const validateToken = async (): Promise<ProfileResponse> => {
+export const getProfile = async (): Promise<ProfileResponse | null> => {
   try {
-    const response = await axios.get('/api/account/me', {
+    const token = (await cookies()).get('auth_token')?.value;
+    if (!token) {
+      return null;
+    }
+    const response = await axios.get('/server-api/account/me', {
       withCredentials: true,
     });
     return response.data;
@@ -71,7 +78,7 @@ export const validateToken = async (): Promise<ProfileResponse> => {
       throw new Error(error.message);
     } else {
       console.error('Errored in normal Error type');
-      throw error;
+      return null;
     }
   }
 };
