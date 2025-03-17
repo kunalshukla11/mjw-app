@@ -11,7 +11,9 @@ export const AppContextProvider = ({ children }: { children: React.ReactNode }) 
 
   useEffect(() => {
     async function fetchProfile() {
+      console.log('Fetching profile');
       const profile = await authService.getProfile();
+      console.log('Fetched profile', profile);
       setUser(profile);
       setAuthenticated(!!profile);
     }
@@ -30,6 +32,7 @@ export const AppContextProvider = ({ children }: { children: React.ReactNode }) 
             }
           : null,
         setAuthenticated,
+        setUser,
       }}
     >
       {children}

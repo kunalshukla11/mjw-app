@@ -7,9 +7,11 @@ import Link from 'next/link';
 import * as accountService from '@/src/lib/services/account/authService';
 import { showToast } from '@/src/lib/services/common/toastService';
 import { RegisterFormData } from '@/src/lib/types/types';
+import { useAppContext } from '@/src/contexts/AppContext';
 
 function Register() {
   const queryClient = useQueryClient();
+  const { setAuthenticated, setUser } = useAppContext();
   const router = useRouter();
   //TODO: Add good popup with password strength as given in mantine docs
   const form = useForm<RegisterFormData>({
@@ -41,31 +43,51 @@ function Register() {
     },
   });
 
-  const mutation = useMutation({
-    mutationFn: (registerFormData: RegisterFormData) => accountService.register(registerFormData),
-    onSuccess: async () => {
-      showToast({ message: 'Registration Successful', type: 'SUCCESS' });
-      await queryClient.invalidateQueries({ queryKey: ['validateToken'] });
+  // const mutation = useMutation({
+  //   mutationFn: (registerFormData: RegisterFormData) => accountService.register(registerFormData),
+  //   onSuccess: async () => {
+  //     showToast({ message: 'Registration Successful', type: 'SUCCESS' });
+  //     await queryClient.invalidateQueries({ queryKey: ['validateToken'] });
+  //
+  //     router.push('/');
+  //   },
+  //   onError: (error: Error) => {
+  //     console.error('Registration not successful -> ', error.message);
+  //     showToast({
+  //       message: error.message,
+  //       type: 'ERROR',
+  //     });
+  //   },
+  // });
+  //
+  // const onSubmit = form.onSubmit((values: RegisterFormData) => {
+  //   mutation.mutate(values);
+  //   // console.log(values);
+  // });
+  //
+  //
+  //
 
+  const onSubmit = form.onSubmit(async (values: RegisterFormData) => {
+    try {
+      const response = await accountService.register(values);
+      const profile = await accountService.getProfile();
+      setUser(profile);
+      setAuthenticated(!!profile);
+      showToast({ message: 'Registration Successful', type: 'SUCCESS' });
       router.push('/');
-    },
-    onError: (error: Error) => {
+    } catch (error: any) {
       console.error('Registration not successful -> ', error.message);
       showToast({
         message: error.message,
         type: 'ERROR',
       });
-    },
-  });
-
-  const onSubmit = form.onSubmit((values: RegisterFormData) => {
-    mutation.mutate(values);
-    // console.log(values);
+    }
   });
 
   return (
     <form className='flex flex-col gap-5 pb-20' onSubmit={onSubmit}>
-      <Title className='text-3xl font-bold '>Create an Account</Title>
+      <Title className='text-3xl font-bold'>Create an Account</Title>
 
       <div className='flex flex-col gap-5 md:flex-row'>
         <TextInput

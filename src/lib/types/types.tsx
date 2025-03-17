@@ -25,6 +25,7 @@ export type ApplicationContext = {
     initial: string;
   } | null;
   setAuthenticated: (authenticated: boolean) => void;
+  setUser: (user: ProfileResponse | null) => void;
 };
 export type ProfileResponse = {
   email: string;

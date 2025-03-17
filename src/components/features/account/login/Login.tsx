@@ -9,10 +9,12 @@ import Link from 'next/link';
 import { LoginFormData } from '@/src/lib/types/types';
 import { showToast } from '@/src/lib/services/common/toastService';
 import * as accountService from '@/src/lib/services/account/authService';
+import { useAppContext } from '@/src/contexts/AppContext';
 
 function Login() {
   const router = useRouter();
   const queryClient = useQueryClient();
+  const { setUser, setAuthenticated } = useAppContext();
   const form = useForm<LoginFormData>({
     mode: 'uncontrolled',
     initialValues: {
@@ -21,23 +23,36 @@ function Login() {
     },
   });
 
-  const mutation = useMutation({
-    mutationFn: (loginFormData: LoginFormData) => accountService.login(loginFormData),
-    onSuccess: async () => {
+  //   onSuccess: async () => {
+  //     showToast({ message: 'Login Successful', type: 'SUCCESS' });
+  //     await queryClient.invalidateQueries({ queryKey: ['validateToken'] });
+  //     router.push('/');
+  //   },
+  //   onError: (error: Error) => {
+  //     console.error('Login not successful -> ', error.message);
+  //     showToast({ message: error.message, type: 'ERROR' });
+  //   },
+  // });
+  //
+  // const onSubmit = form.onSubmit((values: LoginFormData) => mutation.mutate(values));
+  //
+  const onSubmit = form.onSubmit(async (values: LoginFormData) => {
+    try {
+      const response = await accountService.login(values);
+      const profile = await accountService.getProfile();
+      setUser(profile);
+      setAuthenticated(!!profile);
+
       showToast({ message: 'Login Successful', type: 'SUCCESS' });
-      await queryClient.invalidateQueries({ queryKey: ['validateToken'] });
       router.push('/');
-    },
-    onError: (error: Error) => {
+    } catch (error: any) {
       console.error('Login not successful -> ', error.message);
       showToast({ message: error.message, type: 'ERROR' });
-    },
+    }
   });
 
-  const onSubmit = form.onSubmit((values: LoginFormData) => mutation.mutate(values));
-
   return (
-    <form className='mx-auto flex w-3/4 flex-col  gap-5' onSubmit={onSubmit}>
+    <form className='mx-auto flex w-3/4 flex-col gap-5' onSubmit={onSubmit}>
       <TextInput
         label='Email'
         withAsterisk

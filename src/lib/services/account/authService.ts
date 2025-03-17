@@ -6,7 +6,7 @@ import {
   RegisterFormData,
   RegisterLoginResponse,
 } from '@/src/lib/types/types';
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
 import { cookies } from 'next/headers';
 
 export const register = async (
@@ -17,6 +17,8 @@ export const register = async (
     const response = await axios.post('/api/auth/register', requestData, {
       withCredentials: true,
     });
+
+    setCookie(response);
     return response.data;
   } catch (error) {
     if (axios.isAxiosError(error)) {
@@ -29,9 +31,14 @@ export const register = async (
 
 export const login = async (loginFormData: LoginFormData): Promise<RegisterLoginResponse> => {
   try {
-    const response = await axios.post('/api/auth/login', loginFormData, {
-      withCredentials: true,
-    });
+    const response = await axios.post(
+      `http://${process.env.MJW_SERVICE_HOST}:${process.env.MJW_SERVICE_PORT}/api/auth/login`,
+      loginFormData,
+      {
+        withCredentials: true,
+      }
+    );
+    setCookie(response);
     return response.data;
   } catch (error) {
     if (axios.isAxiosError(error)) {
@@ -75,10 +82,27 @@ export const getProfile = async (): Promise<ProfileResponse | null> => {
   } catch (error) {
     if (axios.isAxiosError(error)) {
       console.error('Errored in Axios type');
-      throw new Error(error.message);
+      return null;
     } else {
       console.error('Errored in normal Error type');
       return null;
+    }
+  }
+};
+
+const setCookie = async function (response: AxiosResponse): Promise<void> {
+  const setCookieHeader = response.headers['Set-Cookie'];
+  if (setCookieHeader && Array.isArray(setCookieHeader)) {
+    // Set each cookie in the browser manually
+    const cookieStore = await cookies();
+    for (const rawCookie of setCookieHeader) {
+      const [cookieNameValue, ...rest] = rawCookie.split(';');
+      const [name, value] = cookieNameValue.split('=');
+      cookieStore.set(name.trim(), value.trim(), {
+        // You can optionally parse expiration, path, secure, etc. from `rest`
+        // For now, keep it simple
+        path: '/',
+      });
     }
   }
 };
