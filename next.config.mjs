@@ -19,6 +19,10 @@ export default withBundleAnalyzer({
         source: '/api/:path*',
         destination: `http://${process.env.NEXT_PUBLIC_MJW_SERVICE_HOST}:${process.env.NEXT_PUBLIC_MJW_SERVICE_PORT}/api/:path*`,
       },
+      {
+        source: '/server-api/:path*',
+        destination: `http://${process.env.MJW_SERVICE_HOST}:${process.env.MJW_SERVICE_PORT}/api/:path*`,
+      },
     ];
   },
 });
