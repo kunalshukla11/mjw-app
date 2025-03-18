@@ -49,4 +49,10 @@ TODO-Add contact using reactIcon and avaatar > use popupForLoging> Use PopupforC
 
 - `.env`(mostly for local development)
 - `.env.docker.mjwapp` (mostly for docker on oci where this file will be created via terraform)
--  env from Docker Compose
+- env from Docker Compose
+
+## TODO items
+
+- Use Server actions and Server components for login and register , may be using next-auth https://nextjs.org/docs/app/building-your-application/authentication
+  Examples to take a look at- https://github.com/jorgevee/Nextjs_Java
+  and use this for advanced Oauth(github, google, etc) flow with spring boot https://github.com/NerminKarapandzic/spring-boot-nextjs-starter-kit
