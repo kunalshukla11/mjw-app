@@ -71,7 +71,7 @@ function Register() {
   const onSubmit = form.onSubmit(async (values: RegisterFormData) => {
     try {
       const response = await accountService.register(values);
-      const profile = await accountService.getProfile();
+      const profile = await accountService.fetchProfile();
       setUser(profile);
       setAuthenticated(!!profile);
       showToast({ message: 'Registration Successful', type: 'SUCCESS' });

@@ -4,17 +4,16 @@ import { Button, PasswordInput, TextInput } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
-import React from 'react';
+import React, { useActionState, useEffect } from 'react';
 import Link from 'next/link';
-import { LoginFormData } from '@/src/lib/types/types';
+import { LoginFormData, LoginActionResponse } from '@/src/lib/types/types';
+import { login } from '@/src/lib/services/account/authService';
 import { showToast } from '@/src/lib/services/common/toastService';
-import * as accountService from '@/src/lib/services/account/authService';
 import { useAppContext } from '@/src/contexts/AppContext';
-
 function Login() {
   const router = useRouter();
+  const { setAuthenticated, setUser } = useAppContext();
   const queryClient = useQueryClient();
-  const { setUser, setAuthenticated } = useAppContext();
   const form = useForm<LoginFormData>({
     mode: 'uncontrolled',
     initialValues: {
@@ -23,49 +22,46 @@ function Login() {
     },
   });
 
-  //   onSuccess: async () => {
-  //     showToast({ message: 'Login Successful', type: 'SUCCESS' });
-  //     await queryClient.invalidateQueries({ queryKey: ['validateToken'] });
-  //     router.push('/');
-  //   },
-  //   onError: (error: Error) => {
-  //     console.error('Login not successful -> ', error.message);
-  //     showToast({ message: error.message, type: 'ERROR' });
-  //   },
-  // });
-  //
-  // const onSubmit = form.onSubmit((values: LoginFormData) => mutation.mutate(values));
-  //
-  const onSubmit = form.onSubmit(async (values: LoginFormData) => {
-    try {
-      const response = await accountService.login(values);
-      const profile = await accountService.getProfile();
-      setUser(profile);
-      setAuthenticated(!!profile);
+  const loginActionResponse: LoginActionResponse = {
+    success: false,
+    message: '',
+    profile: undefined,
+  };
 
-      showToast({ message: 'Login Successful', type: 'SUCCESS' });
-      router.push('/');
-    } catch (error: any) {
-      console.error('Login not successful -> ', error.message);
-      showToast({ message: error.message, type: 'ERROR' });
+  const [formState, formAction, isPending] = useActionState(login, loginActionResponse);
+
+  useEffect(() => {
+    if (formState?.message) {
+      if (formState.success) {
+        showToast({ message: formState.message, type: 'SUCCESS' });
+        setAuthenticated(true);
+        setUser(formState.profile);
+        router.push('/');
+      } else {
+        showToast({ message: formState.message, type: 'ERROR' });
+      }
     }
-  });
+  }, [formState]);
 
   return (
-    <form className='mx-auto flex w-3/4 flex-col gap-5' onSubmit={onSubmit}>
+    <form className='mx-auto flex w-3/4 flex-col gap-5' action={formAction}>
       <TextInput
         label='Email'
+        name='email'
         withAsterisk
         key={form.key('email')}
         {...form.getInputProps('email')}
       />
       <PasswordInput
         label='Password'
+        name='password'
         withAsterisk
         key={form.key('password')}
         {...form.getInputProps('password')}
       />
-      <Button type='submit'>Login</Button>
+      <Button type='submit' loading={isPending}>
+        Login
+      </Button>
 
       <div className='flex items-center'>
         <span className='text-xs italic'>Do not have an account?</span>

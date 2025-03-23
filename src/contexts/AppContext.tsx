@@ -11,9 +11,7 @@ export const AppContextProvider = ({ children }: { children: React.ReactNode }) 
 
   useEffect(() => {
     async function fetchProfile() {
-      console.log('Fetching profile');
-      const profile = await authService.getProfile();
-      console.log('Fetched profile', profile);
+      const profile = await authService.fetchProfile();
       setUser(profile);
       setAuthenticated(!!profile);
     }
