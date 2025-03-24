@@ -10,25 +10,55 @@ import axios, { AxiosResponse } from 'axios';
 import { cookies } from 'next/headers';
 import { parseSetCookieHeader } from '../../utils/utils';
 
-export const register = async (
-  registerFormData: RegisterFormData
-): Promise<RegisterLoginResponse> => {
-  try {
-    const { confirmPassword, ...requestData } = registerFormData;
-    const response = await axios.post('/api/auth/register', requestData, {
-      withCredentials: true,
-    });
+export async function register(prevState: any, formData: FormData) {
+  const { confirmPassword, ...registerFormData } = {
+    email: formData.get('email') as string,
+    password: formData.get('password') as string,
+    firstName: formData.get('firstName') as string,
+    lastName: formData.get('lastName') as string,
+    confirmPassword: formData.get('confirmPassword') as string,
+  };
 
-    setAuthCookie(response);
-    return response.data;
+  try {
+    const response = await axios.post(
+      `http://${process.env.MJW_SERVICE_HOST}:${process.env.MJW_SERVICE_PORT}/api/auth/register`,
+      registerFormData,
+      {
+        withCredentials: true,
+      }
+    );
+    const setCookieHeader = response.headers['set-cookie'];
+    if (setCookieHeader && Array.isArray(setCookieHeader)) {
+      const cookieStore = await cookies();
+      const parsedCookies = parseSetCookieHeader(setCookieHeader);
+
+      for (const { name, value, options } of parsedCookies) {
+        // Set the cookie in the server action
+        cookieStore.set(name, value, options);
+      }
+    }
+
+    return {
+      message: 'Registration successful',
+      success: true,
+      profile: response.data,
+    };
   } catch (error) {
     if (axios.isAxiosError(error)) {
-      throw new Error(error.message);
+      console.error('Errored in Axios type', error.message);
+      return {
+        message: error.message,
+        success: false,
+      };
     } else {
-      throw error;
+      console.error('Errored in normal Error type', error);
+      return {
+        message: 'Registration not successful',
+        success: false,
+      };
     }
   }
-};
+}
 
 export async function login(prevState: any, formData: FormData) {
   const loginFormData: LoginFormData = {

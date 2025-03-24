@@ -6,13 +6,16 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import * as accountService from '@/src/lib/services/account/authService';
 import { showToast } from '@/src/lib/services/common/toastService';
-import { RegisterFormData } from '@/src/lib/types/types';
+import { LoginRegisterActionResponse, RegisterFormData } from '@/src/lib/types/types';
 import { useAppContext } from '@/src/contexts/AppContext';
+import { useActionState, useEffect } from 'react';
+import { register } from '@/src/lib/services/account/authService';
 
 function Register() {
   const queryClient = useQueryClient();
   const { setAuthenticated, setUser } = useAppContext();
   const router = useRouter();
+
   //TODO: Add good popup with password strength as given in mantine docs
   const form = useForm<RegisterFormData>({
     mode: 'uncontrolled',
@@ -43,50 +46,39 @@ function Register() {
     },
   });
 
-  // const mutation = useMutation({
-  //   mutationFn: (registerFormData: RegisterFormData) => accountService.register(registerFormData),
-  //   onSuccess: async () => {
-  //     showToast({ message: 'Registration Successful', type: 'SUCCESS' });
-  //     await queryClient.invalidateQueries({ queryKey: ['validateToken'] });
-  //
-  //     router.push('/');
-  //   },
-  //   onError: (error: Error) => {
-  //     console.error('Registration not successful -> ', error.message);
-  //     showToast({
-  //       message: error.message,
-  //       type: 'ERROR',
-  //     });
-  //   },
-  // });
-  //
-  // const onSubmit = form.onSubmit((values: RegisterFormData) => {
-  //   mutation.mutate(values);
-  //   // console.log(values);
-  // });
-  //
-  //
-  //
+  const loginRegisterActionResposne: LoginRegisterActionResponse = {
+    success: false,
+    message: '',
+    profile: undefined,
+  };
 
-  const onSubmit = form.onSubmit(async (values: RegisterFormData) => {
-    try {
-      const response = await accountService.register(values);
-      const profile = await accountService.fetchProfile();
-      setUser(profile);
-      setAuthenticated(!!profile);
-      showToast({ message: 'Registration Successful', type: 'SUCCESS' });
-      router.push('/');
-    } catch (error: any) {
-      console.error('Registration not successful -> ', error.message);
-      showToast({
-        message: error.message,
-        type: 'ERROR',
-      });
+  const [formState, formAction, isPending] = useActionState(register, loginRegisterActionResposne);
+
+  useEffect(() => {
+    if (formState?.message) {
+      if (formState.success) {
+        showToast({ message: formState.message, type: 'SUCCESS' });
+        setAuthenticated(true);
+        setUser(formState.profile);
+        router.push('/');
+      } else {
+        showToast({ message: formState.message, type: 'ERROR' });
+      }
     }
-  });
+  }, [formState]);
+
+  // Handle form submission
+  const handleSubmit = async (values: RegisterFormData) => {
+    // Call the server action only if the form is valid
+    const formData = new FormData();
+    Object.entries(values).forEach(([key, value]) => {
+      formData.append(key, value);
+    });
+    await formAction(formData);
+  };
 
   return (
-    <form className='flex flex-col gap-5 pb-20' onSubmit={onSubmit}>
+    <form className='flex flex-col gap-5 pb-20' onSubmit={form.onSubmit(handleSubmit)}>
       <Title className='text-3xl font-bold'>Create an Account</Title>
 
       <div className='flex flex-col gap-5 md:flex-row'>
@@ -94,12 +86,14 @@ function Register() {
           className='flex-1'
           withAsterisk
           label='First Name'
+          name='firstName'
           key={form.key('firstName')}
           {...form.getInputProps('firstName')}
         />
         <TextInput
           className='flex-1'
           label='Last Name'
+          name='lastName'
           key={form.key('lastName')}
           {...form.getInputProps('lastName')}
         />
@@ -107,24 +101,28 @@ function Register() {
 
       <TextInput
         label='Email'
+        name='email'
         withAsterisk
         key={form.key('email')}
         {...form.getInputProps('email')}
       />
       <PasswordInput
         label='Password'
+        name='password'
         withAsterisk
         key={form.key('password')}
         {...form.getInputProps('password')}
       />
       <PasswordInput
         label='Confirm Password'
+        name='confirmPassword'
         withAsterisk
         key={form.key('confirmPassword')}
         {...form.getInputProps('confirmPassword')}
       />
       <span>
         <Button
+          loading={isPending}
           type='submit'
           className='p-2 text-xl font-bold text-white hover:bg-indigo-100 hover:text-indigo-700'
         >

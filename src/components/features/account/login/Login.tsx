@@ -6,7 +6,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
 import React, { useActionState, useEffect } from 'react';
 import Link from 'next/link';
-import { LoginFormData, LoginActionResponse } from '@/src/lib/types/types';
+import { LoginFormData, LoginRegisterActionResponse } from '@/src/lib/types/types';
 import { login } from '@/src/lib/services/account/authService';
 import { showToast } from '@/src/lib/services/common/toastService';
 import { useAppContext } from '@/src/contexts/AppContext';
@@ -22,7 +22,7 @@ function Login() {
     },
   });
 
-  const loginActionResponse: LoginActionResponse = {
+  const loginActionResponse: LoginRegisterActionResponse = {
     success: false,
     message: '',
     profile: undefined,

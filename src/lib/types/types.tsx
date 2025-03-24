@@ -38,7 +38,7 @@ export type RegisterLoginResponse = {
   successFailure: 'SUCCESS' | 'FAILURE';
 };
 
-export type LoginActionResponse = {
+export type LoginRegisterActionResponse = {
   success: boolean;
   message: string;
   profile: ProfileResponse | undefined;
