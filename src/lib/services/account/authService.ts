@@ -21,7 +21,7 @@ export async function register(prevState: any, formData: FormData) {
 
   try {
     const response = await axios.post(
-      `http://${process.env.MJW_SERVICE_HOST}:${process.env.MJW_SERVICE_PORT}/api/auth/register`,
+      `${process.env.MJW_SERVICE_URL}/api/auth/register`,
       registerFormData,
       {
         withCredentials: true,
@@ -67,7 +67,7 @@ export async function login(prevState: any, formData: FormData) {
   };
   try {
     const response = await axios.post(
-      `http://${process.env.MJW_SERVICE_HOST}:${process.env.MJW_SERVICE_PORT}/api/auth/login`,
+      `${process.env.MJW_SERVICE_URL}/api/auth/login`,
       loginFormData,
       {
         withCredentials: true,
@@ -125,15 +125,12 @@ export async function fetchProfile(): Promise<ProfileResponse | null> {
     if (!token) {
       return null;
     }
-    const response = await axios.get(
-      `http://${process.env.MJW_SERVICE_HOST}:${process.env.MJW_SERVICE_PORT}/api/account/me`,
-      {
-        withCredentials: true,
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
+    const response = await axios.get(`${process.env.MJW_SERVICE_URL}/api/account/me`, {
+      withCredentials: true,
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
     return response.data;
   } catch (error) {
     if (axios.isAxiosError(error)) {
