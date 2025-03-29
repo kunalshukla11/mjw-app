@@ -23,7 +23,9 @@ export type ApplicationContext = {
     email: string;
     firstName: string;
     initial: string;
-  };
+  } | null;
+  setAuthenticated: (authenticated: boolean) => void;
+  setUser: (user: ProfileResponse | null) => void;
 };
 export type ProfileResponse = {
   email: string;
@@ -34,4 +36,10 @@ export type RegisterLoginResponse = {
   userId: number;
   message: string;
   successFailure: 'SUCCESS' | 'FAILURE';
+};
+
+export type LoginRegisterActionResponse = {
+  success: boolean;
+  message: string;
+  profile: ProfileResponse | undefined;
 };
