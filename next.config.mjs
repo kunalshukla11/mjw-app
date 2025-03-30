@@ -26,4 +26,13 @@ export default withBundleAnalyzer({
       },
     ];
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'ik.imagekit.io',
+        port: '',
+      },
+    ],
+  },
 });
