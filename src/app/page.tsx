@@ -1,4 +1,4 @@
-export const dynamic = 'force-dynamic';
+// export const dynamic = 'force-dynamic';
 
 import MainLayout from '@/src/components/layout/MainLayout';
 import { getHolidayDashboard } from '../lib/services/holiday/holidayService';
