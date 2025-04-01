@@ -1,4 +1,5 @@
-// export const dynamic = 'force-dynamic';
+//TOOD: Learn about caching may be use caching instead of force-dynamic , ISR
+export const dynamic = 'force-dynamic';
 
 import MainLayout from '@/src/components/layout/MainLayout';
 import { getHolidayDashboard } from '../lib/services/holiday/holidayService';
