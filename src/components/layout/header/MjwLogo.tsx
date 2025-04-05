@@ -1,26 +1,32 @@
 import React from 'react';
-import NextImage from 'next/image';
-import { Image } from '@mantine/core';
-import MobileLogoImage from '@/public/MobileMjwLogo.png';
-import DesktoLogImage from '@/public/DesktopMjwLogo.png';
+import Link from 'next/link';
+import ImageKit from '../../common/image-kit';
 
 export default function MjwLogo() {
   return (
     <>
       {/* Mobile image to be shown only on mobile */}
-      <Image
-        classNames={{ root: 'md:hidden h-8' }}
-        component={NextImage}
-        src={MobileLogoImage}
-        alt='MJW Logo'
-      />
+      <Link href='/'>
+        <ImageKit
+          className='h-8 cursor-pointer md:hidden'
+          src='/MobileMjwLogo.png'
+          alt='MJW Logo'
+          width={32}
+          height={32}
+          transformation='w-32,h-32'
+        />
+      </Link>
       {/* Desktop image to be shown only on desktop */}
-      <Image
-        classNames={{ root: 'hidden md:block h-20 p-2 ' }}
-        component={NextImage}
-        src={DesktoLogImage}
-        alt='MJW Logo'
-      />
+      <Link href='/'>
+        <ImageKit
+          className='hidden h-20 cursor-pointer p-2 md:block'
+          src='/DesktopMjwLogo.png'
+          alt='MJW Logo'
+          width={200}
+          height={80}
+          transformation='w-200,h-80'
+        />
+      </Link>
     </>
   );
 }

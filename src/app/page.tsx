@@ -5,9 +5,7 @@ import MainLayout from '@/src/components/layout/MainLayout';
 import { getHolidayDashboard } from '../lib/services/holiday/holidayService';
 import Image from 'next/image';
 import { Metadata } from 'next';
-import { IKImage } from 'imagekitio-next';
-import imageLoader from '../lib/services/common/imageLoader';
-import { Container, Title } from '@mantine/core';
+import { Card, Container, Title, Paper } from '@mantine/core';
 import ImageKit from '../components/common/image-kit';
 
 export const metadata: Metadata = {
@@ -23,6 +21,48 @@ const getImagePath = (url: string) => {
 export default async function HomePage() {
   const data = await getHolidayDashboard();
 
+  function TopDestinationCard({
+    destination,
+  }: {
+    destination: (typeof data.internationalDestinations)[0];
+  }) {
+    return (
+      <Card
+        shadow='sm'
+        padding='lg'
+        radius='md'
+        withBorder
+        className='relative h-72 w-72 cursor-pointer overflow-hidden rounded-xl shadow-md transition-transform duration-300 hover:scale-105 hover:shadow-xl'
+      >
+        <ImageKit
+          src={destination.imageUrl || '/placeholder.svg'}
+          alt={destination.displayName}
+          fill
+          style={{
+            objectFit: 'contain', // cover, contain, none
+          }}
+          quality={50}
+          transformation='h-288,w-288' // Match the card's dimensions (72 * 4 = 288px for Tailwind's rem-based sizing)
+        />
+
+        <div className='absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-50'></div>
+        <div className='absolute bottom-0 left-0 p-4 text-white'>
+          <Title order={1} className='text-xl font-bold'>
+            {destination.displayName}
+          </Title>
+          <Title order={3} className='text-lg font-semibold'>
+            {destination.price.toLocaleString('en-IN', {
+              style: 'currency',
+              currency: 'INR',
+              minimumFractionDigits: 0,
+              maximumFractionDigits: 0,
+            })}
+          </Title>
+        </div>
+      </Card>
+    );
+  }
+
   return (
     <MainLayout>
       <div className='relative min-h-screen bg-white'>
@@ -31,11 +71,13 @@ export default async function HomePage() {
           <ImageKit
             src={data.heroImageUrl || '/placeholder.svg'}
             alt='Holiday destinations'
-            width={1920}
-            height={600}
-            priority
-            className='h-full w-full object-cover'
-            transformation='h-600'
+            fill
+            style={{
+              objectFit: 'cover', // Ensures the image fills the viewport width
+            }}
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 75vw, 50vw" // Responsive sizes
+            quality={90} // Increase quality for better appearance
+            transformation="h-1200,w-1920" // Fetch a larger resolution image
           />
           <div className='absolute inset-0 flex flex-col items-center justify-center bg-black/30 p-4 text-white'>
             <h1 className='mb-4 text-center text-4xl font-bold md:text-6xl'>Your world of joy</h1>
@@ -138,7 +180,38 @@ export default async function HomePage() {
           </div>
         </Container>
 
-        {/* Holiday Themes Section */}
+        {/* Top Destinations Section */}
+        <Container size='xl' className='py-16'>
+          <Title order={2} className='mb-8 text-center text-3xl font-bold'>
+            Top Destinations
+          </Title>
+
+          {/* <div className='relative h-72 w-72 cursor-pointer overflow-hidden rounded-xl shadow-md transition-transform duration-300 hover:scale-105 hover:shadow-xl'>
+            <ImageKit
+              src={data.internationalDestinations[0].imageUrl || '/placeholder.svg'}
+              alt={data.internationalDestinations[0].displayName}
+              fill
+            />
+
+            <div className='absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-50'></div>
+            <div className='absolute bottom-0 left-0 p-4 text-white'>
+              <Title order={1} className='text-xl font-bold'>
+                {data.internationalDestinations[0].displayName}
+              </Title>
+              <Title order={3} className='text-lg font-semibold'>
+                {data.internationalDestinations[0].price.toLocaleString('en-IN', {
+                  style: 'currency',
+                  currency: 'INR',
+                  minimumFractionDigits: 0,
+                  maximumFractionDigits: 0,
+                })}
+              </Title>
+            </div>
+          </div> */}
+
+          <TopDestinationCard destination={data.internationalDestinations[0]}></TopDestinationCard>
+        </Container>
+
         <Container size='xl' className='py-16'>
           <Title order={2} className='mb-8 text-center text-3xl font-bold'>
             Holiday Themes
@@ -147,14 +220,6 @@ export default async function HomePage() {
             {data.holidayThemes.map((theme) => (
               <div key={theme.displayName} className='group cursor-pointer'>
                 <div className='relative h-60 overflow-hidden rounded-xl shadow-md transition-transform duration-300 group-hover:scale-105 group-hover:shadow-xl'>
-                  {/* <Image
-                  src={theme.imageUrl || "/placeholder.svg"}
-                  alt={theme.displayName}
-                  width={320}
-                  height={240}
-                  loader={imageKitLoader}
-                  className="w-full h-full object-cover"
-                /> */}
                   <ImageKit
                     src={theme.imageUrl || '/placeholder.svg'}
                     alt={theme.displayName}
