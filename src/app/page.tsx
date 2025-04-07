@@ -5,7 +5,7 @@ import MainLayout from '@/src/components/layout/MainLayout';
 import { getHolidayDashboard } from '../lib/services/holiday/holidayService';
 import Image from 'next/image';
 import { Metadata } from 'next';
-import { Card, Container, Title, Paper } from '@mantine/core';
+import { Card, Container, Title, Paper, Badge, Text } from '@mantine/core';
 import ImageKit from '../components/common/image-kit';
 
 export const metadata: Metadata = {
@@ -20,7 +20,7 @@ const getImagePath = (url: string) => {
 
 export default async function HomePage() {
   const data = await getHolidayDashboard();
-
+  const randomData = ['hey', 'hello', 'hi', 'welcome', 'greetings'];
   function TopDestinationCard({
     destination,
   }: {
@@ -32,7 +32,7 @@ export default async function HomePage() {
         padding='lg'
         radius='md'
         withBorder
-        className='relative h-72 w-72 cursor-pointer overflow-hidden rounded-xl shadow-md transition-transform duration-300 hover:scale-105 hover:shadow-xl'
+        className='shadow-multple-card relative h-72 w-72 cursor-pointer overflow-hidden rounded-xl transition-transform duration-300 hover:scale-105'
       >
         <ImageKit
           src={destination.imageUrl || '/placeholder.svg'}
@@ -42,14 +42,18 @@ export default async function HomePage() {
             objectFit: 'contain', // cover, contain, none
           }}
           quality={50}
-          transformation='h-288,w-288' // Match the card's dimensions (72 * 4 = 288px for Tailwind's rem-based sizing)
+          transformation='h-400,w-400' // Match the card's dimensions (72 * 4 = 288px for Tailwind's rem-based sizing)
         />
+
+        <div className='absolute left-0 top-0 p-1'>
+          <Badge className='bg-yellow-600' size='lg' radius='md'>
+            {destination.displayName}
+          </Badge>
+        </div>
 
         <div className='absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-50'></div>
         <div className='absolute bottom-0 left-0 p-4 text-white'>
-          <Title order={1} className='text-xl font-bold'>
-            {destination.displayName}
-          </Title>
+          <Text className='text-sm'>From</Text>
           <Title order={3} className='text-lg font-semibold'>
             {destination.price.toLocaleString('en-IN', {
               style: 'currency',
@@ -65,6 +69,7 @@ export default async function HomePage() {
 
   return (
     <MainLayout>
+      {/* Main Page */}
       <div className='relative min-h-screen bg-white'>
         {/* Hero Section */}
         <div className='relative h-[600px] w-full'>
@@ -75,9 +80,9 @@ export default async function HomePage() {
             style={{
               objectFit: 'cover', // Ensures the image fills the viewport width
             }}
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 75vw, 50vw" // Responsive sizes
+            sizes='(max-width: 640px) 100vw, (max-width: 1024px) 75vw, 50vw' // Responsive sizes
             quality={90} // Increase quality for better appearance
-            transformation="h-1200,w-1920" // Fetch a larger resolution image
+            transformation='h-1200,w-1920' // Fetch a larger resolution image
           />
           <div className='absolute inset-0 flex flex-col items-center justify-center bg-black/30 p-4 text-white'>
             <h1 className='mb-4 text-center text-4xl font-bold md:text-6xl'>Your world of joy</h1>
@@ -96,7 +101,7 @@ export default async function HomePage() {
           <Title order={2} className='mb-12 text-center text-3xl font-bold'>
             Why choose us
           </Title>
-          <div className='grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4'>
+          <div className='grid grid-cols-2 gap-8 lg:grid-cols-4'>
             <div className='flex flex-col items-center text-center'>
               <div className='mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-orange-100'>
                 <svg
@@ -181,35 +186,19 @@ export default async function HomePage() {
         </Container>
 
         {/* Top Destinations Section */}
-        <Container size='xl' className='py-16'>
+        <Container size='xl' className='relative py-16'>
           <Title order={2} className='mb-8 text-center text-3xl font-bold'>
             Top Destinations
           </Title>
+          <div className='flex gap-4 overflow-x-auto whitespace-nowrap p-3 sm:gap-6 md:gap-10'>
+            {data.topDestinations.map((destination) => (
+              <div key={destination.displayName} className='w-48 flex-shrink-0 sm:w-60 md:w-72'>
+                <TopDestinationCard destination={destination}></TopDestinationCard>
+              </div>
+            ))}
+          </div>
 
-          {/* <div className='relative h-72 w-72 cursor-pointer overflow-hidden rounded-xl shadow-md transition-transform duration-300 hover:scale-105 hover:shadow-xl'>
-            <ImageKit
-              src={data.internationalDestinations[0].imageUrl || '/placeholder.svg'}
-              alt={data.internationalDestinations[0].displayName}
-              fill
-            />
-
-            <div className='absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-50'></div>
-            <div className='absolute bottom-0 left-0 p-4 text-white'>
-              <Title order={1} className='text-xl font-bold'>
-                {data.internationalDestinations[0].displayName}
-              </Title>
-              <Title order={3} className='text-lg font-semibold'>
-                {data.internationalDestinations[0].price.toLocaleString('en-IN', {
-                  style: 'currency',
-                  currency: 'INR',
-                  minimumFractionDigits: 0,
-                  maximumFractionDigits: 0,
-                })}
-              </Title>
-            </div>
-          </div> */}
-
-          <TopDestinationCard destination={data.internationalDestinations[0]}></TopDestinationCard>
+          {/* <TopDestinationCard destination={data.internationalDestinations[0]}></TopDestinationCard> */}
         </Container>
 
         <Container size='xl' className='py-16'>
