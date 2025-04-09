@@ -1,6 +1,7 @@
 /* Mantine core */
 @import '@mantine/core/styles.css';
 @import '@mantine/notifications/styles.css';
+@import '@mantine/carousel/styles.css';
 /* Add @layer to Tailwind Base to prevent Preflight conflicts */
 @layer {
   @tailwind base;

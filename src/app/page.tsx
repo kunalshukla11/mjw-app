@@ -7,6 +7,9 @@ import Image from 'next/image';
 import { Metadata } from 'next';
 import { Card, Container, Title, Paper, Badge, Text } from '@mantine/core';
 import ImageKit from '../components/common/image-kit';
+import CommonCarousel from '../components/home/CommonCarousel';
+import { DashboardData } from '../lib/types/models/mjw-service';
+import { D } from '@tanstack/react-query-devtools/build/legacy/ReactQueryDevtools-Cn7cKi7o';
 
 export const metadata: Metadata = {
   title: 'Holiday Packages | Your Travel Company',
@@ -21,11 +24,7 @@ const getImagePath = (url: string) => {
 export default async function HomePage() {
   const data = await getHolidayDashboard();
   const randomData = ['hey', 'hello', 'hi', 'welcome', 'greetings'];
-  function TopDestinationCard({
-    destination,
-  }: {
-    destination: (typeof data.internationalDestinations)[0];
-  }) {
+  function TopDestinationCard({ dashboadElement }: { dashboadElement: DashboardData }) {
     return (
       <Card
         shadow='sm'
@@ -35,8 +34,8 @@ export default async function HomePage() {
         className='shadow-multple-card relative h-72 w-72 cursor-pointer overflow-hidden rounded-xl transition-transform duration-300 hover:scale-105'
       >
         <ImageKit
-          src={destination.imageUrl || '/placeholder.svg'}
-          alt={destination.displayName}
+          src={dashboadElement.imageUrl || '/placeholder.svg'}
+          alt={dashboadElement.displayName}
           fill
           style={{
             objectFit: 'contain', // cover, contain, none
@@ -47,7 +46,7 @@ export default async function HomePage() {
 
         <div className='absolute left-0 top-0 p-1'>
           <Badge className='bg-yellow-600' size='lg' radius='md'>
-            {destination.displayName}
+            {dashboadElement.displayName}
           </Badge>
         </div>
 
@@ -55,7 +54,7 @@ export default async function HomePage() {
         <div className='absolute bottom-0 left-0 p-4 text-white'>
           <Text className='text-sm'>From</Text>
           <Title order={3} className='text-lg font-semibold'>
-            {destination.price.toLocaleString('en-IN', {
+            {dashboadElement.price.toLocaleString('en-IN', {
               style: 'currency',
               currency: 'INR',
               minimumFractionDigits: 0,
@@ -186,20 +185,21 @@ export default async function HomePage() {
         </Container>
 
         {/* Top Destinations Section */}
-        <Container size='xl' className='relative py-16'>
+        {/* <Container size='xl' className='relative overflow-hidden py-16'>
           <Title order={2} className='mb-8 text-center text-3xl font-bold'>
             Top Destinations
           </Title>
-          <div className='flex gap-4 overflow-x-auto whitespace-nowrap p-3 sm:gap-6 md:gap-10'>
-            {data.topDestinations.map((destination) => (
-              <div key={destination.displayName} className='w-48 flex-shrink-0 sm:w-60 md:w-72'>
-                <TopDestinationCard destination={destination}></TopDestinationCard>
-              </div>
-            ))}
-          </div>
 
-          {/* <TopDestinationCard destination={data.internationalDestinations[0]}></TopDestinationCard> */}
-        </Container>
+          <CommonCarousel dashboardData={data.internationalDestinations}></CommonCarousel>
+        </Container> */}
+
+        <div className='max-w-screen overflow-hidden px-4 py-12 sm:px-6 lg:px-32 xl:px-28'>
+          <Title order={2} className='mb-8 text-center text-3xl font-bold'>
+            Top Destinations
+          </Title>
+
+          <CommonCarousel dashboardData={data.internationalDestinations} />
+        </div>
 
         <Container size='xl' className='py-16'>
           <Title order={2} className='mb-8 text-center text-3xl font-bold'>

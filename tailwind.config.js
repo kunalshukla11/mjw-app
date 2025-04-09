@@ -13,6 +13,9 @@ module.exports = {
       boxShadow: {
         'multple-card': '5px 5px gray, 10px 10px lightgray',
       },
+      maxWidth: {
+        screen: '100vw',
+      },
     },
   },
   plugins: [],
