@@ -198,7 +198,7 @@ export default async function HomePage() {
             Top Destinations
           </Title>
 
-          <CommonCarousel dashboardData={data.internationalDestinations} />
+          <CommonCarousel dashboardData={data.topDestinations} />
         </div>
 
         <Container size='xl' className='py-16'>
