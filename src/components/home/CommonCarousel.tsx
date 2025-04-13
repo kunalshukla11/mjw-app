@@ -3,20 +3,19 @@
 import { Carousel } from '@mantine/carousel';
 // adjust path
 import { DashboardData } from '@/src/lib/types/models/mjw-service';
-import CardComponent from './CardComponent';
-import { useMediaQuery } from '@mantine/hooks';
-import { useMantineTheme } from '@mantine/core';
+import TopDestinationCard from './TopDestinationCard';
+import { useMobile } from '../common/use-mobile';
 
 type Props = {
   dashboardData: DashboardData[];
 };
 
 export default function CommonCarousel({ dashboardData }: Props) {
-  const theme = useMantineTheme();
-
+  const isMobile = useMobile(); // useMobile();
   return (
     <Carousel
       withIndicators
+      withControls={!isMobile}
       slideSize={{ base: '70%', sm: '50%', md: '33.3333%', lg: '20%' }}
       slideGap={{ base: 24, sm: 24, md: 24, lg: 24 }}
       align='start'
@@ -31,7 +30,7 @@ export default function CommonCarousel({ dashboardData }: Props) {
       {dashboardData.map((dashboardElement) => (
         <Carousel.Slide key={dashboardElement.displayName}>
           <div className='flex h-full items-center justify-center'>
-            <CardComponent dashboadElement={dashboardElement} />
+            <TopDestinationCard dashboadElement={dashboardElement} />
           </div>
         </Carousel.Slide>
       ))}

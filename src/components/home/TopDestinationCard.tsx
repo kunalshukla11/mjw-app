@@ -2,7 +2,11 @@ import { DashboardData } from '@/src/lib/types/models/mjw-service';
 import { Badge, Card, Title, Text } from '@mantine/core';
 import ImageKit from '../common/image-kit';
 
-export default function CardComponent({ dashboadElement }: { dashboadElement: DashboardData }) {
+export default function TopDestinationCard({
+  dashboadElement,
+}: {
+  dashboadElement: DashboardData;
+}) {
   return (
     <Card
       shadow='sm'

@@ -10,6 +10,7 @@ import ImageKit from '../components/common/image-kit';
 import CommonCarousel from '../components/home/CommonCarousel';
 import { DashboardData } from '../lib/types/models/mjw-service';
 import { D } from '@tanstack/react-query-devtools/build/legacy/ReactQueryDevtools-Cn7cKi7o';
+import TravelCarousel from '../components/home/travel-caraousel';
 
 export const metadata: Metadata = {
   title: 'Holiday Packages | Your Travel Company',
@@ -94,9 +95,8 @@ export default async function HomePage() {
             {/* <SearchForm /> */}
           </div>
         </div>
-
         {/* Why Choose Us Section */}
-        <Container size='xl' className='py-16'>
+        <Container size='xl' className='py-12'>
           <Title order={2} className='mb-12 text-center text-3xl font-bold'>
             Why choose us
           </Title>
@@ -183,7 +183,6 @@ export default async function HomePage() {
             </div>
           </div>
         </Container>
-
         {/* Top Destinations Section */}
         {/* <Container size='xl' className='relative overflow-hidden py-16'>
           <Title order={2} className='mb-8 text-center text-3xl font-bold'>
@@ -192,15 +191,21 @@ export default async function HomePage() {
 
           <CommonCarousel dashboardData={data.internationalDestinations}></CommonCarousel>
         </Container> */}
-
         <div className='max-w-screen overflow-hidden px-4 py-12 sm:px-6 lg:px-32 xl:px-28'>
-          <Title order={2} className='mb-8 text-center text-3xl font-bold'>
+          <Title order={2} className='mb-2 text-center text-3xl font-bold'>
             Top Destinations
           </Title>
 
           <CommonCarousel dashboardData={data.topDestinations} />
         </div>
 
+        <div className='max-w-screen overflow-hidden px-4 py-12 sm:px-6 lg:px-32 xl:px-28'>
+          <Title order={2} className='mb-2 text-center text-3xl font-bold'>
+            Top Packages
+          </Title>
+
+          <CommonCarousel dashboardData={data.topDestinations} />
+        </div>
         <Container size='xl' className='py-16'>
           <Title order={2} className='mb-8 text-center text-3xl font-bold'>
             Holiday Themes
