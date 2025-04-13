@@ -5,27 +5,26 @@ import { Carousel } from '@mantine/carousel';
 import { DashboardData } from '@/src/lib/types/models/mjw-service';
 import TopDestinationCard from './TopDestinationCard';
 import { useMobile } from '../common/use-mobile';
+import TopPackagesCard from './TopPackagesCard';
+import classes from './Carousel.module.css';
 
 type Props = {
   dashboardData: DashboardData[];
 };
 
-export default function CommonCarousel({ dashboardData }: Props) {
+export default function InternationalDestCarousel({ dashboardData }: Props) {
   const isMobile = useMobile(); // useMobile();
+
   return (
     <Carousel
       withIndicators
       withControls={!isMobile}
-      slideSize={{ base: '70%', sm: '50%', md: '33.3333%', lg: '20%' }}
+      slideSize={{ base: '100%', sm: '50%', md: '33.3333%', lg: '20%' }}
       slideGap={{ base: 24, sm: 24, md: 24, lg: 24 }}
       align='start'
       slidesToScroll={'auto'}
       height={340}
-      styles={{
-        indicator: {
-          backgroundColor: 'lightgray',
-        },
-      }}
+      classNames={classes}
     >
       {dashboardData.map((dashboardElement) => (
         <Carousel.Slide key={dashboardElement.displayName}>

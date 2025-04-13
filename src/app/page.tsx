@@ -7,10 +7,14 @@ import Image from 'next/image';
 import { Metadata } from 'next';
 import { Card, Container, Title, Paper, Badge, Text } from '@mantine/core';
 import ImageKit from '../components/common/image-kit';
-import CommonCarousel from '../components/home/CommonCarousel';
+import TopDestinationCarousel from '../components/home/TopDestinationCarousel';
 import { DashboardData } from '../lib/types/models/mjw-service';
 import { D } from '@tanstack/react-query-devtools/build/legacy/ReactQueryDevtools-Cn7cKi7o';
 import TravelCarousel from '../components/home/travel-caraousel';
+import TopPackagesCard from '../components/home/TopPackagesCard';
+import TopDestinationCard from '../components/home/TopDestinationCard';
+import TopPackagesCarousel from '../components/home/TopPackagesCarousel';
+import InternationalDestCarousel from '../components/home/InternationDestCarousel';
 
 export const metadata: Metadata = {
   title: 'Holiday Packages | Your Travel Company',
@@ -25,47 +29,6 @@ const getImagePath = (url: string) => {
 export default async function HomePage() {
   const data = await getHolidayDashboard();
   const randomData = ['hey', 'hello', 'hi', 'welcome', 'greetings'];
-  function TopDestinationCard({ dashboadElement }: { dashboadElement: DashboardData }) {
-    return (
-      <Card
-        shadow='sm'
-        padding='lg'
-        radius='md'
-        withBorder
-        className='shadow-multple-card relative h-72 w-72 cursor-pointer overflow-hidden rounded-xl transition-transform duration-300 hover:scale-105'
-      >
-        <ImageKit
-          src={dashboadElement.imageUrl || '/placeholder.svg'}
-          alt={dashboadElement.displayName}
-          fill
-          style={{
-            objectFit: 'contain', // cover, contain, none
-          }}
-          quality={50}
-          transformation='h-400,w-400' // Match the card's dimensions (72 * 4 = 288px for Tailwind's rem-based sizing)
-        />
-
-        <div className='absolute left-0 top-0 p-1'>
-          <Badge className='bg-yellow-600' size='lg' radius='md'>
-            {dashboadElement.displayName}
-          </Badge>
-        </div>
-
-        <div className='absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-50'></div>
-        <div className='absolute bottom-0 left-0 p-4 text-white'>
-          <Text className='text-sm'>From</Text>
-          <Title order={3} className='text-lg font-semibold'>
-            {dashboadElement.price.toLocaleString('en-IN', {
-              style: 'currency',
-              currency: 'INR',
-              minimumFractionDigits: 0,
-              maximumFractionDigits: 0,
-            })}
-          </Title>
-        </div>
-      </Card>
-    );
-  }
 
   return (
     <MainLayout>
@@ -183,29 +146,35 @@ export default async function HomePage() {
             </div>
           </div>
         </Container>
-        {/* Top Destinations Section */}
-        {/* <Container size='xl' className='relative overflow-hidden py-16'>
-          <Title order={2} className='mb-8 text-center text-3xl font-bold'>
-            Top Destinations
-          </Title>
 
-          <CommonCarousel dashboardData={data.internationalDestinations}></CommonCarousel>
-        </Container> */}
+        {/* Top Destinations Section */}
         <div className='max-w-screen overflow-hidden px-4 py-12 sm:px-6 lg:px-32 xl:px-28'>
           <Title order={2} className='mb-2 text-center text-3xl font-bold'>
             Top Destinations
           </Title>
 
-          <CommonCarousel dashboardData={data.topDestinations} />
+          <TopDestinationCarousel dashboardData={data.topDestinations} />
         </div>
 
+        {/* Top Package Section */}
         <div className='max-w-screen overflow-hidden px-4 py-12 sm:px-6 lg:px-32 xl:px-28'>
-          <Title order={2} className='mb-2 text-center text-3xl font-bold'>
+          <Title order={2} className='mb-2 pb-8 text-center text-3xl font-bold'>
             Top Packages
           </Title>
 
-          <CommonCarousel dashboardData={data.topDestinations} />
+          <TopPackagesCarousel dashboardData={data.topPackages} />
         </div>
+
+        {/* International Destination Section */}
+        <div className='max-w-screen overflow-hidden px-4 py-12 sm:px-6 lg:px-32 xl:px-28'>
+          <Title order={2} className='mb-2 text-center text-3xl font-bold'>
+            International Destinations
+          </Title>
+
+          <InternationalDestCarousel dashboardData={data.internationalDestinations} />
+        </div>
+
+        {/* Holiday By Themes */}
         <Container size='xl' className='py-16'>
           <Title order={2} className='mb-8 text-center text-3xl font-bold'>
             Holiday Themes
