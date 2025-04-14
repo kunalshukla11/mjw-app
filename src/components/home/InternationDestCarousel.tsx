@@ -19,7 +19,7 @@ export default function InternationalDestCarousel({ dashboardData }: Props) {
     <Carousel
       withIndicators
       withControls={!isMobile}
-      slideSize={{ base: '100%', sm: '50%', md: '33.3333%', lg: '20%' }}
+      slideSize={{ base: '70%', sm: '50%', md: '33.3333%', lg: '20%' }}
       slideGap={{ base: 24, sm: 24, md: 24, lg: 24 }}
       align='start'
       slidesToScroll={'auto'}
