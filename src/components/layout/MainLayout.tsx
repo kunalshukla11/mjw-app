@@ -20,7 +20,7 @@ export default function MainLayout({ children }: { children: any }) {
           ))}
         </div>
       </Drawer>
-      <main className='flex-1'>
+      <main className='flex-1 overflow-hidden'>
         <Header openDrawer={open} />
         <PageWrapper>{children}</PageWrapper>
 

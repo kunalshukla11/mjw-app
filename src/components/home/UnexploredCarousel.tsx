@@ -15,15 +15,18 @@ export default function UnexploredCaraousel({ dashboardData }: Props) {
   const autoplay = useRef(Autoplay({ delay: 2000 }));
   return (
     <Carousel
-      height={340}
+      height={400}
       plugins={[autoplay.current]}
+      slideSize={{ base: '100%' }}
+      withIndicators
       withControls={false}
-      //   onMouseEnter={autoplay.current.stop}
-      //   onMouseLeave={autoplay.current.reset}
+      classNames={classes}
+      onMouseEnter={autoplay.current.stop}
+      onMouseLeave={autoplay.current.reset}
     >
       {dashboardData.map((dashboardElement) => (
         <Carousel.Slide key={dashboardElement.displayName}>
-          <div className='flex h-full'>
+          <div className='flex h-full items-center justify-center'>
             <UnexploredCard dashboadElement={dashboardElement} />
           </div>
         </Carousel.Slide>

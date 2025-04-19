@@ -176,13 +176,13 @@ export default async function HomePage() {
         </div>
 
         {/* Explore the unexplored */}
-        {/* <div className='px-4 py-12 sm:px-6 lg:px-32 xl:px-28'>
+        <div className='max-w-screen overflow-hidden px-4 py-12 sm:px-6 lg:px-32 xl:px-28'>
           <Title order={2} className='mb-2 text-center text-3xl font-bold'>
             Explore the unexplored
           </Title>
 
           <UnexploredCaraousel dashboardData={data.internationalDestinations} />
-        </div> */}
+        </div>
 
         {/* Holiday by themes */}
         <div className='max-w-screen overflow-hidden px-4 py-12 sm:px-6 lg:px-32 xl:px-28'>
