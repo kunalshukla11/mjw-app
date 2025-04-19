@@ -7,12 +7,19 @@ import classes from './Carousel.module.css';
 import UnexploredCard from './UnexploredCard';
 import { useRef } from 'react';
 import Autoplay from 'embla-carousel-autoplay';
+import useEmblaCarousel from 'embla-carousel-react';
 type Props = {
   dashboardData: DashboardData[];
 };
 
 export default function UnexploredCaraousel({ dashboardData }: Props) {
-  const autoplay = useRef(Autoplay({ delay: 2000 }));
+  const autoplay = useRef(
+    Autoplay({
+      delay: 2500,
+      stopOnInteraction: false,
+    })
+  ); // Ensure autoplay is configured correctly
+
   return (
     <Carousel
       height={400}
@@ -21,6 +28,7 @@ export default function UnexploredCaraousel({ dashboardData }: Props) {
       withIndicators
       withControls={false}
       classNames={classes}
+      loop
       onMouseEnter={autoplay.current.stop}
       onMouseLeave={autoplay.current.reset}
     >

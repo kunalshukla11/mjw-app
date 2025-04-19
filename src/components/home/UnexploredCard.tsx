@@ -9,22 +9,24 @@ export default function UnexploredCard({ dashboadElement }: { dashboadElement: D
       padding='lg'
       radius='xl'
       withBorder
-      className='relative h-80 w-full cursor-pointer overflow-hidden'
+      className='relative h-auto w-full cursor-pointer overflow-hidden'
     >
       <ImageKit
         src={dashboadElement.imageUrl || '/placeholder.svg'}
         alt={dashboadElement.displayName}
-        fill
+        width={700}
+        height={500}
         style={{
-          objectFit: 'contain', // cover, contain, none
+          objectFit: 'cover', // cover, contain, none
         }}
         sizes='(max-width: 640px) 100vw, (max-width: 1024px) 75vw, 50vw'
         quality={80}
-        transformation='h-400,w-700' // Match the card's dimensions (72 * 4 = 288px for Tailwind's rem-based sizing)
+        transformation='h-400,w-7800' // Match the card's dimensions (72 * 4 = 288px for Tailwind's rem-based sizing)
+        className='h-72 w-full object-cover'
       />
 
       <div
-        className='absolute inset-0 bg-gradient-to-r from-black to-transparent opacity-50'
+        className='absolute inset-0 w-1/2 bg-gradient-to-r from-black to-transparent opacity-50'
         style={{ width: '50%' }}
       ></div>
 
