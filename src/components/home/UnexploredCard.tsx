@@ -20,7 +20,7 @@ export default function UnexploredCard({ dashboadElement }: { dashboadElement: D
         }}
         sizes='(max-width: 640px) 100vw, (max-width: 1024px) 75vw, 50vw'
         quality={80}
-        transformation='h-400,w-400' // Match the card's dimensions (72 * 4 = 288px for Tailwind's rem-based sizing)
+        transformation='h-400,w-700' // Match the card's dimensions (72 * 4 = 288px for Tailwind's rem-based sizing)
       />
 
       <div
