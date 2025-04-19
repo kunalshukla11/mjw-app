@@ -1,6 +1,7 @@
 import { DashboardData } from '@/src/lib/types/models/mjw-service';
-import { Badge, Card, Title, Text } from '@mantine/core';
+import { Badge, Card, Title, Text, AspectRatio } from '@mantine/core';
 import ImageKit from '../common/image-kit';
+import Image, { type ImageProps } from 'next/image';
 
 export default function UnexploredCard({ dashboadElement }: { dashboadElement: DashboardData }) {
   return (
@@ -9,20 +10,18 @@ export default function UnexploredCard({ dashboadElement }: { dashboadElement: D
       padding='lg'
       radius='xl'
       withBorder
-      className='relative h-auto w-full cursor-pointer overflow-hidden'
+      className='relative h-80 w-full cursor-pointer overflow-hidden'
     >
       <ImageKit
         src={dashboadElement.imageUrl || '/placeholder.svg'}
         alt={dashboadElement.displayName}
-        width={700}
-        height={500}
+        fill
         style={{
           objectFit: 'cover', // cover, contain, none
         }}
         sizes='(max-width: 640px) 100vw, (max-width: 1024px) 75vw, 50vw'
         quality={80}
-        transformation='h-400,w-7800' // Match the card's dimensions (72 * 4 = 288px for Tailwind's rem-based sizing)
-        className='h-72 w-full object-cover'
+        transformation='h-400,w-1400' // Match the card's dimensions (72 * 4 = 288px for Tailwind's rem-based sizing)
       />
 
       <div

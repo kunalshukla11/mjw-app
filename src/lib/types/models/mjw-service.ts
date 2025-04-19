@@ -1,12 +1,13 @@
 /* tslint:disable */
 /* eslint-disable */
-// Generated using typescript-generator version 3.2.1263 on 2025-03-30 20:26:54.
+// Generated using typescript-generator version 3.2.1263 on 2025-04-19 19:38:04.
 
 export interface HolidayDashboard {
     heroImageUrl: string;
     topDestinations: DashboardData[];
     topPackages: DashboardData[];
     internationalDestinations: DashboardData[];
+    unexploredDestinations: DashboardData[];
     holidayThemes: DashboardData[];
     reviews: Review[];
 }

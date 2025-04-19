@@ -181,7 +181,7 @@ export default async function HomePage() {
             Explore the unexplored
           </Title>
 
-          <UnexploredCaraousel dashboardData={data.internationalDestinations} />
+          <UnexploredCaraousel dashboardData={data.unexploredDestinations} />
         </div>
 
         {/* Holiday by themes */}
