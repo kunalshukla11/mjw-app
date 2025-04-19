@@ -13,7 +13,7 @@ export default function InternationalDestCard({
       padding='lg'
       radius='md'
       withBorder
-      className='shadow-multple-card relative h-64 w-64 cursor-pointer overflow-hidden rounded-xl transition-transform duration-300 hover:scale-105'
+      className='relative h-64 w-64 cursor-pointer overflow-hidden rounded-xl shadow-multple-card transition-transform duration-300 hover:scale-105'
     >
       <ImageKit
         src={dashboadElement.imageUrl || '/placeholder.svg'}

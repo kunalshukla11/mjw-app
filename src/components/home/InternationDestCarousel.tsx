@@ -7,6 +7,7 @@ import TopDestinationCard from './TopDestinationCard';
 import { useMobile } from '../common/use-mobile';
 import TopPackagesCard from './TopPackagesCard';
 import classes from './Carousel.module.css';
+import InternationalDestCard from './InternationalDestCard';
 
 type Props = {
   dashboardData: DashboardData[];
@@ -29,7 +30,7 @@ export default function InternationalDestCarousel({ dashboardData }: Props) {
       {dashboardData.map((dashboardElement) => (
         <Carousel.Slide key={dashboardElement.displayName}>
           <div className='flex h-full items-center justify-center'>
-            <TopDestinationCard dashboadElement={dashboardElement} />
+            <InternationalDestCard dashboadElement={dashboardElement} />
           </div>
         </Carousel.Slide>
       ))}

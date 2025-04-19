@@ -15,6 +15,8 @@ import TopPackagesCard from '../components/home/TopPackagesCard';
 import TopDestinationCard from '../components/home/TopDestinationCard';
 import TopPackagesCarousel from '../components/home/TopPackagesCarousel';
 import InternationalDestCarousel from '../components/home/InternationDestCarousel';
+import HolidayThemesCaraousel from '../components/home/HolidayThemesCarousel';
+import UnexploredCaraousel from '../components/home/UnexploredCarousel';
 
 export const metadata: Metadata = {
   title: 'Holiday Packages | Your Travel Company',
@@ -28,7 +30,6 @@ const getImagePath = (url: string) => {
 
 export default async function HomePage() {
   const data = await getHolidayDashboard();
-  const randomData = ['hey', 'hello', 'hi', 'welcome', 'greetings'];
 
   return (
     <MainLayout>
@@ -174,32 +175,23 @@ export default async function HomePage() {
           <InternationalDestCarousel dashboardData={data.internationalDestinations} />
         </div>
 
-        {/* Holiday By Themes */}
-        <Container size='xl' className='py-16'>
-          <Title order={2} className='mb-8 text-center text-3xl font-bold'>
-            Holiday Themes
+        {/* Explore the unexplored */}
+        {/* <div className='px-4 py-12 sm:px-6 lg:px-32 xl:px-28'>
+          <Title order={2} className='mb-2 text-center text-3xl font-bold'>
+            Explore the unexplored
           </Title>
-          <div className='grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-4'>
-            {data.holidayThemes.map((theme) => (
-              <div key={theme.displayName} className='group cursor-pointer'>
-                <div className='relative h-60 overflow-hidden rounded-xl shadow-md transition-transform duration-300 group-hover:scale-105 group-hover:shadow-xl'>
-                  <ImageKit
-                    src={theme.imageUrl || '/placeholder.svg'}
-                    alt={theme.displayName}
-                    width={320}
-                    height={240}
-                    className='h-full w-full object-cover'
-                    transformation={`h-240,w-320,cm-extrude,fo-auto`}
-                  />
-                  <div className='absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70'></div>
-                  <div className='absolute bottom-0 left-0 p-4 text-white'>
-                    <h3 className='text-xl font-bold'>{theme.displayName}</h3>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </Container>
+
+          <UnexploredCaraousel dashboardData={data.internationalDestinations} />
+        </div> */}
+
+        {/* Holiday by themes */}
+        <div className='max-w-screen overflow-hidden px-4 py-12 sm:px-6 lg:px-32 xl:px-28'>
+          <Title order={2} className='mb-2 text-center text-3xl font-bold'>
+            Holiday By Themes
+          </Title>
+
+          <HolidayThemesCaraousel dashboardData={data.holidayThemes} />
+        </div>
       </div>
     </MainLayout>
   );
