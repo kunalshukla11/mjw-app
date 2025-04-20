@@ -43,10 +43,11 @@ docker run -itd \
  -p 3000:3000 \
  mjw_app
 
-TODO-Add contact using reactIcon and avaatar > use popupForLoging> Use PopupforContact> Try to generalize contact and profile >
+TODO- Under / home page try to common/generalise all caraousel and cards
+TODO- Under / home page try generalise style as there is dupicacy in tailwind css style applied all over section try to have them common
 
 ## Environment variables order(overridden as it goes from top to bottom)
 
 - `.env`(mostly for local development)
 - `.env.docker.mjwapp` (mostly for docker on oci where this file will be created via terraform)
--  env from Docker Compose
+- env from Docker Compose

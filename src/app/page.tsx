@@ -17,6 +17,10 @@ import TopPackagesCarousel from '../components/home/TopPackagesCarousel';
 import InternationalDestCarousel from '../components/home/InternationDestCarousel';
 import HolidayThemesCaraousel from '../components/home/HolidayThemesCarousel';
 import UnexploredCaraousel from '../components/home/UnexploredCarousel';
+import UserAssistance from '../components/home/UserAssistance';
+import UserReviews from '../components/home/UserReviews';
+import UserReviewsCarousel from '../components/home/UserReviewsCarousel';
+import AboutSection from '../components/home/AboutSection';
 
 export const metadata: Metadata = {
   title: 'Holiday Packages | Your Travel Company',
@@ -191,6 +195,27 @@ export default async function HomePage() {
           </Title>
 
           <HolidayThemesCaraousel dashboardData={data.holidayThemes} />
+        </div>
+        {/* User Assistance */}
+        <div className='max-w-screen overflow-hidden px-4 py-12 sm:px-6 lg:px-32 xl:px-28'>
+          <UserAssistance></UserAssistance>
+        </div>
+
+        <div className='bg-gradient-to-t from-blue-100 to-white'>
+          {/* User Reviews */}
+          <div className='max-w-screen overflow-hidden px-4 py-12 sm:px-6 lg:px-32 xl:px-28'>
+            <Title order={2} className='mb-2 text-center text-3xl font-bold'>
+              What Our Travelers Say
+            </Title>
+            <UserReviewsCarousel reviews={data.reviews}></UserReviewsCarousel>
+          </div>
+          {/* About Section */}
+          <div className='max-w-screen overflow-hidden px-4 py-12 sm:px-6 lg:px-32 xl:px-28'>
+            <Title order={2} className='mb-2 text-center text-3xl font-bold'>
+              Book Your Holiday With MyJourneyWings
+            </Title>
+            <AboutSection></AboutSection>
+          </div>
         </div>
       </div>
     </MainLayout>
