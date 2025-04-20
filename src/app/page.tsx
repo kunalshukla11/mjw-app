@@ -18,7 +18,6 @@ import InternationalDestCarousel from '../components/home/InternationDestCarouse
 import HolidayThemesCaraousel from '../components/home/HolidayThemesCarousel';
 import UnexploredCaraousel from '../components/home/UnexploredCarousel';
 import UserAssistance from '../components/home/UserAssistance';
-import UserReviews from '../components/home/UserReviews';
 import UserReviewsCarousel from '../components/home/UserReviewsCarousel';
 import AboutSection from '../components/home/AboutSection';
 
