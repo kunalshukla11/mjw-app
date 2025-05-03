@@ -6,7 +6,7 @@ export interface Review {
   comment: string;
   rating: number;
   username: string;
-  date: number[];
+  date: Date;
   place: string;
 }
 
