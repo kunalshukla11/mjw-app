@@ -11,6 +11,15 @@ export default function UserReviewsCard({ review }: { review: Review }) {
     });
   };
 
+  const formattedDate = (date: Date) => {
+    const options: Intl.DateTimeFormatOptions = {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+    };
+    return date.toLocaleDateString('en-US', options);
+  };
+
   return (
     <Card shadow='sm' p='lg' radius='lg' className='h-full border-2 border-indigo-200'>
       <Card.Section className='rounded-md bg-cyan-50 p-4'>
@@ -30,10 +39,10 @@ export default function UserReviewsCard({ review }: { review: Review }) {
 
         <div className='text-right'>
           <Text size='sm' color='dimmed'>
-            {review.place}
+            {review.place}:
           </Text>
           <Text size='xs' color='dimmed'>
-            {formatDate(review.date)}
+            {formattedDate(new Date(review.date))}
           </Text>
         </div>
       </div>
