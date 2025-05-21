@@ -1,6 +1,6 @@
 /* tslint:disable */
 /* eslint-disable */
-// Generated using typescript-generator version 3.2.1263 on 2025-04-20 13:40:16.
+// Generated using typescript-generator version 3.2.1263 on 2025-05-09 22:43:49.
 
 export interface Review {
   comment: string;
@@ -16,8 +16,27 @@ export interface HolidayDashboard {
   topPackages: DashboardData[];
   internationalDestinations: DashboardData[];
   unexploredDestinations: DashboardData[];
-  holidayThemes: DashboardData[];
+  themedDestinations: DashboardData[];
   reviews: Review[];
+}
+
+export interface Holiday {
+  id: number;
+  name: string;
+  location: Location;
+  itinerary: Itinerary;
+  standardPrice: number;
+  superiorPrice: number;
+  luxuryPrice: number;
+  currency: Currency;
+  holidayThemes: HolidayTheme[];
+}
+
+export interface HolidaySearchRequest {
+  cityCode?: string | null;
+  stateCode?: string | null;
+  countryCode?: string | null;
+  theme?: Theme | null;
 }
 
 export interface DashboardData {
@@ -32,6 +51,38 @@ export interface DashboardData {
   holidayId: number;
 }
 
+export interface Location extends Validatable {
+  id: number;
+  city: string;
+  cityCode: string;
+  state: string;
+  stateCode: string;
+  country: string;
+  countryCode: string;
+  imagesUrl: string[];
+}
+
+export interface Itinerary {
+  id: number;
+  name: string;
+  identifier: string;
+  location: Location;
+  duration: number;
+  itineraryDetail: ItineraryDetail;
+}
+
+export interface HolidayTheme {
+  id: number;
+  theme: Theme;
+  holidayId: number;
+}
+
+export interface Validatable {}
+
+export interface ItineraryDetail {
+  name: string;
+}
+
 export interface HttpClient {
   request<R>(requestConfig: {
     method: string;
@@ -43,6 +94,38 @@ export interface HttpClient {
 }
 
 export type RestResponse<R> = Promise<R>;
+
+export type Currency =
+  | 'INR'
+  | 'USD'
+  | 'EUR'
+  | 'GBP'
+  | 'AUD'
+  | 'CAD'
+  | 'CHF'
+  | 'CNY'
+  | 'JPY'
+  | 'KRW'
+  | 'MXN'
+  | 'RUB';
+
+export type Theme =
+  | 'CULTURE'
+  | 'ADVENTURE'
+  | 'BEACH'
+  | 'CRUISE'
+  | 'FAMILY'
+  | 'FOOD'
+  | 'LUXURY'
+  | 'NATURE'
+  | 'RELAXATION'
+  | 'SHOPPING'
+  | 'SKIING'
+  | 'SPORTS'
+  | 'WELLNESS'
+  | 'PILGRIMAGE'
+  | 'PARTY'
+  | 'WEDDING';
 
 export type DisplayTarget = 'CITY' | 'STATE' | 'COUNTRY';
 

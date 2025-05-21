@@ -8,7 +8,13 @@ import Header from './header/Header';
 
 import SideBarNavItem from './SideBarNavItem';
 import { Footer } from './footer/Footer';
-export default function MainLayout({ children }: { children: any }) {
+export default function MainLayout({
+  children,
+  showSubHeader,
+}: {
+  children: any;
+  showSubHeader?: boolean;
+}) {
   const [opened, { open, close }] = useDisclosure(false);
   return (
     <div className='flex'>
@@ -20,8 +26,8 @@ export default function MainLayout({ children }: { children: any }) {
           ))}
         </div>
       </Drawer>
-      <main className='flex-1 overflow-hidden'>
-        <Header openDrawer={open} />
+      <main className='flex-1 overflow-visible'>
+        <Header showSubHeader={showSubHeader} openDrawer={open} />
         <PageWrapper>{children}</PageWrapper>
 
         <Footer />

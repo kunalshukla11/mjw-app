@@ -192,9 +192,9 @@ export default async function HomePage() {
           <Title order={2} className='mb-2 text-center text-3xl font-bold'>
             Holiday By Themes
           </Title>
-
-          <HolidayThemesCaraousel dashboardData={data.holidayThemes} />
+          <HolidayThemesCaraousel dashboardData={data.themedDestinations} />
         </div>
+
         {/* User Assistance */}
         <div className='max-w-screen overflow-hidden px-4 py-12 sm:px-6 lg:px-32 xl:px-28'>
           <UserAssistance></UserAssistance>

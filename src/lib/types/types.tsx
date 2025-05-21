@@ -1,3 +1,5 @@
+import { Theme } from './models/mjw-service';
+
 export type NavItem = {
   title: string;
   path: string;
@@ -42,4 +44,16 @@ export type LoginRegisterActionResponse = {
   success: boolean;
   message: string;
   profile: ProfileResponse | undefined;
+};
+
+export type HolidayFilters = {
+  cityCode?: string;
+  stateCode?: string;
+  countryCode?: string;
+  theme?: Theme;
+  sortBy?: string;
+  minPrice?: number;
+  maxPrice?: number;
+  duration?: number;
+  packageType?: string;
 };
