@@ -12,3 +12,39 @@ export const getSlugFromDashboardData = function (dashboardData: DashboardData):
       return dashboardData.displayName.toLowerCase().replace(/\s+/g, '-');
   }
 };
+
+export const getDestinationQueryParams = function (dashboardData: DashboardData): string {
+  const params = new URLSearchParams();
+
+  if (dashboardData.cityCode) {
+    params.set('cityCode', dashboardData.cityCode);
+  }
+  if (dashboardData.stateCode) {
+    params.set('stateCode', dashboardData.stateCode);
+  }
+  if (dashboardData.countryCode) {
+    params.set('countryCode', dashboardData.countryCode);
+  }
+  return params.toString();
+};
+
+export const getDisplayDestnation = function (
+  cityCode?: string,
+  stateCode?: string,
+  countryCode?: string,
+  theme?: string
+): string {
+  if (theme) {
+    return theme;
+  }
+  if (cityCode && stateCode && countryCode) {
+    return cityCode;
+  }
+  if (stateCode && countryCode) {
+    return stateCode;
+  }
+  if (countryCode) {
+    return countryCode;
+  }
+  return 'Unknown Destination';
+};

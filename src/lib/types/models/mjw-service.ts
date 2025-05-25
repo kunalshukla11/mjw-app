@@ -1,6 +1,6 @@
 /* tslint:disable */
 /* eslint-disable */
-// Generated using typescript-generator version 3.2.1263 on 2025-05-09 22:43:49.
+// Generated using typescript-generator version 3.2.1263 on 2025-05-25 14:59:58.
 
 export interface Review {
   comment: string;
@@ -48,6 +48,7 @@ export interface DashboardData {
   countryCode: string;
   imageUrl: string;
   displayTarget: DisplayTarget;
+  theme: Theme;
   holidayId: number;
 }
 
@@ -95,20 +96,6 @@ export interface HttpClient {
 
 export type RestResponse<R> = Promise<R>;
 
-export type Currency =
-  | 'INR'
-  | 'USD'
-  | 'EUR'
-  | 'GBP'
-  | 'AUD'
-  | 'CAD'
-  | 'CHF'
-  | 'CNY'
-  | 'JPY'
-  | 'KRW'
-  | 'MXN'
-  | 'RUB';
-
 export type Theme =
   | 'CULTURE'
   | 'ADVENTURE'
@@ -125,9 +112,24 @@ export type Theme =
   | 'WELLNESS'
   | 'PILGRIMAGE'
   | 'PARTY'
-  | 'WEDDING';
+  | 'WEDDING'
+  | 'HONEYMOON';
 
-export type DisplayTarget = 'CITY' | 'STATE' | 'COUNTRY';
+export type Currency =
+  | 'INR'
+  | 'USD'
+  | 'EUR'
+  | 'GBP'
+  | 'AUD'
+  | 'CAD'
+  | 'CHF'
+  | 'CNY'
+  | 'JPY'
+  | 'KRW'
+  | 'MXN'
+  | 'RUB';
+
+export type DisplayTarget = 'CITY' | 'STATE' | 'COUNTRY' | 'THEME';
 
 function uriEncoding(template: TemplateStringsArray, ...substitutions: any[]): string {
   let result = '';

@@ -26,7 +26,7 @@ export default function MainLayout({
           ))}
         </div>
       </Drawer>
-      <main className='flex-1 overflow-visible'>
+      <main className='flex-1 overflow-hidden'>
         <Header showSubHeader={showSubHeader} openDrawer={open} />
         <PageWrapper>{children}</PageWrapper>
 
