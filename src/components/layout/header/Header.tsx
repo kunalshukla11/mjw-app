@@ -21,7 +21,7 @@ export default function Header({
     <>
       {/* Main header Part */}
       {/* Header to  have three parts one left, right and one on center */}
-      <div className='z-10 flex h-14 w-full items-center justify-between bg-white md:sticky md:h-20 md:border-b'>
+      <div className='z-10 flex h-14 w-full items-center justify-between bg-white md:sticky md:top-0 md:h-20 md:border-b'>
         <div id='headerLeft' className='flex items-center space-x-10'>
           <Burger classNames={{ root: 'md:hidden pl-6' }} onClick={openDrawer} />
           <MjwLogo />

@@ -48,7 +48,7 @@ export default async function HolidaysListPage(props: {
     searchParams.theme || undefined
   );
   return (
-    <MainLayout>
+    <MainLayout showSubHeader={false}>
       <div className='container mx-auto px-4 py-8'>
         {/* Breadcrumbs or Title */}
         {/* You might want more sophisticated breadcrumbs */}
