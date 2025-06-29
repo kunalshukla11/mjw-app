@@ -82,6 +82,7 @@ export interface Validatable {}
 
 export interface ItineraryDetail {
   name: string;
+  mainImageUrl: string;
 }
 
 export interface HttpClient {

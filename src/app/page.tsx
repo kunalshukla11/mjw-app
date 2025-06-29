@@ -6,7 +6,7 @@ import { getHolidayDashboard } from '../lib/services/holiday/holidayService';
 import Image from 'next/image';
 import { Metadata } from 'next';
 import { Card, Container, Title, Paper, Badge, Text } from '@mantine/core';
-import ImageKit from '../components/common/image-kit';
+import ImageKit from '../components/common/ImageKit';
 import TopDestinationCarousel from '../components/home/TopDestinationCarousel';
 import { DashboardData } from '../lib/types/models/mjw-service';
 import { D } from '@tanstack/react-query-devtools/build/legacy/ReactQueryDevtools-Cn7cKi7o';

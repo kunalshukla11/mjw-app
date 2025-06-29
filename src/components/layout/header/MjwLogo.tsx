@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import ImageKit from '../../common/image-kit';
+import ImageKit from '../../common/ImageKit';
 
 export default function MjwLogo() {
   return (

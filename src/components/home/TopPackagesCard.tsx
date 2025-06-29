@@ -1,7 +1,7 @@
 import { DashboardData } from '@/src/lib/types/models/mjw-service';
 import { Card, Text, Button, Group, Badge, CardSection, Paper } from '@mantine/core';
 import { FaArrowRight, FaArrowLeft, FaUmbrella } from 'react-icons/fa';
-import ImageKit from '../common/image-kit';
+import ImageKit from '../common/ImageKit';
 
 export default function TopPackagesCard({ dashboadElement }: { dashboadElement: DashboardData }) {
   return (

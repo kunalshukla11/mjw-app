@@ -1,6 +1,6 @@
 import { DashboardData } from '@/src/lib/types/models/mjw-service';
 import { Badge, Card, Title, Text, Button } from '@mantine/core';
-import ImageKit from '../common/image-kit';
+import ImageKit from '../common/ImageKit';
 import { FaArrowRight } from 'react-icons/fa';
 import { titleCase } from '@/src/lib/utils/utils';
 
