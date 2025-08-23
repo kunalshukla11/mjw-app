@@ -1,0 +1,49 @@
+import { create } from 'zustand';
+import { HolidaySearchRequest } from '../types/models/mjw-service';
+
+// Extend HolidaySearchRequest type with additional UI state properties or create a custom type
+type HolidayFilterState = Omit<
+  HolidaySearchRequest,
+  'cityCode' | 'stateCode' | 'countryCode' | 'theme'
+> & {
+  // Add missing properties that are used in the store
+  sortBy: string | null;
+  minPrice: number | null;
+  maxPrice: number | null;
+  duration: number | null;
+  packageType: string | null;
+
+  // Setters for the filters
+  setSortBy: (sortBy: string | null) => void;
+  setPriceRange: (min: number | null, max: number | null) => void;
+  setDuration: (duration: number | null) => void;
+  setPackageType: (packageType: string | null) => void;
+  clearFilters: () => void;
+  // Add setters for other filters if needed
+};
+
+export const useHolidayFilterStore = create<HolidayFilterState>((set) => ({
+  // Initial filter values
+  sortBy: null,
+  minPrice: null,
+  maxPrice: null,
+  duration: null,
+  packageType: null,
+
+  // Setters
+  setSortBy: (sortBy) => set({ sortBy }),
+  setPriceRange: (min, max) => set({ minPrice: min, maxPrice: max }),
+  setDuration: (duration) => set({ duration }),
+  setPackageType: (packageType) => set({ packageType }),
+
+  // Clear all filters (excluding base location filters from URL)
+  clearFilters: () =>
+    set({
+      sortBy: null,
+      minPrice: null,
+      maxPrice: null,
+      duration: null,
+      packageType: null,
+      // Reset other filters...
+    }),
+}));

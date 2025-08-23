@@ -1,7 +1,8 @@
 import { DashboardData } from '@/src/lib/types/models/mjw-service';
 import { Badge, Card, Title, Text, Button } from '@mantine/core';
-import ImageKit from '../common/image-kit';
+import ImageKit from '../common/ImageKit';
 import { FaArrowRight } from 'react-icons/fa';
+import { titleCase } from '@/src/lib/utils/utils';
 
 export default function HolidayThemesCard({ dashboadElement }: { dashboadElement: DashboardData }) {
   return (
@@ -14,7 +15,7 @@ export default function HolidayThemesCard({ dashboadElement }: { dashboadElement
     >
       <ImageKit
         src={dashboadElement.imageUrl || '/placeholder.svg'}
-        alt={dashboadElement.displayName}
+        alt={dashboadElement.theme}
         fill
         style={{
           objectFit: 'contain', // cover, contain, none
@@ -25,7 +26,7 @@ export default function HolidayThemesCard({ dashboadElement }: { dashboadElement
 
       <div className='absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-50'></div>
       <div className='absolute bottom-0 left-0 p-2 text-white'>
-        <Text className='text-2xl font-bold'>{dashboadElement.displayName}</Text>
+        <Text className='text-2xl font-bold'>{titleCase(dashboadElement.theme)}</Text>
         <Button className='flex items-center gap-1 p-2' rightSection={<FaArrowRight size={16} />}>
           Explore
         </Button>

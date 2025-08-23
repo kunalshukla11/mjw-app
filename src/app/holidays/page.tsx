@@ -8,7 +8,7 @@ export default function HomePage() {
     <MainLayout>
       <span className='text-4xl font-bold text-red-200'>Home</span>
       <h1>Hello Bro</h1>
-      <Welcome route='PACKAGES' />
+      <Welcome route='HOLIDAYS' />
       <ColorSchemeToggle />
       <Group align='center' justify='center'>
         <div className='h-64 w-1/3 rounded-lg border border-dashed border-indigo-400' />

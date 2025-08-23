@@ -1,7 +1,7 @@
 import { NavItem } from '../types/types';
 
 export function shouldHighlight(pathName: string, navItem: NavItem): boolean {
-  return (pathName === '/' && navItem.title === 'Packages') || pathName === navItem.path;
+  return (pathName === '/' && navItem.title === 'Holidays') || pathName === navItem.path;
 }
 
 export function parseSetCookieHeader(
@@ -35,4 +35,12 @@ export function parseSetCookieHeader(
     cookies.push({ name: name.trim(), value: value.trim(), options });
   }
   return cookies;
+}
+
+export function titleCase(str: string): string {
+  return str
+    .toLowerCase()
+    .split(' ')
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
 }

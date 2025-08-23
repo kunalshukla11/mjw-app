@@ -17,7 +17,7 @@ export default function TopPackagesCarousel({ dashboardData }: Props) {
 
   return (
     <Carousel
-      className='mt-2 border border-gray-200'
+      className='mt-2'
       height={550}
       withIndicators
       withControls={!isMobile}

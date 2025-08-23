@@ -1,6 +1,6 @@
 import { DashboardData } from '@/src/lib/types/models/mjw-service';
 import { Badge, Card, Title, Text } from '@mantine/core';
-import ImageKit from '../common/image-kit';
+import ImageKit from '../common/ImageKit';
 
 export default function InternationalDestCard({
   dashboadElement,

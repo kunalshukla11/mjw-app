@@ -6,7 +6,7 @@ import { getHolidayDashboard } from '../lib/services/holiday/holidayService';
 import Image from 'next/image';
 import { Metadata } from 'next';
 import { Card, Container, Title, Paper, Badge, Text } from '@mantine/core';
-import ImageKit from '../components/common/image-kit';
+import ImageKit from '../components/common/ImageKit';
 import TopDestinationCarousel from '../components/home/TopDestinationCarousel';
 import { DashboardData } from '../lib/types/models/mjw-service';
 import { D } from '@tanstack/react-query-devtools/build/legacy/ReactQueryDevtools-Cn7cKi7o';
@@ -192,9 +192,9 @@ export default async function HomePage() {
           <Title order={2} className='mb-2 text-center text-3xl font-bold'>
             Holiday By Themes
           </Title>
-
-          <HolidayThemesCaraousel dashboardData={data.holidayThemes} />
+          <HolidayThemesCaraousel dashboardData={data.themedDestinations} />
         </div>
+
         {/* User Assistance */}
         <div className='max-w-screen overflow-hidden px-4 py-12 sm:px-6 lg:px-32 xl:px-28'>
           <UserAssistance></UserAssistance>
