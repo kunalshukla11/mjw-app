@@ -16,7 +16,7 @@
     "prettier:write": "prettier --write \"**/*.{ts,tsx}\"",
     "test": "npm run prettier:check && npm run lint && npm run typecheck && npm run jest",
     "copy-types": "copyfiles -f ../mjw-service/target/typescript-generator/mjw-service.ts ./src/lib/types/models/",
-    "generate-types": "cd ../mjw-service && mvn compile && mvn typescript-generator:generate",
+    "generate-types": "cd ../mjw-service && mvn compile -Dcheckstyle.skip=true && mvn typescript-generator:generate -Dcheckstyle.skip=true",
     "update-types": "npm run generate-types && npm run copy-types"
   },
   "dependencies": {

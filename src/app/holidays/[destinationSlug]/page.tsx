@@ -1,5 +1,9 @@
 import MainLayout from '@/src/components/layout/MainLayout';
-import { Holiday, HolidaySearchRequest } from '../../../lib/types/models/mjw-service';
+import {
+  Holiday,
+  HolidaySearchRequest,
+  HolidaySearchResponse,
+} from '../../../lib/types/models/mjw-service';
 import { HolidayFilters } from '@/src/lib/types/types';
 import { Title, Loader } from '@mantine/core';
 import { Suspense } from 'react';
@@ -40,7 +44,7 @@ export default async function HolidaysListPage(props: {
     // packageType: searchParams.packageType || undefined,
   };
 
-  const holidays: Holiday[] = await searchHoliday(serverFilters);
+  const holidaySearchResponse: HolidaySearchResponse = await searchHoliday(serverFilters);
   const displayDestination = getDisplayDestnation(
     searchParams.cityCode || undefined,
     searchParams.stateCode || undefined,
@@ -86,7 +90,7 @@ export default async function HolidaysListPage(props: {
             </div>
           }
         >
-          <HolidayListComponent holidays={holidays} />
+          <HolidayListComponent holidays={holidaySearchResponse.holidays} />
         </Suspense>
       </div>
     </MainLayout>

@@ -1,7 +1,7 @@
 'use server';
 
 import axios, { AxiosResponse } from 'axios';
-import { HolidayDashboard } from '../../types/models/mjw-service';
+import { HolidayDashboard, HolidaySearchResponse } from '../../types/models/mjw-service';
 import { HolidaySearchRequest } from '../../types/models/mjw-service';
 import { Holiday } from '../../types/models/mjw-service';
 import { HolidayFilters } from '../../types/types';
@@ -22,7 +22,9 @@ export async function getHolidayDashboard(): Promise<HolidayDashboard> {
   }
 }
 
-export async function searchHoliday(holidayFilters: HolidayFilters): Promise<Holiday[]> {
+export async function searchHoliday(
+  holidayFilters: HolidayFilters
+): Promise<HolidaySearchResponse> {
   const searchRequest: HolidaySearchRequest = {
     cityCode: holidayFilters.cityCode || null,
     stateCode: holidayFilters.stateCode || null,
