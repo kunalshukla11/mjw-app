@@ -5,6 +5,7 @@ import { HolidayDashboard, HolidaySearchResponse } from '../../types/models/mjw-
 import { HolidaySearchRequest } from '../../types/models/mjw-service';
 import { Holiday } from '../../types/models/mjw-service';
 import { HolidayFilters } from '../../types/types';
+import { apiClient } from '../common/apiClient';
 
 export async function getHolidayDashboard(): Promise<HolidayDashboard> {
   try {
@@ -33,14 +34,16 @@ export async function searchHoliday(
   };
 
   try {
-    const response: AxiosResponse = await axios.post(
-      `${process.env.MJW_SERVICE_URL}/api/holiday/search`,
-      searchRequest,
-      {
-        headers: { 'Content-Type': 'application/json' },
-        withCredentials: true,
-      }
-    );
+    // const response: AxiosResponse = await axios.post(
+    //   `${process.env.MJW_SERVICE_URL}/api/holiday/search`,
+    //   searchRequest,
+    //   {
+    //     headers: { 'Content-Type': 'application/json' },
+    //     withCredentials: true,
+    //   }
+    // );
+
+    const response: AxiosResponse = await apiClient.post('/holiday/search', searchRequest);
     return response.data;
   } catch (error) {
     console.error('Error searching holiday:', error);
