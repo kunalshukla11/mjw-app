@@ -25,6 +25,12 @@ export async function POST(request: Request) {
           id: 115,
           name: '3 day Delhi',
           identifier: 'DEL_IN_3_3dayDelhi',
+          description: {
+            shortDescription:
+              'Experience the vibrant culture and stunning landscapes of Chennai over 5 days.',
+            longDescription:
+              'Immerse yourself in the rich heritage and breathtaking scenery of Chennai, from its bustling markets to serene beaches.',
+          },
           location: {
             id: 32,
             city: 'Delhi',
@@ -67,6 +73,12 @@ export async function POST(request: Request) {
           id: 95,
           name: '5 day Chennai',
           identifier: 'DEL_IN_5_5dayChennai',
+          description: {
+            shortDescription:
+              'Experience the vibrant culture and stunning landscapes of Chennai over 5 days.',
+            longDescription:
+              'Immerse yourself in the rich heritage and breathtaking scenery of Chennai, from its bustling markets to serene beaches.',
+          },
           location: {
             id: 32,
             city: 'Delhi',
