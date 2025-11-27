@@ -1,6 +1,6 @@
 /* tslint:disable */
 /* eslint-disable */
-// Generated using typescript-generator version 3.2.1263 on 2025-11-07 13:55:57.
+// Generated using typescript-generator version 3.2.1263 on 2025-11-27 14:53:25.
 
 export interface Review {
     comment: string;
