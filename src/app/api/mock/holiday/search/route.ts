@@ -20,9 +20,24 @@ const DelhiResponse = {
           'https://ik.imagekit.io/r4qffffod/Locations/Machu%20Picchu%20Through%20Clouds.jpg',
         ],
       },
+
       itinerary: {
         id: 115,
         name: '3 day Delhi',
+        facility: {
+          hotelStatus: true,
+          sightseeingStatus: true,
+          transferStatus: true,
+          mealStatus: true,
+          flightStatus: true,
+        },
+        highlights: [
+          "4 star Accommodation",
+          "London city tour with London Eye & Madame Tussaud's",
+          "Visit Lords Cricket Stadium",
+          "Experience the high speed train from London to Paris",
+          "Visit Eiffel Tower & River Seine Cruise"
+        ],
         identifier: 'DEL_IN_3_3dayDelhi',
         description: {
           shortDescription: 'A short Delhi description.',
@@ -56,10 +71,10 @@ const DelhiResponse = {
       holidayThemes: [],
     },
     {
-      id: 103,
-      name: 'Delhi Bad Walk',
+      id: 104,
+      name: 'Red Fort Walk',
       location: {
-        id: 32,
+        id: 33,
         city: 'Delhi',
         cityCode: 'DEL',
         state: 'Delhi',
@@ -67,12 +82,27 @@ const DelhiResponse = {
         country: 'India',
         countryCode: 'IN',
         imagesUrl: [
-          'https://ik.imagekit.io/r4qffffod/Locations/Machu%20Picchu%20Through%20Clouds.jpg',
+          'https://ik.imagekit.io/r4qffffod/Locations/Lucknow.jpg',
         ],
       },
+
       itinerary: {
         id: 115,
         name: '3 day Delhi',
+        facility: {
+          hotelStatus: true,
+          sightseeingStatus: true,
+          transferStatus: true,
+          mealStatus: true,
+          flightStatus: true,
+        },
+        highlights: [
+          "Mini Train Ride in Vaduz",
+          "Versailles Palace",
+          "Romantic River Seine Cruise",
+          "Visit Iconic Eiffel Tower",
+          "Experience a thrilling journey on the Rotair as you climb to the summit of Mt. Titlis."
+        ],
         identifier: 'DEL_IN_3_3dayDelhi',
         description: {
           shortDescription: 'A short Delhi description.',
@@ -121,11 +151,23 @@ const MumbaiResponse = {
         stateCode: 'MH',
         country: 'India',
         countryCode: 'IN',
-        imagesUrl: ['https://ik.imagekit.io/sample/mumbai.jpg'],
+        imagesUrl: ['https://ik.imagekit.io/r4qffffod/Locations/TheCliffsofCinqueTerre.jpg'],
       },
       itinerary: {
         id: 210,
         name: '2 day Mumbai',
+        facility: {
+          hotelStatus: true,
+          sightseeingStatus: true,
+          transferStatus: true,
+          mealStatus: true,
+          flightStatus: true,
+        },
+        highlights: [
+          "Guided tour as per Itinerary",
+          "4-star accommodations and daily breakfast",
+          "Indian and local cuisine options"
+        ],
         identifier: 'BOM_IN_2_2dayMumbai',
         description: {
           shortDescription: 'Explore Mumbai in 2 days.',
@@ -169,11 +211,23 @@ const GoaResponse = {
         stateCode: 'TN',
         country: 'India',
         countryCode: 'IN',
-        imagesUrl: ['https://ik.imagekit.io/sample/chennai.jpg'],
+        imagesUrl: ['https://ik.imagekit.io/r4qffffod/Locations/TheCliffsofCinqueTerre.jpg'],
       },
       itinerary: {
         id: 305,
         name: '5 day Chennai',
+        facility: {
+          hotelStatus: true,
+          sightseeingStatus: true,
+          transferStatus: true,
+          mealStatus: true,
+          flightStatus: true,
+        },
+        highlights: [
+          "Guided tours in Paris, Florence & Rome",
+          "Top attractions and sightseeing",
+          "Professional & knowledgeable Tour Manager"
+        ],
         identifier: 'MAA_IN_5_5dayChennai',
         description: {
           shortDescription: 'Experience Chennai over 5 days.',
@@ -222,6 +276,18 @@ const BengaluruResponse = {
       itinerary: {
         id: 410,
         name: '3 day Bengaluru',
+        facility: {
+          hotelStatus: true,
+          sightseeingStatus: true,
+          transferStatus: true,
+          mealStatus: true,
+          flightStatus: true,
+        },
+        highlights: [
+          "Guided tours in Paris, Florence & Rome",
+          "Top attractions and sightseeing",
+          "Professional & knowledgeable Tour Manager"
+        ],
         identifier: 'BLR_IN_3_3dayBengaluru',
         description: {
           shortDescription: 'Parks and IT hubs of Bengaluru.',

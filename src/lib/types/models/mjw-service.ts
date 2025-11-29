@@ -71,10 +71,20 @@ export interface Location extends Validatable {
 export interface Itinerary {
     id: number;
     name: string;
+    facility: ItineraryFacility;
+    highlights: string[];
     identifier: string;
     location: Location;
     duration: number;
     itineraryDetail: ItineraryDetail;
+}
+
+export interface ItineraryFacility {
+    hotelStatus: boolean;
+    sightseeingStatus?: boolean;
+    transferStatus?: boolean;
+    mealStatus?: boolean;
+    flightStatus?: boolean;
 }
 
 export interface HolidayTheme {

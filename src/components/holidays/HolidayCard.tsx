@@ -1,8 +1,14 @@
 import { Holiday } from '@/src/lib/types/models/mjw-service';
 import ImageKit from '../common/ImageKit';
-import { Card, Text, Badge, Button, Group } from '@mantine/core';
+import { Card, List, Text, Badge, Button, Group } from '@mantine/core';
 import { CardSection } from '@mantine/core';
-
+import {
+  IconBuilding,
+  IconMapPin,
+  IconBus,
+  IconBurger,
+  IconPlane,
+} from "@tabler/icons-react";
 import { FaHotel, FaBinoculars, FaCar, FaUtensils, FaPlane } from 'react-icons/fa';
 
 interface HolidayCardProps {
@@ -37,7 +43,7 @@ export default function HolidayCard({ holiday }: HolidayCardProps) {
             style={{ objectFit: 'cover' }}
             sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
             quality={75}
-            // transformation='h-300,w-500' // Adjust transformation as needed
+          // transformation='h-300,w-500' // Adjust transformation as needed
           />{' '}
           {/* Fixed height for image container */}
           {durationText && (
@@ -65,6 +71,24 @@ export default function HolidayCard({ holiday }: HolidayCardProps) {
             {holiday.location?.state ? `, ${holiday.location.state}` : ''}
             {holiday.location?.country ? `, ${holiday.location.country}` : ''}
           </Text>
+
+          <Group className='.d-flex .align-items-center .gap-8' mb='md' wrap='wrap'>
+            {holiday.itinerary?.facility?.hotelStatus && <IconBuilding />}
+            {holiday.itinerary?.facility?.sightseeingStatus && <IconMapPin />}
+            {holiday.itinerary?.facility?.transferStatus && <IconBus />}
+            {holiday.itinerary?.facility?.mealStatus && <IconBurger />}
+            {holiday.itinerary?.facility?.flightStatus && <IconPlane />}
+          </Group>
+
+          <List spacing="xs" size="sm" bg='none' mb='md' withPadding>
+            {/* {holiday.itinerary?.highlights?.map((hl, index) => (
+              <List.Item key={index}>
+                <Text size="sm">{hl}</Text>
+              </List.Item>
+            ))} */}
+            {holiday.itinerary?.highlights?.map((hl, i) => hl ? <Badge key={i}>{hl}</Badge> : null)}
+
+          </List>
 
           {/* Included Icons */}
           <Group gap='xs' mb='md' wrap='wrap'>
