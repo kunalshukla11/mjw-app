@@ -8,8 +8,10 @@ import {
   IconBus,
   IconBurger,
   IconPlane,
+  IconEPassport,
+  
 } from "@tabler/icons-react";
-import { FaHotel, FaBinoculars, FaCar, FaUtensils, FaPlane } from 'react-icons/fa';
+import { FaCheck } from 'react-icons/fa';
 
 interface HolidayCardProps {
   holiday: Holiday;
@@ -72,23 +74,46 @@ export default function HolidayCard({ holiday }: HolidayCardProps) {
             {holiday.location?.country ? `, ${holiday.location.country}` : ''}
           </Text>
 
-          <Group className='.d-flex .align-items-center .gap-8' mb='md' wrap='wrap'>
+          <Group className="d-flex align-items-center gap-4" mb="md" wrap="wrap">
             {holiday.itinerary?.facility?.hotelStatus && <IconBuilding />}
             {holiday.itinerary?.facility?.sightseeingStatus && <IconMapPin />}
             {holiday.itinerary?.facility?.transferStatus && <IconBus />}
             {holiday.itinerary?.facility?.mealStatus && <IconBurger />}
             {holiday.itinerary?.facility?.flightStatus && <IconPlane />}
+            {holiday.itinerary?.facility?.visaStatus && <IconEPassport  />} {/* ✅ new Visa icon */}
           </Group>
 
-          <List spacing="xs" size="sm" bg='none' mb='md' withPadding>
-            {/* {holiday.itinerary?.highlights?.map((hl, index) => (
-              <List.Item key={index}>
-                <Text size="sm">{hl}</Text>
-              </List.Item>
-            ))} */}
-            {holiday.itinerary?.highlights?.map((hl, i) => hl ? <Badge key={i}>{hl}</Badge> : null)}
+          {/* <List spacing="xs" size="sm" bg='none' mb='md' withPadding>
+            {holiday.itinerary?.highlights?.map((hl, i) => hl ? <Badge color="#4b4b4b" key={i}>{hl}</Badge> : null)}
+          </List> */}
 
-          </List>
+
+
+          <Group gap="2px" mb="md">
+            {holiday.itinerary?.highlights?.map((hl, i) =>
+              hl ? (
+                <Badge
+                  key={i}
+                  variant="light"
+                  styles={{
+                    root: {
+                      backgroundColor: "#fff",
+                      color: "#4b4b4b",
+                      border: "none",
+                    },
+                  }}
+                >
+                  <span style={{ display: "inline-flex", alignItems: "center", gap: "4px" }}>
+                    <FaCheck style={{ color: "green" }} />
+                    {hl}
+                  </span>
+                </Badge>
+              ) : null
+            )}
+          </Group>
+
+
+
 
           {/* Included Icons */}
           <Group gap='xs' mb='md' wrap='wrap'>

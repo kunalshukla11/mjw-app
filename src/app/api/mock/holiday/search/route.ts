@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { on } from 'process';
 
 // Pre-built mock responses for different cities. Each response mirrors the
 // structure the frontend expects from the real API.
@@ -27,9 +28,10 @@ const DelhiResponse = {
         facility: {
           hotelStatus: true,
           sightseeingStatus: true,
-          transferStatus: true,
+          transferStatus: false,
           mealStatus: true,
-          flightStatus: true,
+          flightStatus: false,
+          visaStatus: true,
         },
         highlights: [
           "4 star Accommodation",
@@ -37,6 +39,196 @@ const DelhiResponse = {
           "Visit Lords Cricket Stadium",
           "Experience the high speed train from London to Paris",
           "Visit Eiffel Tower & River Seine Cruise"
+        ],
+        identifier: 'DEL_IN_3_3dayDelhi',
+        description: {
+          shortDescription: 'A short Delhi description.',
+          longDescription: 'A longer Delhi description with sights and food.',
+        },
+        location: {
+          id: 32,
+          city: 'Delhi',
+          cityCode: 'DEL',
+          state: 'Delhi',
+          stateCode: 'DL',
+          country: 'India',
+          countryCode: 'IN',
+          imagesUrl: [
+            'https://ik.imagekit.io/r4qffffod/Locations/Machu%20Picchu%20Through%20Clouds.jpg',
+          ],
+        },
+        duration: 3,
+        itineraryDetail: {
+          hasPickAndDrop: true,
+          hasVisa: true,
+          hasHotel: true,
+          name: 'Red Fort and India Gate',
+          higlights: ['4 star hotels', '4 Activities'],
+        },
+      },
+      standardPrice: 5500,
+      superiorPrice: 1500,
+      luxuryPrice: 2000,
+      currency: 'INR',
+      holidayThemes: [],
+    },{
+      id: 103,
+      name: 'Delhi Bad Walk',
+      location: {
+        id: 32,
+        city: 'Delhi',
+        cityCode: 'DEL',
+        state: 'Delhi',
+        stateCode: 'DL',
+        country: 'India',
+        countryCode: 'IN',
+        imagesUrl: [
+          'https://ik.imagekit.io/r4qffffod/Locations/London.jpg',
+        ],
+      },
+
+      itinerary: {
+        id: 115,
+        name: '3 day Delhi',
+        facility: {
+          hotelStatus: true,
+          sightseeingStatus: true,
+          transferStatus: true,
+          mealStatus: true,
+          flightStatus: true,
+          visaStatus: false,
+        },
+        highlights: [
+          "Guided tours in Paris, Florence & Rome",
+          "Top attractions and sightseeing",
+          "Professional & knowledgeable Tour Manager"
+        ],
+        identifier: 'DEL_IN_3_3dayDelhi',
+        description: {
+          shortDescription: 'A short Delhi description.',
+          longDescription: 'A longer Delhi description with sights and food.',
+        },
+        location: {
+          id: 32,
+          city: 'Delhi',
+          cityCode: 'DEL',
+          state: 'Delhi',
+          stateCode: 'DL',
+          country: 'India',
+          countryCode: 'IN',
+          imagesUrl: [
+            'https://ik.imagekit.io/r4qffffod/Locations/Machu%20Picchu%20Through%20Clouds.jpg',
+          ],
+        },
+        duration: 3,
+        itineraryDetail: {
+          hasPickAndDrop: true,
+          hasVisa: true,
+          hasHotel: true,
+          name: 'Red Fort and India Gate',
+          higlights: ['4 star hotels', '4 Activities'],
+        },
+      },
+      standardPrice: 5500,
+      superiorPrice: 1500,
+      luxuryPrice: 2000,
+      currency: 'INR',
+      holidayThemes: [],
+    },
+    {
+      id: 103,
+      name: 'Delhi Bad Walk',
+      location: {
+        id: 32,
+        city: 'Delhi',
+        cityCode: 'DEL',
+        state: 'Delhi',
+        stateCode: 'DL',
+        country: 'India',
+        countryCode: 'IN',
+        imagesUrl: [
+          'https://ik.imagekit.io/r4qffffod/Locations/TheCliffsofCinqueTerre.jpg',
+        ],
+      },
+
+      itinerary: {
+        id: 115,
+        name: '3 day Delhi',
+        facility: {
+          hotelStatus: false,
+          sightseeingStatus: true,
+          transferStatus: true,
+          mealStatus: true,
+          flightStatus: true,
+          visaStatus: true,
+        },
+        highlights: [
+          "City tour in : Zagreb, Sarajevo, Dubrovnik, Split, Ljubljana.",
+          "Jajce Waterfall"
+        ],
+        identifier: 'DEL_IN_3_3dayDelhi',
+        description: {
+          shortDescription: 'A short Delhi description.',
+          longDescription: 'A longer Delhi description with sights and food.',
+        },
+        location: {
+          id: 32,
+          city: 'Delhi',
+          cityCode: 'DEL',
+          state: 'Delhi',
+          stateCode: 'DL',
+          country: 'India',
+          countryCode: 'IN',
+          imagesUrl: [
+            'https://ik.imagekit.io/r4qffffod/Locations/Machu%20Picchu%20Through%20Clouds.jpg',
+          ],
+        },
+        duration: 3,
+        itineraryDetail: {
+          hasPickAndDrop: true,
+          hasVisa: true,
+          hasHotel: true,
+          name: 'Red Fort and India Gate',
+          higlights: ['4 star hotels', '4 Activities'],
+        },
+      },
+      standardPrice: 5500,
+      superiorPrice: 1500,
+      luxuryPrice: 2000,
+      currency: 'INR',
+      holidayThemes: [],
+    },
+    {
+      id: 103,
+      name: 'Delhi Bad Walk',
+      location: {
+        id: 32,
+        city: 'Delhi',
+        cityCode: 'DEL',
+        state: 'Delhi',
+        stateCode: 'DL',
+        country: 'India',
+        countryCode: 'IN',
+        imagesUrl: [
+          'https://ik.imagekit.io/r4qffffod/Locations/TakenOnCoolWinter.jpg',
+        ],
+      },
+
+      itinerary: {
+        id: 115,
+        name: '3 day Delhi',
+        facility: {
+          hotelStatus: true,
+          sightseeingStatus: true,
+          transferStatus: true,
+          mealStatus: true,
+          flightStatus: true,
+          visaStatus: true,
+        },
+        highlights: [
+          "City tour in : Oslo, Stockholm",
+          "Cinderella Castle in Polle",
+          "Lufthansa Airlines – Get the Best Prices on Request"
         ],
         identifier: 'DEL_IN_3_3dayDelhi',
         description: {

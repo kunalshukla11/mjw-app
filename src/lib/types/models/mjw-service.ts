@@ -85,6 +85,7 @@ export interface ItineraryFacility {
     transferStatus?: boolean;
     mealStatus?: boolean;
     flightStatus?: boolean;
+    visaStatus?: boolean;
 }
 
 export interface HolidayTheme {
