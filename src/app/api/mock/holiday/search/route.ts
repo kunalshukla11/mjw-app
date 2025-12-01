@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { on } from 'process';
 
 // Pre-built mock responses for different cities. Each response mirrors the
-// structure the frontend expects from the real API.
+// structure the frontend expects from the real API adding space.
 const DelhiResponse = {
   heroImageUrl: '',
   holidays: [
