@@ -3,13 +3,14 @@ import ImageKit from '../common/ImageKit';
 import { Card, List, Text, Badge, Button, Group } from '@mantine/core';
 import { CardSection } from '@mantine/core';
 import {
-  IconBuilding,
+  IconHotelService,
   IconMapPin,
   IconBus,
   IconBurger,
   IconPlane,
   IconEPassport,
-  
+  IconBuilding,
+
 } from "@tabler/icons-react";
 import { FaCheck } from 'react-icons/fa';
 
@@ -74,13 +75,13 @@ export default function HolidayCard({ holiday }: HolidayCardProps) {
             {holiday.location?.country ? `, ${holiday.location.country}` : ''}
           </Text>
 
-          <Group className="d-flex align-items-center gap-4" mb="md" wrap="wrap">
-            {holiday.itinerary?.facility?.hotelStatus && <IconBuilding />}
-            {holiday.itinerary?.facility?.sightseeingStatus && <IconMapPin />}
-            {holiday.itinerary?.facility?.transferStatus && <IconBus />}
-            {holiday.itinerary?.facility?.mealStatus && <IconBurger />}
-            {holiday.itinerary?.facility?.flightStatus && <IconPlane />}
-            {holiday.itinerary?.facility?.visaStatus && <IconEPassport  />} {/* ✅ new Visa icon */}
+          <Group gap="md" mb="md" wrap="wrap">
+            {holiday.itinerary?.facility?.hotelStatus && <IconBuilding size={32} color="#4CAF50" />}
+            {holiday.itinerary?.facility?.sightseeingStatus && <IconMapPin size={32} color="#2196F3" />}
+            {holiday.itinerary?.facility?.transferStatus && <IconBus size={32} color="#FF9800" />}
+            {holiday.itinerary?.facility?.mealStatus && <IconBurger size={32} color="#E91E63" />}
+            {holiday.itinerary?.facility?.flightStatus && <IconPlane size={32} color="#9C27B0" />}
+            {holiday.itinerary?.facility?.visaStatus && <IconEPassport size={32} color="#795548" />}
           </Group>
 
           {/* <List spacing="xs" size="sm" bg='none' mb='md' withPadding>
