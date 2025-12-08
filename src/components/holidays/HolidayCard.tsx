@@ -2,15 +2,26 @@ import { Holiday } from '@/src/lib/types/models/mjw-service';
 import ImageKit from '../common/ImageKit';
 import { Card, List, Text, Badge, Button, Group } from '@mantine/core';
 import { CardSection } from '@mantine/core';
+// import {
+//   IconHotelService,
+//   IconMapPin,
+//   IconBus,
+//   IconBurger,
+//   IconPlane,
+//   IconEPassport,
+//   IconBuilding,
+
+// } from "@tabler/icons-react";
 import {
-  IconHotelService,
-  IconMapPin,
-  IconBus,
-  IconBurger,
-  IconPlane,
-  IconEPassport,
-  IconBuilding,
-} from '@tabler/icons-react';
+  FaHotel,
+  FaMapMarkerAlt,
+  FaBus,
+  FaHamburger,
+  FaPlane,
+  FaPassport,
+  // FaBuilding,
+} from "react-icons/fa";
+
 import { FaCheck } from 'react-icons/fa';
 
 interface HolidayCardProps {
@@ -45,7 +56,7 @@ export default function HolidayCard({ holiday }: HolidayCardProps) {
             style={{ objectFit: 'cover' }}
             sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
             quality={75}
-            // transformation='h-300,w-500' // Adjust transformation as needed
+          // transformation='h-300,w-500' // Adjust transformation as needed
           />{' '}
           {/* Fixed height for image container */}
           {durationText && (
@@ -74,90 +85,36 @@ export default function HolidayCard({ holiday }: HolidayCardProps) {
             {holiday.location?.country ? `, ${holiday.location.country}` : ''}
           </Text>
 
-          <Group gap='md' mb='md' wrap='wrap'>
-            {holiday.itinerary?.facility?.hotelStatus && <IconBuilding size={32} color='#4CAF50' />}
-            {holiday.itinerary?.facility?.sightseeingStatus && (
-              <IconMapPin size={32} color='#2196F3' />
-            )}
-            {holiday.itinerary?.facility?.transferStatus && <IconBus size={32} color='#FF9800' />}
-            {holiday.itinerary?.facility?.mealStatus && <IconBurger size={32} color='#E91E63' />}
-            {holiday.itinerary?.facility?.flightStatus && <IconPlane size={32} color='#9C27B0' />}
-            {holiday.itinerary?.facility?.visaStatus && <IconEPassport size={32} color='#795548' />}
-          </Group>
 
-          {/* <List spacing="xs" size="sm" bg='none' mb='md' withPadding>
-            {holiday.itinerary?.highlights?.map((hl, i) => hl ? <Badge color="#4b4b4b" key={i}>{hl}</Badge> : null)}
-          </List> */}
+          <div className="flex gap-3 mb-4">
+            {holiday.itinerary?.facility?.hotelStatus && <FaHotel size={28} color='#636363' />}
+            {holiday.itinerary?.facility?.sightseeingStatus && <FaMapMarkerAlt size={28} color='#636363' />}
+            {holiday.itinerary?.facility?.transferStatus && <FaBus size={28} color='#636363' />}
+            {holiday.itinerary?.facility?.mealStatus && <FaHamburger size={28} color='#636363' />}
+            {holiday.itinerary?.facility?.flightStatus && <FaPlane size={28} color='#636363' />}
+            {holiday.itinerary?.facility?.visaStatus && <FaPassport size={28} color='#636363' />}
+          </div>
 
-          <Group gap='2px' mb='md'>
-            {holiday.itinerary?.highlights?.map((hl, i) =>
-              hl ? (
-                <Badge
-                  key={i}
-                  variant='light'
-                  styles={{
-                    root: {
-                      backgroundColor: '#fff',
-                      color: '#4b4b4b',
-                      border: 'none',
-                    },
-                  }}
-                >
-                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
-                    <FaCheck style={{ color: 'green' }} />
-                    {hl}
-                  </span>
-                </Badge>
-              ) : null
-            )}
-          </Group>
+          <div className="flex flex-col gap-1.5">
+            {holiday.itinerary?.highlights
+              ? holiday.itinerary.highlights.map((hl, i) =>
+                hl ? (
+                  <div key={i} className="w-full bg-white rounded-lg pr-2 flex items-start gap-.5 relative duration-200 whitespace-normal
+                  break-words text-wrap">
+                    <div className="h-5 w-5 rounded-full flex items-center justify-center">
+                      <FaCheck className="text-green-700 text-[10px]" />
+                    </div>
 
-          {/* Included Icons */}
-          <Group gap='xs' mb='md' wrap='wrap'>
-            {' '}
-            {/* Allow icons to wrap */}
-            {/* {includesHotel && (
-              <Group gap={4}>
-                <FaHotel title='Hotel' className='text-gray-600' />
-                <Text size='xs' c='dimmed'>
-                  Hotel
-                </Text>
-              </Group>
-            )}
-            {includesSightseeing && (
-              <Group gap={4}>
-                <FaBinoculars title='Sightseeing' className='text-gray-600' />
-                <Text size='xs' c='dimmed'>
-                  Sightseeing
-                </Text>
-              </Group>
-            )}
-            {includesTransfer && (
-              <Group gap={4}>
-                <FaCar title='Transfer' className='text-gray-600' />
-                <Text size='xs' c='dimmed'>
-                  Transfer
-                </Text>
-              </Group>
-            )}
-            {includesMeal && (
-              <Group gap={4}>
-                <FaUtensils title='Meal' className='text-gray-600' />
-                <Text size='xs' c='dimmed'>
-                  Meal
-                </Text>
-              </Group>
-            )}
-            {includesFlight && (
-              <Group gap={4}>
-                <FaPlane title='Flight' className='text-gray-600' />
-                <Text size='xs' c='dimmed'>
-                  Flight
-                </Text>
-              </Group>
-            )} */}
-            {/* Add more icons based on categories or flags */}
-          </Group>
+                    <span className="text-gray-950  font-sans text-xs leading-tight w-full">
+                      {hl}
+                    </span>
+                  </div>
+                ) : null
+              )
+              : null}
+          </div>
+          
+
         </div>
         <Group justify='space-between' mt='md'>
           {' '}
@@ -181,7 +138,7 @@ export default function HolidayCard({ holiday }: HolidayCardProps) {
           {/* Make button link to actual package details page later */}
           <Button
             component='a'
-            href={`/holiday/${holiday.id}`}
+            href={`/package/${holiday.id}`}
             variant='filled'
             color='orange'
             radius='md'
