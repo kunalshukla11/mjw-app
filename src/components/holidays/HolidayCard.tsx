@@ -20,7 +20,7 @@ import {
   FaPlane,
   FaPassport,
   // FaBuilding,
-} from "react-icons/fa";
+} from 'react-icons/fa';
 
 import { FaCheck } from 'react-icons/fa';
 
@@ -56,7 +56,7 @@ export default function HolidayCard({ holiday }: HolidayCardProps) {
             style={{ objectFit: 'cover' }}
             sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
             quality={75}
-          // transformation='h-300,w-500' // Adjust transformation as needed
+            // transformation='h-300,w-500' // Adjust transformation as needed
           />{' '}
           {/* Fixed height for image container */}
           {durationText && (
@@ -85,36 +85,39 @@ export default function HolidayCard({ holiday }: HolidayCardProps) {
             {holiday.location?.country ? `, ${holiday.location.country}` : ''}
           </Text>
 
-
-          <div className="flex gap-3 mb-4">
+          <div className='mb-4 flex gap-3'>
             {holiday.itinerary?.facility?.hotelStatus && <FaHotel size={28} color='#636363' />}
-            {holiday.itinerary?.facility?.sightseeingStatus && <FaMapMarkerAlt size={28} color='#636363' />}
-            {holiday.itinerary?.facility?.transferStatus && <FaBus size={28} color='#636363' />}
+            {holiday.itinerary?.facility?.sightseeingStatus && (
+              <FaMapMarkerAlt size={28} color='#636363' />
+            )}
+            {holiday.itinerary?.facility?.transferStatus && (
+              <FaBus size={28} className='text-gray-400' />
+            )}
             {holiday.itinerary?.facility?.mealStatus && <FaHamburger size={28} color='#636363' />}
             {holiday.itinerary?.facility?.flightStatus && <FaPlane size={28} color='#636363' />}
             {holiday.itinerary?.facility?.visaStatus && <FaPassport size={28} color='#636363' />}
           </div>
 
-          <div className="flex flex-col gap-1.5">
+          <div className='flex flex-col gap-1.5'>
             {holiday.itinerary?.highlights
               ? holiday.itinerary.highlights.map((hl, i) =>
-                hl ? (
-                  <div key={i} className="w-full bg-white rounded-lg pr-2 flex items-start gap-.5 relative duration-200 whitespace-normal
-                  break-words text-wrap">
-                    <div className="h-5 w-5 rounded-full flex items-center justify-center">
-                      <FaCheck className="text-green-700 text-[10px]" />
-                    </div>
+                  hl ? (
+                    <div
+                      key={i}
+                      className='gap-.5 relative flex w-full items-start whitespace-normal text-wrap break-words rounded-lg bg-white pr-2 duration-200'
+                    >
+                      <div className='flex h-5 w-5 items-center justify-center rounded-full'>
+                        <FaCheck className='text-[10px] text-green-700' />
+                      </div>
 
-                    <span className="text-gray-950  font-sans text-xs leading-tight w-full">
-                      {hl}
-                    </span>
-                  </div>
-                ) : null
-              )
+                      <span className='w-full font-sans text-xs leading-tight text-gray-950'>
+                        {hl}
+                      </span>
+                    </div>
+                  ) : null
+                )
               : null}
           </div>
-          
-
         </div>
         <Group justify='space-between' mt='md'>
           {' '}
