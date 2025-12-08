@@ -95,41 +95,16 @@ export default function HolidayCard({ holiday }: HolidayCardProps) {
             {holiday.itinerary?.facility?.visaStatus && <FaPassport size={28} color='#636363' />}
           </div>
 
-          
-
-
           <div className="flex flex-col gap-1.5">
             {holiday.itinerary?.highlights
               ? holiday.itinerary.highlights.map((hl, i) =>
                 hl ? (
-                  <div
-                    key={i}
-                    className="
-              w-full
-              bg-white
-              rounded-lg
-              pr-2
-              flex items-start gap-.5
-              relative
-              duration-200
-              whitespace-normal
-              break-words
-              text-wrap
-            "
-                  >
-                  
-                    <div
-                      className="
-                h-5 w-5
-                rounded-full
-                flex items-center justify-center
-                
-              "
-                    >
+                  <div key={i} className="w-full bg-white rounded-lg pr-2 flex items-start gap-.5 relative duration-200 whitespace-normal
+                  break-words text-wrap">
+                    <div className="h-5 w-5 rounded-full flex items-center justify-center">
                       <FaCheck className="text-green-700 text-[10px]" />
                     </div>
 
-                    {/* Very Compact Text */}
                     <span className="text-gray-950  font-sans text-xs leading-tight w-full">
                       {hl}
                     </span>
@@ -138,9 +113,8 @@ export default function HolidayCard({ holiday }: HolidayCardProps) {
               )
               : null}
           </div>
-
-
           
+
         </div>
         <Group justify='space-between' mt='md'>
           {' '}
