@@ -26,6 +26,12 @@ const DelhiResponse = {
       itinerary: {
         id: 115,
         name: '3 day Delhi',
+        stayCities: [
+          { "city": 'Delhi', "nights": 3 },
+          { "city": "London", "nights": 2 },
+          { "city": "Paris", "nights": 3 },
+          { "city": "Amsterdam", "nights": 1 }
+        ],
         facility: {
           hotelStatus: true,
           sightseeingStatus: true,
@@ -91,6 +97,11 @@ const DelhiResponse = {
       itinerary: {
         id: 357,
         name: '3 day Delhi',
+        stayCities: [
+          { "city": 'Delhi', "nights": 3 },
+          { "city": "London", "nights": 2 },
+          { "city": "Paris", "nights": 3 },
+        ],
         facility: {
           hotelStatus: true,
           sightseeingStatus: true,
@@ -155,6 +166,12 @@ const DelhiResponse = {
       itinerary: {
         id: 854,
         name: '3 day Delhi',
+        stayCities: [
+          { "city": 'Delhi', "nights": 3 },
+          { "city": "London", "nights": 2 },
+          { "city": "Paris", "nights": 3 },
+          { "city": "Amsterdam", "nights": 1 }
+        ],
         facility: {
           hotelStatus: false,
           sightseeingStatus: true,
@@ -218,6 +235,10 @@ const DelhiResponse = {
       itinerary: {
         id: 817,
         name: '3 day Delhi',
+        stayCities: [
+          { "city": 'Delhi', "nights": 3 },
+          { "city": "London", "nights": 2 },
+        ],
         facility: {
           hotelStatus: true,
           sightseeingStatus: true,
@@ -282,6 +303,10 @@ const DelhiResponse = {
       itinerary: {
         id: 246,
         name: '3 day Delhi',
+        stayCities: [
+          { "city": "Paris", "nights": 3 },
+          { "city": "Amsterdam", "nights": 1 }
+        ],
         facility: {
           hotelStatus: true,
           sightseeingStatus: true,
@@ -346,6 +371,10 @@ const DelhiResponse = {
       itinerary: {
         id: 845,
         name: '3 day Delhi',
+        stayCities: [
+          { "city": 'Delhi', "nights": 3 },
+          { "city": "Amsterdam", "nights": 1 }
+        ],
         facility: {
           hotelStatus: true,
           sightseeingStatus: true,
@@ -415,6 +444,12 @@ const MumbaiResponse = {
       itinerary: {
         id: 210,
         name: '2 day Mumbai',
+        stayCities: [
+          { "city": 'Delhi', "nights": 3 },
+          { "city": "London", "nights": 2 },
+          { "city": "Paris", "nights": 3 },
+          { "city": "Amsterdam", "nights": 1 }
+        ],
         facility: {
           hotelStatus: true,
           sightseeingStatus: true,
@@ -470,6 +505,11 @@ const MumbaiResponse = {
       itinerary: {
         id: 412,
         name: '2 day Mumbai',
+        stayCities: [
+          { "city": 'Delhi', "nights": 3 },
+          { "city": "London", "nights": 2 },
+          { "city": "Amsterdam", "nights": 1 }
+        ],
         facility: {
           hotelStatus: true,
           sightseeingStatus: true,
@@ -526,6 +566,11 @@ const MumbaiResponse = {
       itinerary: {
         id: 358,
         name: '2 day Mumbai',
+        stayCities: [
+          { "city": "London", "nights": 2 },
+          { "city": "Paris", "nights": 3 },
+          { "city": "Amsterdam", "nights": 1 }
+        ],
         facility: {
           hotelStatus: true,
           sightseeingStatus: true,
@@ -583,6 +628,14 @@ const MumbaiResponse = {
       itinerary: {
         id: 348,
         name: '2 day Mumbai',
+        stayCities: [
+          { "city": 'Delhi', "nights": 3 },
+          { "city": "London", "nights": 2 },
+          { "city": "Paris", "nights": 3 },
+          { "city": "Amsterdam", "nights": 1 },
+          { "city": "Engelberg ", "nights": 2 },
+          { "city": "Rome", "nights": 1 },
+        ],
         facility: {
           hotelStatus: true,
           sightseeingStatus: true,
@@ -640,6 +693,10 @@ const MumbaiResponse = {
       itinerary: {
         id: 639,
         name: '2 day Mumbai',
+        stayCities: [
+          { "city": "Engelberg ", "nights": 2 },
+          { "city": "Rome", "nights": 1 },
+        ],
         facility: {
           hotelStatus: true,
           sightseeingStatus: false,
@@ -694,6 +751,11 @@ const MumbaiResponse = {
       itinerary: {
         id: 111,
         name: '2 day Mumbai',
+        stayCities: [
+          { "city": 'Delhi', "nights": 3 },
+          { "city": "London", "nights": 2 },
+          { "city": "Rome", "nights": 1 },
+        ],
         facility: {
           hotelStatus: true,
           sightseeingStatus: true,
@@ -755,6 +817,10 @@ const GoaResponse = {
       itinerary: {
         id: 305,
         name: '5 day Chennai',
+        stayCities: [
+          { "city": 'Delhi', "nights": 3 },
+          { "city": "Rome", "nights": 1 },
+        ],
         facility: {
           hotelStatus: true,
           sightseeingStatus: true,
@@ -810,6 +876,9 @@ const GoaResponse = {
       itinerary: {
         id: 306,
         name: '5 day Chennai',
+        stayCities: [
+          { "city": 'Delhi', "nights": 3 },
+        ],
         facility: {
           hotelStatus: true,
           sightseeingStatus: false,
@@ -863,6 +932,12 @@ const GoaResponse = {
       itinerary: {
         id: 545,
         name: '5 day Chennai',
+        stayCities: [
+          { "city": "Paris", "nights": 3 },
+          { "city": "Amsterdam", "nights": 1 },
+          { "city": "Engelberg ", "nights": 2 },
+          { "city": "Rome", "nights": 1 },
+        ],
         facility: {
           hotelStatus: true,
           sightseeingStatus: true,
@@ -917,6 +992,14 @@ const GoaResponse = {
       itinerary: {
         id: 258,
         name: '5 day Chennai',
+        stayCities: [
+          { "city": 'Delhi', "nights": 3 },
+          { "city": "London", "nights": 2 },
+          { "city": "Paris", "nights": 3 },
+          { "city": "Amsterdam", "nights": 1 },
+          { "city": "Engelberg ", "nights": 2 },
+          { "city": "Rome", "nights": 1 },
+        ],
         facility: {
           hotelStatus: true,
           sightseeingStatus: false,
@@ -970,6 +1053,9 @@ const GoaResponse = {
       itinerary: {
         id: 123,
         name: '5 day Chennai',
+        stayCities: [
+          { "city": "Rome", "nights": 1 },
+        ],
         facility: {
           hotelStatus: false,
           sightseeingStatus: true,
@@ -1023,6 +1109,11 @@ const GoaResponse = {
       itinerary: {
         id: 178,
         name: '5 day Chennai',
+        stayCities: [
+          { "city": 'Delhi', "nights": 3 },
+          { "city": "London", "nights": 2 },
+          { "city": "Rome", "nights": 1 },
+        ],
         facility: {
           hotelStatus: true,
           sightseeingStatus: true,
@@ -1076,6 +1167,10 @@ const GoaResponse = {
       itinerary: {
         id: 178,
         name: '5 day Chennai',
+        stayCities: [
+          { "city": "Engelberg ", "nights": 2 },
+          { "city": "Rome", "nights": 1 },
+        ],
         facility: {
           hotelStatus: true,
           sightseeingStatus: true,
@@ -1138,6 +1233,14 @@ const SydneyResponse = {
       "itinerary": {
         "id": 78,
         "name": "3 day Karnataka",
+        stayCities: [
+          { "city": 'Delhi', "nights": 3 },
+          { "city": "London", "nights": 2 },
+          { "city": "Paris", "nights": 3 },
+          { "city": "Amsterdam", "nights": 1 },
+          { "city": "Engelberg ", "nights": 2 },
+          { "city": "Rome", "nights": 1 },
+        ],
         facility: {
           hotelStatus: true,
           sightseeingStatus: true,
@@ -1192,6 +1295,11 @@ const SydneyResponse = {
       "itinerary": {
         "id": 98,
         "name": "3 day Sydney",
+        stayCities: [
+          { "city": 'Delhi', "nights": 3 },
+          { "city": "London", "nights": 2 },
+          { "city": "Rome", "nights": 1 },
+        ],
         facility: {
           hotelStatus: true,
           sightseeingStatus: false,
@@ -1252,6 +1360,11 @@ const TokyoResponse = {
       "itinerary": {
         "id": 79,
         "name": "4 day London",
+        stayCities: [
+          { "city": "Amsterdam", "nights": 1 },
+          { "city": "Engelberg ", "nights": 2 },
+          { "city": "Rome", "nights": 1 },
+        ],
         facility: {
           hotelStatus: true,
           sightseeingStatus: true,
@@ -1306,6 +1419,10 @@ const TokyoResponse = {
       "itinerary": {
         "id": 99,
         "name": "4 day Tokyo",
+        stayCities: [
+          { "city": 'Delhi', "nights": 3 },
+          { "city": "Rome", "nights": 1 },
+        ],
         facility: {
           hotelStatus: false,
           sightseeingStatus: true,
@@ -1369,6 +1486,10 @@ const MaharashtraResponse = {
       "itinerary": {
         "id": 77,
         "name": "2 day Rajasthan",
+        stayCities: [
+          { "city": 'Delhi', "nights": 3 },
+          { "city": "Rome", "nights": 1 },
+        ],
         facility: {
           hotelStatus: true,
           sightseeingStatus: true,
@@ -1423,6 +1544,12 @@ const MaharashtraResponse = {
       "itinerary": {
         "id": 83,
         "name": "3 day Dubai",
+        stayCities: [
+          { "city": 'Delhi', "nights": 3 },
+          { "city": "London", "nights": 2 },
+          { "city": "Paris", "nights": 3 },
+          { "city": "Rome", "nights": 1 },
+        ],
         facility: {
           hotelStatus: true,
           sightseeingStatus: true,
@@ -1477,6 +1604,14 @@ const MaharashtraResponse = {
       "itinerary": {
         "id": 97,
         "name": "2 day Mumbai",
+        stayCities: [
+          { "city": 'Delhi', "nights": 3 },
+          { "city": "London", "nights": 2 },
+          { "city": "Paris", "nights": 3 },
+          { "city": "Amsterdam", "nights": 1 },
+          { "city": "Engelberg ", "nights": 2 },
+          { "city": "Rome", "nights": 1 },
+        ],
         facility: {
           hotelStatus: true,
           sightseeingStatus: false,
@@ -1531,6 +1666,10 @@ const MaharashtraResponse = {
       "itinerary": {
         "id": 103,
         "name": "2 day Pune",
+        stayCities: [
+          { "city": 'Delhi', "nights": 3 },
+          { "city": "Rome", "nights": 1 },
+        ],
         facility: {
           hotelStatus: false,
           sightseeingStatus: true,
@@ -1591,6 +1730,11 @@ const TamilNaduResponse = {
       "itinerary": {
         "id": 91,
         "name": "4 day Jaipur",
+        stayCities: [
+          { "city": 'Delhi', "nights": 3 },
+          { "city": "Engelberg ", "nights": 2 },
+          { "city": "Rome", "nights": 1 },
+        ],
         facility: {
           hotelStatus: true,
           sightseeingStatus: true,
@@ -1645,6 +1789,10 @@ const TamilNaduResponse = {
       "itinerary": {
         "id": 111,
         "name": "2 day Chennai",
+        stayCities: [
+          { "city": "Engelberg ", "nights": 2 },
+          { "city": "Rome", "nights": 1 },
+        ],
         facility: {
           hotelStatus: false,
           sightseeingStatus: true,
@@ -1706,6 +1854,14 @@ const unitedKingdomResponse = {
       "itinerary": {
         "id": 81,
         "name": "5 day Paris",
+        stayCities: [
+          { "city": 'Delhi', "nights": 3 },
+          { "city": "London", "nights": 2 },
+          { "city": "Paris", "nights": 3 },
+          { "city": "Amsterdam", "nights": 1 },
+          { "city": "Engelberg ", "nights": 2 },
+          { "city": "Rome", "nights": 1 },
+        ],
         facility: {
           hotelStatus: true,
           sightseeingStatus: true,
@@ -1760,6 +1916,9 @@ const unitedKingdomResponse = {
       "itinerary": {
         "id": 88,
         "name": "3 day Goa",
+        stayCities: [
+          { "city": 'Delhi', "nights": 3 },
+        ],
         facility: {
           hotelStatus: true,
           sightseeingStatus: true,
@@ -1814,6 +1973,10 @@ const unitedKingdomResponse = {
       "itinerary": {
         "id": 90,
         "name": "5 day New York",
+        stayCities: [
+          { "city": 'Delhi', "nights": 3 },
+          { "city": "Rome", "nights": 1 },
+        ],
         facility: {
           hotelStatus: true,
           sightseeingStatus: false,
@@ -1868,6 +2031,11 @@ const unitedKingdomResponse = {
       "itinerary": {
         "id": 92,
         "name": "3 day Pune",
+        stayCities: [
+          { "city": 'Delhi', "nights": 3 },
+          { "city": "London", "nights": 2 },
+          { "city": "Paris", "nights": 3 },
+        ],
         facility: {
           hotelStatus: true,
           sightseeingStatus: false,
@@ -1922,6 +2090,11 @@ const unitedKingdomResponse = {
       "itinerary": {
         "id": 94,
         "name": "3 day Manchester",
+        stayCities: [
+          { "city": 'Delhi', "nights": 3 },
+          { "city": "London", "nights": 2 },
+          { "city": "Paris", "nights": 3 },
+        ],
         facility: {
           hotelStatus: true,
           sightseeingStatus: false,
@@ -1976,6 +2149,10 @@ const unitedKingdomResponse = {
       "itinerary": {
         "id": 101,
         "name": "2 day Bristol",
+        stayCities: [
+          { "city": 'Delhi', "nights": 3 },
+          { "city": "London", "nights": 2 },
+        ],
         facility: {
           hotelStatus: true,
           sightseeingStatus: true,
@@ -2030,6 +2207,11 @@ const unitedKingdomResponse = {
       "itinerary": {
         "id": 108,
         "name": "2 day Birmingham",
+        stayCities: [
+          { "city": 'Delhi', "nights": 3 },
+          { "city": "London", "nights": 2 },
+          { "city": "Paris", "nights": 3 },
+        ],
         facility: {
           hotelStatus: true,
           sightseeingStatus: true,
@@ -2084,6 +2266,14 @@ const unitedKingdomResponse = {
       "itinerary": {
         "id": 110,
         "name": "4 day Edinburgh",
+        stayCities: [
+          { "city": 'Delhi', "nights": 3 },
+          { "city": "London", "nights": 2 },
+          { "city": "Paris", "nights": 3 },
+          { "city": "Amsterdam", "nights": 1 },
+          { "city": "Engelberg ", "nights": 2 },
+          { "city": "Rome", "nights": 1 },
+        ],
         facility: {
           hotelStatus: false,
           sightseeingStatus: true,
@@ -2139,6 +2329,12 @@ const unitedKingdomResponse = {
       "itinerary": {
         "id": 112,
         "name": "5 day London",
+        stayCities: [
+          { "city": 'Delhi', "nights": 3 },
+          { "city": "Amsterdam", "nights": 1 },
+          { "city": "Engelberg ", "nights": 2 },
+          { "city": "Rome", "nights": 1 },
+        ],
         facility: {
           hotelStatus: false,
           sightseeingStatus: true,
@@ -2194,6 +2390,9 @@ const unitedKingdomResponse = {
       "itinerary": {
         "id": 114,
         "name": "4 day Manchester",
+        stayCities: [
+          { "city": "Rome", "nights": 1 },
+        ],
         facility: {
           hotelStatus: false,
           sightseeingStatus: true,
@@ -2255,6 +2454,14 @@ const IndiaResponse = {
       "itinerary": {
         "id": 77,
         "name": "2 day Rajasthan",
+        stayCities: [
+          { "city": 'Delhi', "nights": 3 },
+          { "city": "London", "nights": 2 },
+          { "city": "Paris", "nights": 3 },
+          { "city": "Amsterdam", "nights": 1 },
+          { "city": "Engelberg ", "nights": 2 },
+          { "city": "Rome", "nights": 1 },
+        ],
         facility: {
           hotelStatus: true,
           sightseeingStatus: true,
@@ -2309,6 +2516,10 @@ const IndiaResponse = {
       "itinerary": {
         "id": 115,
         "name": "3 day Delhi",
+        stayCities: [
+          { "city": 'Delhi', "nights": 3 },
+          { "city": "London", "nights": 2 },
+        ],
         facility: {
           hotelStatus: true,
           sightseeingStatus: true,
@@ -2369,6 +2580,14 @@ const UnitedArabEmiratesResponse = {
       "itinerary": {
         "id": 87,
         "name": "4 day Edinburgh",
+        stayCities: [
+          { "city": 'Delhi', "nights": 3 },
+          { "city": "London", "nights": 2 },
+          { "city": "Paris", "nights": 3 },
+          { "city": "Amsterdam", "nights": 1 },
+          { "city": "Engelberg ", "nights": 2 },
+          { "city": "Rome", "nights": 1 },
+        ],
         facility: {
           hotelStatus: true,
           sightseeingStatus: true,
@@ -2423,6 +2642,10 @@ const UnitedArabEmiratesResponse = {
       "itinerary": {
         "id": 107,
         "name": "5 day Dubai",
+        stayCities: [
+          { "city": 'Delhi', "nights": 3 },
+          { "city": "London", "nights": 2 },
+        ],
         facility: {
           hotelStatus: false,
           sightseeingStatus: true,
