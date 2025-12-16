@@ -39,6 +39,7 @@ export default function HolidayCard({ holiday }: HolidayCardProps) {
             style={{ objectFit: 'cover' }}
             sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
             quality={75}
+            // transformation='h-300,w-500' // Adjust transformation as needed
           />{' '}
           {durationText && (
             <Badge
@@ -133,7 +134,7 @@ export default function HolidayCard({ holiday }: HolidayCardProps) {
           {/* Make button link to actual package details page later */}
           <Button
             component='a'
-            href={`/package/${holiday.id}`}
+            href={`/holiday/${holiday.id}`}
             variant='filled'
             color='orange'
             radius='md'
