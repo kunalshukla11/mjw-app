@@ -141,7 +141,7 @@ export default function HolidayCard({ holiday }: HolidayCardProps) {
           {/* Make button link to actual package details page later */}
           <Button
             component='a'
-            href={`/package/${holiday.id}`}
+            href={`/holiday/${holiday.id}`}
             variant='filled'
             color='orange'
             radius='md'
