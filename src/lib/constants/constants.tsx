@@ -1,10 +1,13 @@
-import { MdFlight } from 'react-icons/md';
-import { RiHotelBedLine } from 'react-icons/ri';
-import { FaUmbrellaBeach } from 'react-icons/fa';
-import { NavItem } from '../types/types';
+import { MdFlight } from "react-icons/md";
+import { RiHotelBedLine } from "react-icons/ri";
+import { FaUmbrellaBeach } from "react-icons/fa";
+import { FiInfo } from "react-icons/fi"; 
+
+import { NavItem } from "../types/types";
 
 export const NAV_ITEMS: NavItem[] = [
-  { title: 'Holidays', path: '/holidays', icon: <FaUmbrellaBeach /> },
-  { title: 'Hotels', path: '/hotels', icon: <RiHotelBedLine /> },
-  { title: 'Flights', path: '/flights', icon: <MdFlight /> },
+  { title: "Holidays", path: "/", icon: <FaUmbrellaBeach /> },
+  { title: "Hotels", path: "/hotels", icon: <RiHotelBedLine /> },
+  { title: "Flights", path: "/flights", icon: <MdFlight /> },
+  { title: "About", path: "/about", icon: <FiInfo /> }, 
 ];

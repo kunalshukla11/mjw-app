@@ -71,6 +71,7 @@ export interface Location extends Validatable {
 export interface Itinerary {
     id: number;
     name: string;
+    stayCities: StayCity;
     facility: ItineraryFacility;
     highlights: string[];
     identifier: string;
@@ -79,8 +80,13 @@ export interface Itinerary {
     itineraryDetail: ItineraryDetail;
 }
 
+export interface StayCity {
+  city: string;
+  nights: number;
+}
+
 export interface ItineraryFacility {
-    hotelStatus: boolean;
+    hotelStatus?: boolean;
     sightseeingStatus?: boolean;
     transferStatus?: boolean;
     mealStatus?: boolean;
